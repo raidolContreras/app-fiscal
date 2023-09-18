@@ -11,7 +11,7 @@ session_start();
 	<link rel="shortcut icon" type="image/png" href="assets/images/logos/favicon.ico" />
 	<link rel="stylesheet" href="assets/css/styles.min.css" />
 	<link rel="stylesheet" href="assets/css/inStyle.css" />
-	<link href="assets/libs/dataTable/datatables.min.css" rel="stylesheet">
+	<link href="/assets/libs/datatable/datatables.min.css" rel="stylesheet">
  
 	<?php if (isset($_GET["pagina"])): ?>
 		<title><?php echo 'IN Fiscal - '.$_GET["pagina"]; ?></title>
