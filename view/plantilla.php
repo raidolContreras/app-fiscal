@@ -13,8 +13,9 @@ session_start();
 	<link rel="stylesheet" href="assets/css/inStyle.css" />
 	<link href="assets/libs/datatable/datatables.min.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-	<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+ 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+ 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+ 
  
 	<?php if (isset($_GET["pagina"])): ?>
 		<title><?php echo 'IN Fiscal - '.$_GET["pagina"]; ?></title>
