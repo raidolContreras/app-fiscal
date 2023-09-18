@@ -50,7 +50,6 @@ session_start();
 			echo '<!--  Main wrapper -->
 					<div class="body-wrapper">';
 			include "pages/navs/nav.php";
-				echo '<div class="container-fluid">';
 			include 'view/pages/Inicio.php';
 		}
 
@@ -76,9 +75,9 @@ session_start();
 
 	<script src="assets/js/sidebarmenu.js"></script>
 	<script src="assets/js/app.min.js"></script>
-	<script src="assets/js/custom.js"></script>
-	<script src="assets/js/prism.js"></script>
-	<script src="../assets/libs/dataTable/datatables.min.js"></script>
+		<script src="assets/js/custom.js"></script>
+		<script src="assets/js/prism.js"></script>
+	<script src="assets/libs/dataTable/datatables.min.js"></script>
 </body>
 
 </html>
