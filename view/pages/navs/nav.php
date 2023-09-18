@@ -30,4 +30,3 @@
 	</nav>
 </header>
 <!--  Header End -->
-<script src="assets/js/app/Cerrar_Sesion.js"></script>
