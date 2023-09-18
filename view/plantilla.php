@@ -13,7 +13,7 @@ session_start();
 	<link rel="stylesheet" href="assets/css/inStyle.css" />
 	<link href="assets/libs/datatable/datatables.min.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="assets/libs/dataTable/datatables.min.js"></script>
+	<script src="https://app-fiscal.inscripcionesccm.online/assets/libs/datatable/datatables.min.js"></script>
  
 	<?php if (isset($_GET["pagina"])): ?>
 		<title><?php echo 'IN Fiscal - '.$_GET["pagina"]; ?></title>
