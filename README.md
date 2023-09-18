@@ -1,2 +1,2 @@
-# app_Fiscal
+# app-fiscal
 Biblioteca de reglamentos fiscales mexicanos
