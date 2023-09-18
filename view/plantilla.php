@@ -78,9 +78,8 @@ session_start();
 	<script src="assets/js/app.min.js"></script>
 	<script src="assets/js/custom.js"></script>
 	<script src="assets/js/prism.js"></script>
-	<?php __Dir__ . '/' ?>
-	<script src="assets/dataTable/datatables.min.js"></script>
-	<script src="<?php echo __Dir__ . '/' ?>assets/dataTable/datatables.js"></script>
+	<script src="../assets/libs/dataTable/datatables.min.js"></script>
+	<script src="../assets/libs/dataTable/datatables.js"></script>
 	<script src="assets/js/app/Cerrar_Sesion.js"></script>
 </body>
 
