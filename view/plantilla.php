@@ -11,9 +11,10 @@ session_start();
 	<link rel="shortcut icon" type="image/png" href="assets/images/logos/favicon.ico" />
 	<link rel="stylesheet" href="assets/css/styles.min.css" />
 	<link rel="stylesheet" href="assets/css/inStyle.css" />
-	<link href="assets/libs/datatable/datatables.min.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://app-fiscal.inscripcionesccm.online/assets/libs/datatable/datatables.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
  
 	<?php if (isset($_GET["pagina"])): ?>
 		<title><?php echo 'IN Fiscal - '.$_GET["pagina"]; ?></title>
