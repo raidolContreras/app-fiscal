@@ -10,7 +10,7 @@
 							<a class="text-muted text-decoration-none" href="Inicio">Inicio</a>
 						</li>
 						<li class="breadcrumb-item" aria-current="page">
-							Reglamentos 2
+							Reglamentos
 						</li>
 					</ol>
 				</nav>
