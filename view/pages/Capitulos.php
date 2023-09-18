@@ -10,6 +10,9 @@
 						<li class="breadcrumb-item">
 							<a class="text-muted text-decoration-none" href="Inicio">Inicio</a>
 						</li>
+						<li class="breadcrumb-item">
+							<a class="text-muted text-decoration-none" href="Reglamentos">Reglamentos</a>
+						</li>
 						<li class="breadcrumb-item" aria-current="page">
 							Capitulos
 						</li>
