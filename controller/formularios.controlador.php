@@ -26,5 +26,10 @@ class ControladorFormularios{
 		$Capitulos = ModeloFormularios::mdlVerCapitulo($Capitulo);
 		return $Capitulos;
 	}
+
+	static public function ctrRegistrarCapitulos($capitulo,$Reglamento){
+		$Reg_Captitulo = ModeloFormularios::mdlRegistrarCapitulos($capitulo,$Reglamento);
+		return $Reg_Captitulo;
+	}
 	/*---------- Fin de ControladorFormularios ---------- */
 }

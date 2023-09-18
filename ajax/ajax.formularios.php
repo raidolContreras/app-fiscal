@@ -21,7 +21,16 @@ class FormulariosAjax{
 		echo $IniciarSesion;
 	}
 
+	public function Reg_Captitulo(){
+		$capitulo = $this->capitulo;
+		$Reglamento = $this->Reglamento;
+		$Reg_Captitulo = ControladorFormularios::ctrRegistrarCapitulos($capitulo,$Reglamento);
+		echo $Reg_Captitulo;
+	}
+
 }
+
+/*---------------------------------------------------------------------*/
 
 if (isset($_POST['Add-Reglamento'])) {
 	$Reglamento = $_POST['Add-Reglamento'];
@@ -46,4 +55,13 @@ if (isset($_POST['username-email'])) {
 if (isset($_POST['cerrar_sesion'])) {
 	session_destroy();
 	echo 'ok';
+}
+
+if (isset($_POST['Add-Capitulo'])) {
+	$capitulo = $_POST['Add-Capitulo'];
+	$Reglamento = $_POST['Reglamento'];
+	$Reg_Captitulo = new FormulariosAjax();
+	$Reg_Captitulo -> capitulo = $capitulo;
+	$Reg_Captitulo -> Reglamento = $Reglamento;
+	$Reg_Captitulo -> Reg_Captitulo();
 }

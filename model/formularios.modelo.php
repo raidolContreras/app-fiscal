@@ -2,7 +2,7 @@
 require_once "conexion.php";
 
 class ModeloFormularios{
-	/*---------- Función hecha para registrar a los empleados---------- */
+
 	static public function mdlRegistrarReglamentos($Reglamento){
 		$pdo =Conexion::conectar();
 		$sql = "INSERT INTO app_titles(name_title, type_title, Admin_idAdmin) VALUES (:name_title,'Reglamento',:Admin_idAdmin)";
@@ -90,6 +90,25 @@ class ModeloFormularios{
 		$stmt->close();
 		$stmt = null;
 
+	}
+	
+	static public function mdlRegistrarCapitulos($capitulo,$Reglamento){
+		$pdo =Conexion::conectar();
+		$sql = "INSERT INTO app_chapter(name_Chapter, Title_idTitles, Admin_idAdmin) VALUES (:name_Chapter,:Title_idTitles,:Admin_idAdmin)";
+
+		$stmt = $pdo->prepare($sql);
+		$stmt->bindParam(':name_Chapter', $capitulo, PDO::PARAM_STR);
+		$stmt->bindParam(':Title_idTitles', $Reglamento, PDO::PARAM_STR);
+		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
+
+		if ($stmt->execute()) {
+			return "ok"; //obtener el ID del empleado recién insertado
+		}else{
+			return 'error';
+		}
+
+		$stmt->close();
+		$stmt = null;
 	}
 	/*---------- Fin de ModeloFormularios ---------- */
 }

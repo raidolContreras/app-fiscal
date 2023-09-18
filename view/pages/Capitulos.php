@@ -116,6 +116,7 @@
 							<div class="col-md-8 mx-auto"> <!-- Utiliza la clase mx-auto para centrar horizontalmente -->
 								<div class="input-group mb-3">
 									<input type="text" class="form-control" name="Add-Capitulo" id="Add-Capitulo" placeholder="Nombre del Capitulo">
+									<input type="hidden" name="Reglamento" value="<?php echo $_GET['reglament'] ?>">
 								</div>
 							</div>
 						</form>

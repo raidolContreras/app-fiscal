@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						`);
 						deleteAlert();
 						setTimeout(function() {
-							location.href = 'capitulos';
+							location.reload();
 						}, 900);
 					}
 					else if (response === 'empty') {
