@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
 	$('#close-sesion').click(function() {
 		$.ajax({
 			url: "ajax/ajax.formularios.php",
@@ -28,4 +27,3 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 	});
-});
