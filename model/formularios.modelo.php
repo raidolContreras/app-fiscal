@@ -41,13 +41,47 @@ class ModeloFormularios{
 				FROM
 					app_titles t
 				LEFT JOIN
-					app_chapter c ON t.idTitles = c.Title_idTitles
+					app_chapter c ON t.idChapter = c.Title_idTitles
 				LEFT JOIN
 					app_sections s ON c.idChapters = s.Chapter_idChapters
 				LEFT JOIN
 					app_articles a ON s.idSections = a.Section_idSections
 				WHERE
 					t.idTitles = $idTitle;";
+					
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetch();
+		$stmt->close();
+		$stmt = null;
+
+	}
+
+	static public function mdlVerCapitulos($reglament){
+		$sql = "SELECT * FROM app_chapter WHERE Title_idTitles = :Title_idTitles";
+
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':Title_idTitles', $reglament, PDO::PARAM_STR);
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+		$stmt->close();
+		$stmt = null;
+
+	}
+
+	static public function mdlVerCapitulo($idChapters){
+		$sql = "SELECT
+					COUNT(DISTINCT s.idSections) AS NumeroDeSecciones,
+					SUM(CASE WHEN a.Section_idSections IS NOT NULL THEN 1 ELSE 0 END) AS NumeroDeArticulos
+				FROM
+					app_chapter c
+				LEFT JOIN
+					app_sections s ON c.idChapters = s.Chapter_idChapters
+				LEFT JOIN
+					app_articles a ON c.idChapters = a.Chapter_idChapters
+				WHERE
+					c.idChapters = $idChapters;";
 					
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->execute();
