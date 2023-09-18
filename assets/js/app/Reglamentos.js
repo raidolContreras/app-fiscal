@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function () {
 	if ($("#reglamento").length) {
 		$(document).ready(function () {
 			var table = $('#reglamento').DataTable({
