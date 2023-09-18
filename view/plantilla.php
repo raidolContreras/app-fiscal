@@ -51,6 +51,7 @@ session_start();
 			}, 1500);
 		}
 	</script>	
+	<script src="assets/js/app/Cerrar_Sesion.js"></script>
 	<script src="assets/libs/jquery/dist/jquery.min.js"></script>
 	<script src="assets/libs/simplebar/dist/simplebar.js"></script>
 	<script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -60,7 +61,6 @@ session_start();
 		<script src="assets/js/custom.js"></script>
 		<script src="assets/js/prism.js"></script>
 	<script src="assets/libs/dataTable/datatables.min.js"></script>
-	<script src="assets/js/app/Cerrar_Sesion.js"></script>
 </body>
 
 </html>
