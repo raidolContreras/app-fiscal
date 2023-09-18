@@ -1,4 +1,4 @@
-	$('#close-sesion').click(function() {
+	$('#close_sesion').click(function() {
 		$.ajax({
 			url: "ajax/ajax.formularios.php",
 			type: "POST",

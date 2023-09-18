@@ -41,7 +41,7 @@ class ModeloFormularios{
 				FROM
 					app_titles t
 				LEFT JOIN
-					app_chapter c ON t.idChapter = c.Title_idTitles
+					app_chapter c ON t.idTitles = c.Title_idTitles
 				LEFT JOIN
 					app_sections s ON c.idChapters = s.Chapter_idChapters
 				LEFT JOIN

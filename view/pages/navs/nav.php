@@ -20,7 +20,7 @@
 								<i class="ti ti-user fs-6"></i>
 								<p class="mb-0 fs-3">Mi Perfil</p>
 							</a>
-							<button id="close-sesion" class="btn btn-outline-primary mx-3 mt-2 d-block">Cerrar sesión</button>
+							<button id="close_sesion" class="btn btn-outline-primary mx-3 mt-2 d-block">Cerrar sesión</button>
 						</div>
 					</div>
 				</li>
