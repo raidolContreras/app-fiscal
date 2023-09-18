@@ -10,8 +10,8 @@ $plantilla -> ctrTraerPlantilla();
 
 ?>
 
-	<script src="/assets/libs/dataTable/datatables.min.js"></script>
-	<script src="/assets/libs/dataTable/datatables.js"></script>
+	<script src="assets/libs/dataTable/datatables.min.js"></script>
+	<script src="assets/libs/dataTable/datatables.js"></script>
 	<script src="assets/js/app/Cerrar_Sesion.js"></script>
 </body>
 
