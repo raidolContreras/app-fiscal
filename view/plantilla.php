@@ -53,6 +53,7 @@ session_start();
 			echo '<!--  Main wrapper -->
 					<div class="body-wrapper">';
 			include "pages/navs/nav.php";
+			echo '<div class="container-fluid">';
 			include 'view/pages/Inicio.php';
 		}
 
