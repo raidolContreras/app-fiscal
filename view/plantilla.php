@@ -33,7 +33,8 @@ session_start();
 		if (isset($_GET["pagina"])){
 			if ($_GET["pagina"] == "Inicio" ||
 				$_GET["pagina"] == "Reglamentos" ||
-				$_GET["pagina"] == "Capitulos") {
+				$_GET["pagina"] == "Capitulos" ||
+				$_GET["pagina"] == "Secciones") {
 
 				include "pages/navs/sidenav.php";
 				echo '<!--  Main wrapper -->
@@ -69,15 +70,16 @@ session_start();
 				});
 			}, 1500);
 		}
-	</script>	
+	</script>
+
 	<script src="assets/libs/jquery/dist/jquery.min.js"></script>
 	<script src="assets/libs/simplebar/dist/simplebar.js"></script>
 	<script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script src="assets/js/sidebarmenu.js"></script>
 	<script src="assets/js/app.min.js"></script>
-		<script src="assets/js/custom.js"></script>
-		<script src="assets/js/prism.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<script src="assets/js/prism.js"></script>
 	<script src="assets/libs/datatable/datatables.min.js"></script>
 	<script src="assets/js/app/Cerrar_Sesion.js"></script>
 </body>

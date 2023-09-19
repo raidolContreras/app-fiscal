@@ -74,7 +74,7 @@ class ModeloFormularios{
 	static public function mdlVerCapitulo($idChapters){
 		$sql = "SELECT
 					COUNT(DISTINCT s.idSections) AS NumeroDeSecciones,
-					SUM(CASE WHEN a.Section_idSections IS NOT NULL THEN 1 ELSE 0 END) AS NumeroDeArticulos
+					COUNT(DISTINCT a.idArticles) AS NumeroDeArticulos
 				FROM
 					app_chapter c
 				LEFT JOIN
@@ -99,6 +99,59 @@ class ModeloFormularios{
 		$stmt = $pdo->prepare($sql);
 		$stmt->bindParam(':name_Chapter', $capitulo, PDO::PARAM_STR);
 		$stmt->bindParam(':Title_idTitles', $Reglamento, PDO::PARAM_STR);
+		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
+
+		if ($stmt->execute()) {
+			return "ok"; //obtener el ID del empleado recién insertado
+		}else{
+			return 'error';
+		}
+
+		$stmt->close();
+		$stmt = null;
+	}
+
+	static public function mdlVerSecciones($reglament, $chapter){
+		$sql = "SELECT * FROM app_sections WHERE Title_idTitles = :Title_idTitles AND Chapter_idChapters = :Chapter_idChapters";
+
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':Title_idTitles', $reglament, PDO::PARAM_INT);
+		$stmt->bindParam(':Chapter_idChapters', $chapter, PDO::PARAM_INT);
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+		$stmt->close();
+		$stmt = null;
+
+	}
+
+	static public function mdlVerSeccion($idSections){
+		$sql = "SELECT
+					COUNT(DISTINCT a.idArticles) AS NumeroDeArticulos
+				FROM
+				  app_sections s
+				LEFT JOIN
+				  app_articles a ON s.idSections = a.Section_idSections
+				WHERE
+				  s.idSections = 1;
+				 $idSections;";
+					
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetch();
+		$stmt->close();
+		$stmt = null;
+
+	}
+	
+	static public function mdlRegistrarSections($section,$reglament,$chapter){
+		$pdo =Conexion::conectar();
+		$sql = "INSERT INTO app_sections(name_section, Title_idTitles, Chapter_idChapters, Admin_idAdmin) VALUES (:name_section,:Title_idTitles,:Chapter_idChapters,:Admin_idAdmin)";
+
+		$stmt = $pdo->prepare($sql);
+		$stmt->bindParam(':name_section', $section, PDO::PARAM_STR);
+		$stmt->bindParam(':Title_idTitles', $reglament, PDO::PARAM_STR);
+		$stmt->bindParam(':Chapter_idChapters', $chapter, PDO::PARAM_STR);
 		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
 
 		if ($stmt->execute()) {

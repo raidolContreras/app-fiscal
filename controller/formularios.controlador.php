@@ -31,5 +31,20 @@ class ControladorFormularios{
 		$Reg_Captitulo = ModeloFormularios::mdlRegistrarCapitulos($capitulo,$Reglamento);
 		return $Reg_Captitulo;
 	}
+
+	static public function ctrVerSecciones($reglament,$chapter){
+		$Seccion = ModeloFormularios::mdlVerSecciones($reglament,$chapter);
+		return $Seccion;
+	}
+
+	static public function ctrVerSeccion($idSections){
+		$Capitulos = ModeloFormularios::mdlVerSeccion($idSections);
+		return $Capitulos;
+	}
+
+	static public function ctrRegistrarSections($section,$reglament,$chapter){
+		$Capitulos = ModeloFormularios::mdlRegistrarSections($section,$reglament,$chapter);
+		return $Capitulos;
+	}
 	/*---------- Fin de ControladorFormularios ---------- */
 }

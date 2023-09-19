@@ -28,6 +28,14 @@ class FormulariosAjax{
 		echo $Reg_Captitulo;
 	}
 
+	public function Reg_Section(){
+		$section = $this->section;
+		$reglament = $this->reglament;
+		$chapter = $this->chapter;
+		$Reg_Section = ControladorFormularios::ctrRegistrarSections($section,$reglament,$chapter);
+		echo $Reg_Section;
+	}
+
 }
 
 /*---------------------------------------------------------------------*/
@@ -60,8 +68,27 @@ if (isset($_POST['cerrar_sesion'])) {
 if (isset($_POST['Add-Capitulo'])) {
 	$capitulo = $_POST['Add-Capitulo'];
 	$Reglamento = $_POST['Reglamento'];
-	$Reg_Captitulo = new FormulariosAjax();
-	$Reg_Captitulo -> capitulo = $capitulo;
-	$Reg_Captitulo -> Reglamento = $Reglamento;
-	$Reg_Captitulo -> Reg_Captitulo();
+	if ($capitulo != '') {
+		$Reg_Captitulo = new FormulariosAjax();
+		$Reg_Captitulo -> capitulo = $capitulo;
+		$Reg_Captitulo -> Reglamento = $Reglamento;
+		$Reg_Captitulo -> Reg_Captitulo();
+	}else{
+		echo 'empty';
+	}
+}
+
+if (isset($_POST['Add-Seccion'])) {
+	$section = $_POST['Add-Seccion'];
+	$reglament = $_POST['Reglamento'];
+	$chapter = $_POST['Capitulo'];
+	if ($section != '') {
+		$Reg_Section = new FormulariosAjax();
+		$Reg_Section -> section = $section;
+		$Reg_Section -> reglament = $reglament;
+		$Reg_Section -> chapter = $chapter;
+		$Reg_Section -> Reg_Section();
+	}else{
+		echo 'empty';
+	}
 }
