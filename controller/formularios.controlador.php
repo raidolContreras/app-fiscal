@@ -7,12 +7,12 @@ class ControladorFormularios{
 		return $Reg_Reglamento;
 	}
 
-	static public function ctrVerReuniones(){
+	static public function ctrVerReglamentos(){
 		$Reg_Reglamento = ModeloFormularios::mdlVerReuniones();
 		return $Reg_Reglamento;
 	}
 
-	static public function ctrVerReunion($Reglamento){
+	static public function ctrVerReglamento($Reglamento){
 		$Reg_Reglamento = ModeloFormularios::mdlVerReunion($Reglamento);
 		return $Reg_Reglamento;
 	}
@@ -43,8 +43,18 @@ class ControladorFormularios{
 	}
 
 	static public function ctrRegistrarSections($section,$reglament,$chapter){
-		$Capitulos = ModeloFormularios::mdlRegistrarSections($section,$reglament,$chapter);
-		return $Capitulos;
+		$Secciones = ModeloFormularios::mdlRegistrarSections($section,$reglament,$chapter);
+		return $Secciones;
+	}
+
+	static public function ctrVerArticulos($reglament,$chapter,$section){
+		$Articulos = ModeloFormularios::mdlVerArticulos($reglament,$chapter,$section);
+		return $Articulos;
+	}
+
+	static public function ctrRegistrarArticles($article,$section,$reglament,$chapter){
+		$Articles = ModeloFormularios::mdlRegistrarArticles($article,$section,$reglament,$chapter);
+		return $Articles;
 	}
 	/*---------- Fin de ControladorFormularios ---------- */
 }

@@ -98,7 +98,7 @@ class ModeloFormularios{
 
 		$stmt = $pdo->prepare($sql);
 		$stmt->bindParam(':name_Chapter', $capitulo, PDO::PARAM_STR);
-		$stmt->bindParam(':Title_idTitles', $Reglamento, PDO::PARAM_STR);
+		$stmt->bindParam(':Title_idTitles', $Reglamento, PDO::PARAM_INT);
 		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
 
 		if ($stmt->execute()) {
@@ -133,8 +133,7 @@ class ModeloFormularios{
 				LEFT JOIN
 				  app_articles a ON s.idSections = a.Section_idSections
 				WHERE
-				  s.idSections = 1;
-				 $idSections;";
+				  s.idSections = $idSections;";
 					
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->execute();
@@ -150,8 +149,44 @@ class ModeloFormularios{
 
 		$stmt = $pdo->prepare($sql);
 		$stmt->bindParam(':name_section', $section, PDO::PARAM_STR);
-		$stmt->bindParam(':Title_idTitles', $reglament, PDO::PARAM_STR);
-		$stmt->bindParam(':Chapter_idChapters', $chapter, PDO::PARAM_STR);
+		$stmt->bindParam(':Title_idTitles', $reglament, PDO::PARAM_INT);
+		$stmt->bindParam(':Chapter_idChapters', $chapter, PDO::PARAM_INT);
+		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
+
+		if ($stmt->execute()) {
+			return "ok"; //obtener el ID del empleado recién insertado
+		}else{
+			return 'error';
+		}
+
+		$stmt->close();
+		$stmt = null;
+	}
+
+	static public function mdlVerArticulos($reglament,$chapter,$section){
+		$sql = "SELECT * FROM app_articles WHERE Title_idTitles = :Title_idTitles AND Chapter_idChapters = :Chapter_idChapters AND Section_idSections = :Section_idSections";
+
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':Title_idTitles', $reglament, PDO::PARAM_INT);
+		$stmt->bindParam(':Chapter_idChapters', $chapter, PDO::PARAM_INT);
+		$stmt->bindParam(':Section_idSections', $section, PDO::PARAM_INT);
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+		$stmt->close();
+		$stmt = null;
+
+	}
+	
+	static public function mdlRegistrarArticles($article,$section,$reglament,$chapter){
+		$pdo =Conexion::conectar();
+		$sql = "INSERT INTO app_articles(name_article, Title_idTitles, Chapter_idChapters, Section_idSections, Admin_idAdmin) VALUES (:name_article,:Title_idTitles,:Chapter_idChapters,:Section_idSections,:Admin_idAdmin)";
+
+		$stmt = $pdo->prepare($sql);
+		$stmt->bindParam(':name_article', $article, PDO::PARAM_STR);
+		$stmt->bindParam(':Title_idTitles', $reglament, PDO::PARAM_INT);
+		$stmt->bindParam(':Chapter_idChapters', $chapter, PDO::PARAM_INT);
+		$stmt->bindParam(':Section_idSections', $section, PDO::PARAM_INT);
 		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
 
 		if ($stmt->execute()) {
