@@ -12,7 +12,7 @@ class ModeloFormularios{
 		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
 
 		if ($stmt->execute()) {
-			return "ok"; //obtener el ID del empleado recién insertado
+			return "ok";
 		}else{
 			return 'error';
 		}
@@ -102,7 +102,7 @@ class ModeloFormularios{
 		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
 
 		if ($stmt->execute()) {
-			return "ok"; //obtener el ID del empleado recién insertado
+			return "ok";
 		}else{
 			return 'error';
 		}
@@ -154,7 +154,7 @@ class ModeloFormularios{
 		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
 
 		if ($stmt->execute()) {
-			return "ok"; //obtener el ID del empleado recién insertado
+			return "ok";
 		}else{
 			return 'error';
 		}
@@ -190,7 +190,7 @@ class ModeloFormularios{
 		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
 
 		if ($stmt->execute()) {
-			return "ok"; //obtener el ID del empleado recién insertado
+			return "ok";
 		}else{
 			return 'error';
 		}
