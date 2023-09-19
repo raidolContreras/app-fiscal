@@ -15,9 +15,9 @@ session_start();
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  
 	<?php if (isset($_GET["pagina"])): ?>
-		<title><?php echo 'IN Fiscal - '.$_GET["pagina"]; ?></title>
+		<title><?php echo 'IN Library - '.$_GET["pagina"]; ?></title>
 	<?php else: ?>
-		<title><?php echo 'IN Fiscal'; ?></title>
+		<title><?php echo 'IN Library'; ?></title>
 	<?php endif ?>
 </head>
 
@@ -34,7 +34,8 @@ session_start();
 			if ($_GET["pagina"] == "Inicio" ||
 				$_GET["pagina"] == "Reglamentos" ||
 				$_GET["pagina"] == "Capitulos" ||
-				$_GET["pagina"] == "Secciones") {
+				$_GET["pagina"] == "Secciones" ||
+				$_GET["pagina"] == "Articulos") {
 
 				include "pages/navs/sidenav.php";
 				echo '<!--  Main wrapper -->

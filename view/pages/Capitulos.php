@@ -89,7 +89,7 @@
 							font-weight-medium
 							waves-effect waves-light
 							"
-							href = "Articlulos&reglament=<?php echo $_GET['reglament'] ?>&chapter=<?php echo $capitulo['idChapters'] ?>">
+							href = "Articulos&reglament=<?php echo $_GET['reglament'] ?>&chapter=<?php echo $capitulo['idChapters'] ?>">
 								<i class="ti ti-circle-plus fs-5"></i>
 							</a>
 						</td>
