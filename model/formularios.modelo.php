@@ -30,7 +30,6 @@ class ModeloFormularios{
 		return $stmt->fetchAll();
 		$stmt->close();
 		$stmt = null;
-
 	}
 
 	static public function mdlVerReunion($idTitle){
@@ -55,7 +54,6 @@ class ModeloFormularios{
 		return $stmt->fetch();
 		$stmt->close();
 		$stmt = null;
-
 	}
 
 	static public function mdlVerCapitulos($reglament){
@@ -68,7 +66,6 @@ class ModeloFormularios{
 		return $stmt->fetchAll();
 		$stmt->close();
 		$stmt = null;
-
 	}
 
 	static public function mdlVerCapitulo($idChapters){
@@ -89,7 +86,6 @@ class ModeloFormularios{
 		return $stmt->fetch();
 		$stmt->close();
 		$stmt = null;
-
 	}
 	
 	static public function mdlRegistrarCapitulos($capitulo,$Reglamento){
@@ -122,7 +118,6 @@ class ModeloFormularios{
 		return $stmt->fetchAll();
 		$stmt->close();
 		$stmt = null;
-
 	}
 
 	static public function mdlVerSeccion($idSections){
@@ -140,7 +135,6 @@ class ModeloFormularios{
 		return $stmt->fetch();
 		$stmt->close();
 		$stmt = null;
-
 	}
 	
 	static public function mdlRegistrarSections($section,$reglament,$chapter){
@@ -175,7 +169,6 @@ class ModeloFormularios{
 		return $stmt->fetchAll();
 		$stmt->close();
 		$stmt = null;
-
 	}
 	
 	static public function mdlRegistrarArticles($article,$section,$reglament,$chapter){
@@ -228,7 +221,6 @@ class ModeloFormularios{
 		return $stmt->fetchAll();
 		$stmt->close();
 		$stmt = null;
-
 	}
 	/*---------- Fin de ModeloFormularios ---------- */
 }
