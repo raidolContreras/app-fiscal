@@ -52,7 +52,7 @@
 			</div>
 			<div class="col-md-8 col-xl-9 text-end d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
 				<button class="btn btn-info d-flex align-items-center"
-						type="button" data-bs-toggle="modal" data-bs-target="#Add-Seccion-Modal">
+						type="button" data-bs-toggle="modal" data-bs-target="#Add-Article-Modal">
 					<i class="ti ti-files text-white me-1 fs-5"></i> Agregar Articulos
 				</button>
 			</div>
@@ -63,18 +63,40 @@
 			<table class="table" id="capitulo">
 				<thead>
 					<tr>
+						<th width="10"></th>
 						<th>Nombre</th>
 						<th>Parrafos</th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($articles as $article): ?>
+					<?php $i = 1;
+					foreach ($articles as $article): 
+						$parrafos = ControladorFormularios::ctrVerParrafos($article['idArticles']);
+					?>
 					<tr>
+						<td><?php echo $i ?></td>
 						<td>
 							<?php echo $article['name_article']; ?>
 						</td>
 						<td>
+						<?php if (empty($parrafos)): ?>
 							Editar
+							<button class="
+							btn
+							rounded-pill
+							px-2
+							mx-2
+							btn-light-success
+							text-success
+							font-weight-medium
+							waves-effect waves-light
+							"
+							type="button"
+							data-bs-toggle="modal" data-bs-target="#Edit-Modal" data-name="<?php echo $article['name_article']; ?>" data-id="<?php echo $article['idArticles']; ?>">
+								<i class="ti ti-circle-plus fs-5"></i>
+							</button>
+						<?php else: ?>
+							Ver
 							<a class="
 							btn
 							rounded-pill
@@ -85,12 +107,13 @@
 							font-weight-medium
 							waves-effect waves-light
 							"
-							href = "Parrafos&article=<?php echo $article['idArticles'] ?>">
-								<i class="ti ti-circle-plus fs-5"></i>
+							href="Parrafos&reglament=<?php echo $_GET['reglament'] ?>&chapter=<?php echo $_GET['chapter'] ?>&article=<?php echo $article['idArticles'] ?>">
+								<i class="ti ti-send fs-5"></i>
 							</a>
+						<?php endif ?>
 						</td>
 					</tr>
-					<?php endforeach ?>
+					<?php $i++; endforeach ?>
 				</tbody>
 			</table>
 		</div>
@@ -99,7 +122,7 @@
 
 <div class="d-md-flex button-group">
 	<div>
-		<div class="modal fade" id="Add-Seccion-Modal" tabindex="-1" aria-labelledby="bs-example-modal-lg" aria-hidden="true">
+		<div class="modal fade" id="Add-Article-Modal" tabindex="-1" aria-labelledby="bs-example-modal-lg" aria-hidden="true">
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">
 					<div class="modal-header d-flex align-items-center">
@@ -108,7 +131,7 @@
 						</h4>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-						<form class="row" id="add-capitulo-form">
+						<form class="row" id="add-articulo-form">
 							<div class="col-md-8 mx-auto"> <!-- Utiliza la clase mx-auto para centrar horizontalmente -->
 								<div class="input-group mb-3">
 									<input type="text" class="form-control" name="Add-Articulo" id="Add-Articulo" placeholder="Nombre de la Articulos">
@@ -119,7 +142,7 @@
 							</div>
 						</form>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-light-primary text-primary font-medium waves-effect text-start" id="add-capitulo-btn">
+						<button type="button" class="btn btn-light-primary text-primary font-medium waves-effect text-start" id="add-articulo-btn">
 							Agregar
 						</button>
 						<button type="button" class="btn btn-light-danger text-danger font-medium waves-effect text-start" data-bs-dismiss="modal">
@@ -132,5 +155,38 @@
 	</div>
 </div>
 
-<script src="assets/js/app/Secciones.js"></script>
+<div class="d-md-flex button-group">
+	<div>
+		<div class="modal fade" id="Edit-Modal" tabindex="-1" aria-labelledby="bs-example-modal-lg" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header d-flex align-items-center">
+						<h4 class="modal-title" id="myLargeModalLabel">
+							Editar
+						</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+						<form class="row" id="add-parrafos-form">
+							<div class="col-md-8 mx-auto"> <!-- Utiliza la clase mx-auto para centrar horizontalmente -->
+								<div class="input-group mb-3">
+									<textarea class="form-control" name="parrafos" id="parrafos" rows="10" cols="50"></textarea>
+									<input type="hidden" name="Article" id="Article">
+								</div>
+							</div>
+						</form>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-light-primary text-primary font-medium waves-effect text-start" id="add-parrafos-btn">
+							Agregar
+						</button>
+						<button type="button" class="btn btn-light-danger text-danger font-medium waves-effect text-start" data-bs-dismiss="modal">
+							Cancelar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="assets/js/app/Articulos.js"></script>
 <?php endif ?>

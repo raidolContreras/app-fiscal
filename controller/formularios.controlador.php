@@ -56,5 +56,49 @@ class ControladorFormularios{
 		$Articles = ModeloFormularios::mdlRegistrarArticles($article,$section,$reglament,$chapter);
 		return $Articles;
 	}
+
+	static public function ctrRegistrarParrafos($article,$parrafos){
+		$position = 1;
+		$registro = 'ok';
+		foreach ($parrafos as $parrafo) {
+		    // Eliminar espacios en blanco adicionales al inicio y al final
+		    $parrafo = trim($parrafo);
+
+		    if (!empty($parrafo)) { // Evitar insertar párrafos vacíos
+
+				if ($registro == 'ok') {
+					$Reg_Parrafos = ModeloFormularios::mdlRegistrarParrafos($article, $parrafo, $position);
+					$registro = $Reg_Parrafos;
+				}
+
+		        $position++;
+		    }
+		}
+		return $registro;
+	}
+
+	static public function ctrVerParrafos($article){
+		$Parrafos = ModeloFormularios::mdlVerParrafos($article);
+		return $Parrafos;
+	}
+
+	static public function ctrAgregarParrafos($article,$parrafos,$position){
+		$registro = 'ok';
+		foreach ($parrafos as $parrafo) {
+		    // Eliminar espacios en blanco adicionales al inicio y al final
+		    $parrafo = trim($parrafo);
+
+		    if (!empty($parrafo)) { // Evitar insertar párrafos vacíos
+
+				if ($registro == 'ok') {
+					$Reg_Parrafos = ModeloFormularios::mdlRegistrarParrafos($article, $parrafo, $position);
+					$registro = $Reg_Parrafos;
+				}
+
+		        $position++;
+		    }
+		}
+		return $registro;
+	}
 	/*---------- Fin de ControladorFormularios ---------- */
 }

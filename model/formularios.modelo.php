@@ -164,7 +164,7 @@ class ModeloFormularios{
 	}
 
 	static public function mdlVerArticulos($reglament,$chapter,$section){
-		$sql = "SELECT * FROM app_articles WHERE Title_idTitles = :Title_idTitles AND Chapter_idChapters = :Chapter_idChapters AND Section_idSections = :Section_idSections";
+		$sql = "SELECT * FROM app_articles WHERE Title_idTitles = :Title_idTitles AND Chapter_idChapters = :Chapter_idChapters AND Section_idSections = :Section_idSections ORDER BY idArticles ASC";
 
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->bindParam(':Title_idTitles', $reglament, PDO::PARAM_INT);
@@ -197,6 +197,38 @@ class ModeloFormularios{
 
 		$stmt->close();
 		$stmt = null;
+	}
+	
+	static public function mdlRegistrarParrafos($article, $parrafo, $position){
+		$pdo =Conexion::conectar();
+		$sql = "INSERT INTO app_paragraph(paragraph, position, articles_idArticles) VALUES (:paragraph, :position, :articles_idArticles)";
+
+		$stmt = $pdo->prepare($sql);
+		$stmt->bindParam(':paragraph', $parrafo, PDO::PARAM_STR);
+		$stmt->bindParam(':position', $position, PDO::PARAM_INT);
+		$stmt->bindParam(':articles_idArticles', $article, PDO::PARAM_INT);
+
+		if ($stmt->execute()) {
+			return "ok";
+		}else{
+			return 'error';
+		}
+
+		$stmt->close();
+		$stmt = null;
+	}
+
+	static public function mdlVerParrafos($article){
+		$sql = "SELECT * FROM app_paragraph WHERE articles_idArticles = :idArticles";
+
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':idArticles', $article, PDO::PARAM_INT);
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+		$stmt->close();
+		$stmt = null;
+
 	}
 	/*---------- Fin de ModeloFormularios ---------- */
 }

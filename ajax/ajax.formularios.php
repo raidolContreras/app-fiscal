@@ -45,6 +45,21 @@ class FormulariosAjax{
 		echo $Reg_Article;
 	}
 
+	public function Reg_Parrafos(){
+		$article = $this->article;
+		$parrafos = $this->parrafos;
+		$Reg_Parrafos = ControladorFormularios::ctrRegistrarParrafos($article,$parrafos);
+		echo $Reg_Parrafos;
+	}
+
+	public function Add_Parrafos(){
+		$article = $this->article;
+		$parrafos = $this->parrafos;
+		$position = $this->position;
+		$Add_Parrafos = ControladorFormularios::ctrAgregarParrafos($article,$parrafos,$position);
+		echo $Add_Parrafos;
+	}
+
 }
 
 /*---------------------------------------------------------------------*/
@@ -107,7 +122,7 @@ if (isset($_POST['Add-Articulo'])) {
 	$reglament = $_POST['Reglamento'];
 	$chapter = $_POST['Capitulo'];
 	$section = $_POST['Section'];
-	if ($section != '') {
+	if ($article != '') {
 		$Reg_Article = new FormulariosAjax();
 		$Reg_Article -> article = $article;
 		$Reg_Article -> section = $section;
@@ -116,5 +131,31 @@ if (isset($_POST['Add-Articulo'])) {
 		$Reg_Article -> Reg_Article();
 	}else{
 		echo 'empty';
+	}
+}
+
+if (isset($_POST['parrafos'])) {
+	$parrafos = explode("\n", $_POST['parrafos']);
+	$article = $_POST['Article'];
+
+	if ($_POST['parrafos'] != '') {
+		$Reg_Parrafos = new FormulariosAjax();
+		$Reg_Parrafos -> article = $article;
+		$Reg_Parrafos -> parrafos = $parrafos;
+		$Reg_Parrafos -> Reg_Parrafos();
+	}
+}
+
+if (isset($_POST['Add-Parrafo-Plus'])) {
+	$parrafos = explode("\n", $_POST['Add-Parrafo-Plus']);
+	$article = $_POST['Article'];
+	$position = $_POST['Position'];
+
+	if ($_POST['Add-Parrafo-Plus'] != '') {
+		$Add_Parrafos = new FormulariosAjax();
+		$Add_Parrafos -> article = $article;
+		$Add_Parrafos -> parrafos = $parrafos;
+		$Add_Parrafos -> position = $position;
+		$Add_Parrafos -> Add_Parrafos();
 	}
 }
