@@ -59,9 +59,9 @@
 			<table class="table border table-striped table-bordered text-nowrap dataTable" id="capitulo">
 				<thead>
 					<tr>
-						<th width="10">Posición</th>
-						<th>Articulo</th>
-						<th></th>
+						<th width="10%">Posición</th>
+						<th width="80%">Articulo</th>
+						<th width="10%"></th>
 					</tr>
 				</thead>
 				<tbody>
