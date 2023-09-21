@@ -6,15 +6,17 @@
 			<a href="Inicio" class="text-nowrap logo-img">
 				<img src="assets/images/logos/dark-logo.svg" width="180" alt="" />
 			</a>
-			<div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-				<i class="ti ti-x fs-8"></i>
-			</div>
 		</div>
 		<!-- Sidebar navigation-->
-		<nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+		<nav class="sidebar-nav scroll-sidebar" data-simplebar="init">
 			<ul id="sidebarnav">
+				<?php if (isset($_GET['pagina']) && in_array($_GET['pagina'], array('Reglamentos', 'Articulos', 'Inicio', 'Capitulos', 'Secciones', 'Parrafos'))): ?>
+				<li class="sidebar-item selected">
+					<a class="sidebar-link active" href="Inicio" aria-expanded="false">
+				<?php else: ?>
 				<li class="sidebar-item">
 					<a class="sidebar-link" href="Inicio" aria-expanded="false">
+				<?php endif ?>
 						<span>
 							<i class="ti ti-layout-dashboard"></i>
 						</span>

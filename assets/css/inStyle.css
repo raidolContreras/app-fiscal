@@ -9,3 +9,76 @@
     z-index: 9999;
     pointer-events: none;
 }
+
+.sidebar-nav ul .sidebar-item.selected>.sidebar-link, .sidebar-nav ul .sidebar-item.selected>.sidebar-link.active, .sidebar-nav ul .sidebar-item>.sidebar-link.active{
+    background-color: #DFB469;
+    color: #fff;
+}
+
+.btn-warning{
+    background-color: #DFB469;
+}
+
+.bg-light-info{
+    background-color: #F5D5AA !important;
+}
+
+.sidebar-link:hover{
+    background-color: #F5D5AA !important;
+    color: #000 !important;
+}
+
+.buttons-excel{
+    background-color: #0CAA7F !important;
+    border-color: #0CAA7F !important;
+}
+
+.buttons-excel:hover{
+    background-color: #038334 !important;
+    border-color: #038334 !important;
+}
+
+.buttons-pdf{
+    background-color: #C41500 !important;
+    border-color: #C41500 !important;
+}
+
+.buttons-pdf:hover{
+    background-color: #910000 !important;
+    border-color: #910000 !important;
+}
+
+.table-responsive .dataTables_wrapper .dataTables_paginate .paginate_button{
+    padding: 6px 12px;
+    border: 0;
+}
+
+.active .page-link{
+    background-color: #DFB469 !important;
+    border-color: #DFB469 !important;
+}
+
+.active .page-link:hover{
+    background-color: #CA9B4A !important;
+    border-color: #CA9B4A !important;
+}
+
+.page-link:hover{
+    background-color: #DDD7CD !important;
+    border-color: #DDD7CD !important;
+}
+
+.btn-light-success{
+    background-color: #E6FFFA !important;
+    border-color: #E6FFFA !important;
+}
+
+.btn-light-success:hover{
+    background-color: #67CCDE !important;
+    border-color: #67CCDE !important;
+}
+
+.text-success:hover{
+    --bs-text-opacity: 1;
+    color: #fff !important;
+}

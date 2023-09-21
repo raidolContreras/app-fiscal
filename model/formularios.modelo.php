@@ -139,7 +139,9 @@ class ModeloFormularios{
 	
 	static public function mdlRegistrarSections($section,$reglament,$chapter){
 		$pdo =Conexion::conectar();
-		$sql = "INSERT INTO app_sections(name_section, Title_idTitles, Chapter_idChapters, Admin_idAdmin) VALUES (:name_section,:Title_idTitles,:Chapter_idChapters,:Admin_idAdmin)";
+		$sql = "INSERT INTO app_sections(name_section, Title_idTitles, Chapter_idChapters, Admin_idAdmin)
+		VALUES
+		(:name_section,:Title_idTitles,:Chapter_idChapters,:Admin_idAdmin)";
 
 		$stmt = $pdo->prepare($sql);
 		$stmt->bindParam(':name_section', $section, PDO::PARAM_STR);
@@ -158,7 +160,9 @@ class ModeloFormularios{
 	}
 
 	static public function mdlVerArticulos($reglament,$chapter,$section){
-		$sql = "SELECT * FROM app_articles WHERE Title_idTitles = :Title_idTitles AND Chapter_idChapters = :Chapter_idChapters AND Section_idSections = :Section_idSections ORDER BY idArticles ASC";
+		$sql = "SELECT * FROM app_articles
+				WHERE Title_idTitles = :Title_idTitles AND Chapter_idChapters = :Chapter_idChapters AND Section_idSections = :Section_idSections
+				ORDER BY idArticles ASC";
 
 		$stmt = Conexion::conectar()->prepare($sql);
 		$stmt->bindParam(':Title_idTitles', $reglament, PDO::PARAM_INT);

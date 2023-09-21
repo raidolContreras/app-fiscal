@@ -33,7 +33,6 @@
 			</div>
 			<div class="col-3">
 				<div class="text-center mb-n5">
-					<img src="assets/images/logos/ChatBc.png" alt="" class="img-fluid mb-n4">
 				</div>
 			</div>
 		</div>
@@ -48,7 +47,7 @@
 				</div>
 			</div>
 			<div class="col-md-8 col-xl-9 text-end d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
-				<button class="btn btn-info d-flex align-items-center"
+				<button class="btn btn-warning d-flex align-items-center"
 						type="button" data-bs-toggle="modal" data-bs-target="#Add-Parrafo-Modal">
 					<i class="ti ti-files text-white me-1 fs-5"></i> Agregar Textos
 				</button>
@@ -57,7 +56,7 @@
 	</div>
 	<div class="card-body p-4">
 		<div class="table-responsive">
-			<table class="table" id="capitulo">
+			<table class="table border table-striped table-bordered text-nowrap dataTable" id="capitulo">
 				<thead>
 					<tr>
 						<th width="10">Posición</th>
