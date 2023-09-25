@@ -1,84 +1,99 @@
 .alerta-flotante {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    z-index: 9999;
-    pointer-events: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	z-index: 9999;
+	pointer-events: none;
 }
 
 .sidebar-nav ul .sidebar-item.selected>.sidebar-link, .sidebar-nav ul .sidebar-item.selected>.sidebar-link.active, .sidebar-nav ul .sidebar-item>.sidebar-link.active{
-    background-color: #DFB469;
-    color: #fff;
+	background-color: #DFB469;
+	color: #fff;
 }
 
 .btn-warning{
-    background-color: #DFB469;
+	background-color: #DFB469;
 }
 
 .bg-light-info{
-    background-color: #F5D5AA !important;
+	background-color: #F5D5AA !important;
 }
 
 .sidebar-link:hover{
-    background-color: #F5D5AA !important;
-    color: #000 !important;
+	background-color: #F5D5AA !important;
+	color: #000 !important;
 }
 
 .buttons-excel{
-    background-color: #0CAA7F !important;
-    border-color: #0CAA7F !important;
+	background-color: #0CAA7F !important;
+	border-color: #0CAA7F !important;
 }
 
 .buttons-excel:hover{
-    background-color: #038334 !important;
-    border-color: #038334 !important;
+	background-color: #038334 !important;
+	border-color: #038334 !important;
 }
 
 .buttons-pdf{
-    background-color: #C41500 !important;
-    border-color: #C41500 !important;
+	background-color: #C41500 !important;
+	border-color: #C41500 !important;
 }
 
 .buttons-pdf:hover{
-    background-color: #910000 !important;
-    border-color: #910000 !important;
+	background-color: #910000 !important;
+	border-color: #910000 !important;
 }
 
 .table-responsive .dataTables_wrapper .dataTables_paginate .paginate_button{
-    padding: 6px 12px;
-    border: 0;
+	padding: 6px 12px;
+	border: 0;
 }
 
 .active .page-link{
-    background-color: #DFB469 !important;
-    border-color: #DFB469 !important;
+	background-color: #DFB469 !important;
+	border-color: #DFB469 !important;
 }
 
 .active .page-link:hover{
-    background-color: #CA9B4A !important;
-    border-color: #CA9B4A !important;
+	background-color: #CA9B4A !important;
+	border-color: #CA9B4A !important;
 }
 
 .page-link:hover{
-    background-color: #DDD7CD !important;
-    border-color: #DDD7CD !important;
+	background-color: #DDD7CD !important;
+	border-color: #DDD7CD !important;
 }
 
 .btn-light-success{
-    background-color: #E6FFFA !important;
-    border-color: #E6FFFA !important;
+	background-color: #E6FFFA !important;
+	border-color: #E6FFFA !important;
 }
 
 .btn-light-success:hover{
-    background-color: #67CCDE !important;
-    border-color: #67CCDE !important;
+	background-color: #67CCDE !important;
+	border-color: #67CCDE !important;
 }
 
 .text-success:hover{
-    --bs-text-opacity: 1;
-    color: #fff !important;
+	--bs-text-opacity: 1;
+	color: #fff !important;
+}
+
+.dropzone {
+	border: 2px dashed #F5D5AA !important;
+	padding: 20px !important;
+}
+
+.dropzone .dz-message {
+	text-align: center;
+	font-size: 1.5em;
+	color: #423F3B;
+}
+
+.subtitulo-sup{
+	font-size: 14px;
 }

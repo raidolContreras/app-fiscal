@@ -36,7 +36,8 @@ session_start();
 				$_GET["pagina"] == "Capitulos" ||
 				$_GET["pagina"] == "Secciones" ||
 				$_GET["pagina"] == "Articulos" ||
-				$_GET["pagina"] == "Parrafos") {
+				$_GET["pagina"] == "Parrafos" ||
+				$_GET["pagina"] == "Editar") {
 
 				include "pages/navs/sidenav.php";
 				echo '<!--  Main wrapper -->

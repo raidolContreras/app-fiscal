@@ -159,3 +159,7 @@ if (isset($_POST['Add-Parrafo-Plus'])) {
 		$Add_Parrafos -> Add_Parrafos();
 	}
 }
+
+if (isset($_POST['upload_photo'])) {
+	echo "ok";
+}

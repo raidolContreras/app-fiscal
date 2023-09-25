@@ -1,4 +1,4 @@
-<?php $Reglamentos = ControladorFormularios::ctrVerReglamentos(); ?>
+<?php $Reglamentos = ControladorFormularios::ctrVerReglamentos(null, null); ?>
 <div class="card bg-light-info shadow-none position-relative overflow-hidden">
 	<div class="card-body px-4 py-3">
 		<div class="row align-items-center">
@@ -65,7 +65,7 @@
 							font-weight-medium
 							waves-effect waves-light
 							"
-							href = "">
+							href = "Editar&reglament=<?php echo $Reglamento['idTitles'] ?>">
 								<i class="ti ti-send fs-5"></i>
 							</a>
 						</td>

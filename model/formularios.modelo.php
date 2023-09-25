@@ -21,13 +21,22 @@ class ModeloFormularios{
 		$stmt = null;
 	}
 
-	static public function mdlVerReuniones(){
-		$sql = "SELECT * FROM app_titles WHERE type_title = 'Reglamento'";
+	static public function mdlVerReglamentos($item, $valor){
+		if ($item == null && $valor == null) {
+			$sql = "SELECT * FROM app_titles WHERE type_title = 'Reglamento'";
 
-		$stmt = Conexion::conectar()->prepare($sql);
-		$stmt->execute();
+			$stmt = Conexion::conectar()->prepare($sql);
+			$stmt->execute();
 
-		return $stmt->fetchAll();
+			return $stmt->fetchAll();
+		}else{
+			$sql = "SELECT * FROM app_titles WHERE $item = $valor";
+
+			$stmt = Conexion::conectar()->prepare($sql);
+			$stmt->execute();
+
+			return $stmt->fetch();
+		}
 		$stmt->close();
 		$stmt = null;
 	}
@@ -223,6 +232,58 @@ class ModeloFormularios{
 		$stmt->execute();
 
 		return $stmt->fetchAll();
+		$stmt->close();
+		$stmt = null;
+	}
+
+	static public function mdlVerCover($Title_idTitles){
+		$sql = "SELECT * FROM app_covers WHERE Title_idTitles = :Title_idTitles";
+
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt->bindParam(':Title_idTitles', $Title_idTitles, PDO::PARAM_INT);
+		$stmt->execute();
+
+		return $stmt->fetch();
+		$stmt->close();
+		$stmt = null;
+	}
+	
+	static public function mdlRegistrarCover($data){
+		session_start();
+		$pdo =Conexion::conectar();
+		$sql = "INSERT INTO app_covers(name_cover, Title_idTitles, Admin_idAdmin) VALUES (:name_cover, :Title_idTitles, :Admin_idAdmin)";
+
+		$stmt = $pdo->prepare($sql);
+		$stmt->bindParam(':name_cover', $data['name_cover'], PDO::PARAM_STR);
+		$stmt->bindParam(':Title_idTitles', $data['Title_idTitles'], PDO::PARAM_INT);
+		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
+
+		if ($stmt->execute()) {
+			return "ok";
+		}else{
+			return 'error';
+		}
+
+		$stmt->close();
+		$stmt = null;
+	}
+	
+	static public function mdlUpdateCover($data){
+		session_start();
+		$pdo =Conexion::conectar();
+		$sql = "UPDATE app_covers SET name_cover=:name_cover, Admin_idAdmin = :Admin_idAdmin WHERE Title_idTitles = :Title_idTitles";
+
+		$stmt = $pdo->prepare($sql);
+		$stmt->bindParam(':name_cover', $data['name_cover'], PDO::PARAM_STR);
+		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
+		$stmt->bindParam(':Title_idTitles', $data['Title_idTitles'], PDO::PARAM_INT);
+
+		if ($stmt->execute()) {
+			return "ok";
+		}else{
+			return 'error';
+		}
+
 		$stmt->close();
 		$stmt = null;
 	}

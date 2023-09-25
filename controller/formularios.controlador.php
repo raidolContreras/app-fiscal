@@ -7,8 +7,8 @@ class ControladorFormularios{
 		return $Reg_Reglamento;
 	}
 
-	static public function ctrVerReglamentos(){
-		$Reg_Reglamento = ModeloFormularios::mdlVerReuniones();
+	static public function ctrVerReglamentos($item, $valor){
+		$Reg_Reglamento = ModeloFormularios::mdlVerReglamentos($item, $valor);
 		return $Reg_Reglamento;
 	}
 
@@ -99,6 +99,15 @@ class ControladorFormularios{
 		    }
 		}
 		return $registro;
+	}
+
+	static public function ctrRegistrarCover($data){
+		if (empty(ModeloFormularios::mdlVerCover($data['Title_idTitles']))) {
+			$cover = ModeloFormularios::mdlRegistrarCover($data);
+		}else{
+			$cover = ModeloFormularios::mdlUpdateCover($data);
+		}
+		return $cover;
 	}
 	/*---------- Fin de ControladorFormularios ---------- */
 }
