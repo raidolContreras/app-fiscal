@@ -45,9 +45,9 @@ $(document).ready(function() {
 			`);
 			deleteAlert();
 			
-			setTimeout(function() {
+			/*setTimeout(function() {
 				location.reload();
-			}, 900);
+			}, 900);*/
 		}
 	});
 });
