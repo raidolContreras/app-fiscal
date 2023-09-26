@@ -249,7 +249,6 @@ class ModeloFormularios{
 	}
 	
 	static public function mdlRegistrarCover($data){
-		session_start();
 		$pdo =Conexion::conectar();
 		$sql = "INSERT INTO app_covers(name_cover, Title_idTitles, Admin_idAdmin) VALUES (:name_cover, :Title_idTitles, :Admin_idAdmin)";
 
