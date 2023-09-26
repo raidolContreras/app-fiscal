@@ -47,6 +47,7 @@
 						<th>N° de Capitulos</th>
 						<th>N° de Secciones</th>
 						<th>N° de Articulos</th>
+						<th>Preview</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -54,20 +55,8 @@
 						$cantidades = ControladorFormularios::ctrVerReglamento($Reglamento['idTitles'])
 					?>
 					<tr>
-						<td><?php echo $Reglamento['name_title'] ?>
-							<a class="
-							btn
-							rounded-pill
-							px-2
-							mx-2
-							btn-light-success
-							text-success
-							font-weight-medium
-							waves-effect waves-light
-							"
-							href = "Editar&reglament=<?php echo $Reglamento['idTitles'] ?>">
-								<i class="ti ti-send fs-5"></i>
-							</a>
+						<td>
+							<a href="Editar&reglament=<?php echo $Reglamento['idTitles'] ?>"><?php echo $Reglamento['name_title'] ?></a>
 						</td>
 						<td><?php echo $cantidades['NumeroDeCapitulos'] ?>
 							<a class="
@@ -87,6 +76,21 @@
 						<td><?php echo $cantidades['NumeroDeSecciones'] ?>
 						</td>
 						<td><?php echo $cantidades['NumeroDeArticulos'] ?>
+						</td>
+						<td>
+							<a class="
+							btn
+							rounded-pill
+							px-2
+							mx-2
+							btn-light-success
+							text-success
+							font-weight-medium
+							waves-effect waves-light
+							"
+							href = "">
+								<i class="ti ti-eye fs-5"></i>
+							</a>
 						</td>
 					</tr>
 					<?php endforeach ?>
