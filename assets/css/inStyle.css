@@ -150,12 +150,12 @@
 }
 
 .paragraph-book{
-	font-size: 1em;
-	line-height: 100%;
-	font-family: Arial;
-	color: #3B3B3B;
-	margin-bottom: 0.5em;
-	text-align: justify;
+	font-size: 1em!im;
+	line-height: 100%!im;
+	font-family: Arial!im;
+	color: #3b3b3bim !important;
+	margin-bottom: 0.5em!im;
+	text-align: justify!im;
 }
 
 hr.style-seven {
