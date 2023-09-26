@@ -47,7 +47,7 @@
 						<th>N° de Capitulos</th>
 						<th>N° de Secciones</th>
 						<th>N° de Articulos</th>
-						<th>Preview</th>
+						<th>Vista Previa</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -88,7 +88,7 @@
 							font-weight-medium
 							waves-effect waves-light
 							"
-							href = "">
+							href = "Preview&reglament=<?php echo $Reglamento['idTitles']; ?>">
 								<i class="ti ti-eye fs-5"></i>
 							</a>
 						</td>
