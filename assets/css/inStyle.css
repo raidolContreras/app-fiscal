@@ -101,6 +101,7 @@
 .book{
 	overflow-y: scroll;
 	height: 50em;
+	margin: 10px !important;
 }
 
 .shadow-card{

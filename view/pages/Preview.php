@@ -36,7 +36,8 @@ $Capitulos = ControladorFormularios::ctrVerCapitulos($_GET['reglament']);
 		</div>
 	</div>
 	<div class="card-body p-4 row" style="flex-direction: column; align-items: center;">
-		<div class="card mt-3 p-3 col-xl-6 col-xs-12 shadow-card book">
+		<div class="card mt-3 p-3 col-xl-6 col-xs-12 shadow-card">
+			<div class="book">
 		<?php if (!empty($cover)): ?>
 			<img src="assets/images/covers/<?php echo $Reglamento['idTitles'] ?>/<?php echo $cover['name_cover'] ?>" class="card-img-top" alt="cover <?php echo $Reglamento['name_title'] ?>">
 		<?php endif ?>
@@ -114,5 +115,6 @@ $Capitulos = ControladorFormularios::ctrVerCapitulos($_GET['reglament']);
 
 		<?php endforeach ?>
 		</div>
+	</div>
 	</div>
 </div>
