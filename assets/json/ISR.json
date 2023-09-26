@@ -1,0 +1,68 @@
+[
+    {
+        "LimiteInferior": 0.01,
+        "LimiteSuperior": 171.78,
+        "CuotaFija": 0,
+        "Porcentaje": 1.92
+    },
+    {
+        "LimiteInferior": 171.79,
+        "LimiteSuperior": 1458.03,
+        "CuotaFija": 3.29,
+        "Porcentaje": 6.40
+    },
+    {
+        "LimiteInferior": 1458.04,
+        "LimiteSuperior": 2562.35,
+        "CuotaFija": 85.61,
+        "Porcentaje": 10.88
+    },
+    {
+        "LimiteInferior": 2562.36,
+        "LimiteSuperior": 2978.64,
+        "CuotaFija": 205.80,
+        "Porcentaje": 16.00
+    },
+    {
+        "LimiteInferior": 2978.65,
+        "LimiteSuperior": 3566.22,
+        "CuotaFija": 272.37,
+        "Porcentaje": 17.92
+    },
+    {
+        "LimiteInferior": 3566.23,
+        "LimiteSuperior": 7192.64,
+        "CuotaFija": 377.65,
+        "Porcentaje": 21.36
+    },
+    {
+        "LimiteInferior": 7192.65,
+        "LimiteSuperior": 11336.57,
+        "CuotaFija": 1152.27,
+        "Porcentaje": 23.52
+    },
+    {
+        "LimiteInferior": 11336.58,
+        "LimiteSuperior": 21643.30,
+        "CuotaFija": 2126.95,
+        "Porcentaje": 30.00
+    },
+    {
+        "LimiteInferior": 21643.31,
+        "LimiteSuperior": 28857.78,
+        "CuotaFija": 5218.92,
+        "Porcentaje": 32.00
+    },
+    {
+        "LimiteInferior": 28857.79,
+        "LimiteSuperior": 86573.34,
+        "CuotaFija": 7527.59,
+        "Porcentaje": 34.00
+    },
+    {
+        "LimiteInferior": 86573.35,
+        "LimiteSuperior": 999999999.00,
+        "CuotaFija": 27150.83,
+        "Porcentaje": 35.00
+    }
+]
