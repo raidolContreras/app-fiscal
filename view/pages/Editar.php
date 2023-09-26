@@ -42,6 +42,7 @@ $cover = ModeloFormularios::mdlVerCover($_GET['reglament']);
 					<label for="update_name_title">Nombre</label>
 				<div class="col-10">
 					<input type="text" class="form-control" name="update_name_title" id="update_name_title" value="<?php echo $Reglamento['name_title'] ?>">
+					<input type="hidden" id="update_title" name="update_title" value="<?php echo $Reglamento['idTitles']; ?>">
 				</div>
 				<div class="col-2">
 					<button type="button" class="btn btn-primary" id="update_name_reglament-btn">Actualizar</button>
@@ -50,7 +51,7 @@ $cover = ModeloFormularios::mdlVerCover($_GET['reglament']);
 		</div>
 		<?php if (!empty($cover)): ?>
 			<div class="card mt-3 col-xl-4 col-xs-12">
-				<img src="assets/images/covers/<?php echo $Reglamento['name_title'] ?>/<?php echo $cover['name_cover'] ?>" class="card-img-top" alt="cover <?php echo $Reglamento['name_title'] ?>">
+				<img src="assets/images/covers/<?php echo $Reglamento['idTitles'] ?>/<?php echo $cover['name_cover'] ?>" class="card-img-top" alt="cover <?php echo $Reglamento['name_title'] ?>">
 				<div class="card-body">
 					<h5 class="card-title">Portada</h5>
 				</div>
@@ -66,7 +67,7 @@ $cover = ModeloFormularios::mdlVerCover($_GET['reglament']);
 						<p class="subtitulo-sup">Tipos de archivo permitidos .jpg,.jpeg,.png (Tamaño máximo 10 MB)</p>
 					</div>
 				</form>
-				<button type="button" class="btn btn-primary" id="upload-photo-btn">Actualizar</button>
+				<button type="button" class="btn btn-primary" id="upload-photo-btn">Actualizar Portada</button>
 			</div>
 		</div>
 	</div>

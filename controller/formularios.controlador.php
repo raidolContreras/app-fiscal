@@ -109,5 +109,10 @@ class ControladorFormularios{
 		}
 		return $cover;
 	}
+
+	static public function ctrUpdateTitle($title,$idTitle){
+		$Articles = ModeloFormularios::mdlUpdateTitle($title,$idTitle);
+		return $Articles;
+	}
 	/*---------- Fin de ControladorFormularios ---------- */
 }

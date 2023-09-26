@@ -283,5 +283,24 @@ class ModeloFormularios{
 		$stmt->close();
 		$stmt = null;
 	}
+	
+	static public function mdlUpdateTitle($name_title,$idTitles){
+		$pdo =Conexion::conectar();
+		$sql = "UPDATE app_titles SET name_title=:name_title WHERE idTitles = :idTitles";
+
+		$stmt = $pdo->prepare($sql);
+
+		$stmt->bindParam(':name_title', $name_title, PDO::PARAM_STR);
+		$stmt->bindParam(':idTitles', $idTitles, PDO::PARAM_INT);
+
+		if ($stmt->execute()) {
+			return "ok";
+		}else{
+			return 'error';
+		}
+
+		$stmt->close();
+		$stmt = null;
+	}
 	/*---------- Fin de ModeloFormularios ---------- */
 }

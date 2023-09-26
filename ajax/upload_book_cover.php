@@ -8,7 +8,7 @@ if (isset($_POST['upload_photo'])) {
 	$foto_reglamento = $_POST['foto_reglamento'];
 
 	if (!empty($_FILES['file']['name'])) {
-		$targetDir = "../assets/images/covers/".$foto_reglamento. "/";
+		$targetDir = "../assets/images/covers/".$idTitle. "/";
 		
 		// Verificar si la carpeta no existe
 		if (!file_exists($targetDir)) {

@@ -60,6 +60,13 @@ class FormulariosAjax{
 		echo $Add_Parrafos;
 	}
 
+	public function update_title(){
+		$title = $this->title;
+		$idTitle = $this->idTitle;
+		$Add_Parrafos = ControladorFormularios::ctrUpdateTitle($title,$idTitle);
+		echo $Add_Parrafos;
+	}
+
 }
 
 /*---------------------------------------------------------------------*/
@@ -157,6 +164,20 @@ if (isset($_POST['Add-Parrafo-Plus'])) {
 		$Add_Parrafos -> parrafos = $parrafos;
 		$Add_Parrafos -> position = $position;
 		$Add_Parrafos -> Add_Parrafos();
+	}
+}
+
+if (isset($_POST['update_name_title'])) {
+	$title =$_POST['update_name_title'];
+	$idTitle = $_POST['update_title'];
+
+	if ($_POST['update_name_title'] != '') {
+		$update_title = new FormulariosAjax();
+		$update_title -> title = $title;
+		$update_title -> idTitle = $idTitle;
+		$update_title -> update_title();
+	}else{
+		echo 'empty';
 	}
 }
 

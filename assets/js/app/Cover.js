@@ -51,3 +51,42 @@ $(document).ready(function() {
 		}
 	});
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+	$('#update_name_reglament-btn').click(function() {
+		var formData = $("#update_name_reglament-form").serialize();
+		$.ajax({
+			url: "ajax/ajax.formularios.php",
+			type: "POST",
+			data: formData,
+			success: function(response) {
+				$("#form-result").val("");
+				if (response === 'ok') {
+					$("#form-result").html(`
+						<div class='alert alert-success' role="alert" id="alerta">
+							Titulo Actualizado.
+						</div>
+					`);
+					setTimeout(function() {
+						location.reload();
+					}, 900);
+				} else if (response === 'empty'){
+					$("#form-result").html(`
+						<div class='alert alert-danger' role="alert" id="alerta">
+							<b>Error</b>, el titulo no puede estar vacio, intentalo nuevamente.
+						</div>
+					`);
+				} else {
+					$("#form-result").html(`
+						<div class='alert alert-danger' role="alert" id="alerta">
+							<b>Error</b>, no se pudo actualizar el titulo, intentalo nuevamente.
+						</div>
+					`);
+				}
+
+				deleteAlert();
+			
+			}
+		});
+	});
+});
