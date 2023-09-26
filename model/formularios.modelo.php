@@ -250,12 +250,11 @@ class ModeloFormularios{
 	
 	static public function mdlRegistrarCover($data){
 		$pdo =Conexion::conectar();
-		$sql = "INSERT INTO app_covers(name_cover, Title_idTitles, Admin_idAdmin) VALUES (:name_cover, :Title_idTitles, :Admin_idAdmin)";
+		$sql = "INSERT INTO app_covers(name_cover, Title_idTitles) VALUES (:name_cover, :Title_idTitles)";
 
 		$stmt = $pdo->prepare($sql);
 		$stmt->bindParam(':name_cover', $data['name_cover'], PDO::PARAM_STR);
 		$stmt->bindParam(':Title_idTitles', $data['Title_idTitles'], PDO::PARAM_INT);
-		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
 
 		if ($stmt->execute()) {
 			return "ok";
@@ -268,13 +267,11 @@ class ModeloFormularios{
 	}
 	
 	static public function mdlUpdateCover($data){
-		session_start();
 		$pdo =Conexion::conectar();
-		$sql = "UPDATE app_covers SET name_cover=:name_cover, Admin_idAdmin = :Admin_idAdmin WHERE Title_idTitles = :Title_idTitles";
+		$sql = "UPDATE app_covers SET name_cover=:name_cover WHERE Title_idTitles = :Title_idTitles";
 
 		$stmt = $pdo->prepare($sql);
 		$stmt->bindParam(':name_cover', $data['name_cover'], PDO::PARAM_STR);
-		$stmt->bindParam(':Admin_idAdmin', $_SESSION['idAdmin'], PDO::PARAM_INT);
 		$stmt->bindParam(':Title_idTitles', $data['Title_idTitles'], PDO::PARAM_INT);
 
 		if ($stmt->execute()) {
