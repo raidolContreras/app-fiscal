@@ -64,8 +64,6 @@ $Capitulos = ControladorFormularios::ctrVerCapitulos($_GET['reglament']);
 
 				<?php echo $section['name_section'] ?>
 
-				<hr class="style-two">
-
 				<?php foreach ($articles_sections as $article_section): 
 					$parrafos = ControladorFormularios::ctrVerParrafos($article_section['idArticles']);
 				?>
@@ -85,6 +83,8 @@ $Capitulos = ControladorFormularios::ctrVerCapitulos($_GET['reglament']);
 				</div>
 
 				<?php endforeach ?>
+
+				<hr class="style-two">
 
 			</div>
 
