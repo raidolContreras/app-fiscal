@@ -68,25 +68,25 @@ $Capitulos = ControladorFormularios::ctrVerCapitulos($_GET['reglament']);
 					$parrafos = ControladorFormularios::ctrVerParrafos($article_section['idArticles']);
 				?>
 
-				<div class="article-book">
+			</div>
 
-					<?php echo $article_section['name_article'] ?>
+			<div class="article-book">
 
-					<hr class="style-two">
-
-				</div>
-
-					<?php foreach ($parrafos as $parrafo): ?>
-						<div class="paragraph-book mb-3 px-5">
-							<?php echo $parrafo['paragraph']; ?>
-						</div>
-					<?php endforeach ?>
-
-				<?php endforeach ?>
+				<?php echo $article_section['name_article'] ?>
 
 				<hr class="style-two">
 
+				<?php foreach ($parrafos as $parrafo): ?>
+					<div class="paragraph-book mb-3 px-5">
+						<?php echo $parrafo['paragraph']; ?>
+					</div>
+				<?php endforeach ?>
+
 			</div>
+
+			<?php endforeach ?>
+
+			<hr class="style-two">
 
 			<?php endforeach ?>
 
