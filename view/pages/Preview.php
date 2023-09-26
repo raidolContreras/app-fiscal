@@ -7,7 +7,7 @@ $Capitulos = ControladorFormularios::ctrVerCapitulos($_GET['reglament']);
 	<div class="card-body px-4 py-3">
 		<div class="row align-items-center">
 			<div class="col-9">
-				<h4 class="fw-semibold mb-8">Editar <?php echo $Reglamento['name_title'] ?></h4>
+				<h4 class="fw-semibold mb-8"><?php echo $Reglamento['name_title'] ?></h4>
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
@@ -30,7 +30,7 @@ $Capitulos = ControladorFormularios::ctrVerCapitulos($_GET['reglament']);
 		<div class="row">
 			<div class="col-md-12">
 				<div class="position-relative">
-					<h5 class="fw-semibold mb-0">Editar <?php echo $Reglamento['name_title'] ?></h5>
+					<h5 class="fw-semibold mb-0"><?php echo $Reglamento['name_title'] ?></h5>
 				</div>
 			</div>
 		</div>
