@@ -74,13 +74,13 @@ $Capitulos = ControladorFormularios::ctrVerCapitulos($_GET['reglament']);
 
 					<hr class="style-two">
 
+				</div>
+
 					<?php foreach ($parrafos as $parrafo): ?>
 						<div class="paragraph-book mb-3 px-5">
 							<?php echo $parrafo['paragraph']; ?>
 						</div>
 					<?php endforeach ?>
-
-				</div>
 
 				<?php endforeach ?>
 
