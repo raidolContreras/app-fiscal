@@ -4,8 +4,8 @@ include_once 'models/models.php';
 
 class ControllerApi{
 
-	static public function titles(){
-		$resultados = ModelsApi::titles();
+	static public function titles($item, $value){
+		$resultados = ModelsApi::titles($item, $value);
 	    if (!empty($resultados)) {
 	        $datos = array();  // Cambio 'Titulos' a 'Títulos' con acento y uso de array asociativo
 
