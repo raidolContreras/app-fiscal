@@ -39,7 +39,12 @@ class ControllerApi{
 	                        }
 	                    }
 	                }
-	            }
+		            }
+		        // Agrega la información de la portada.
+	            $datos[$tituloId]['cover'] = array(
+	                'idCover' => $fila['idCover'],
+	                'cover_name' => $fila['cover_name']
+	            );
 	        }
             echo json_encode($datos, JSON_PRETTY_PRINT);
 	    } else {
