@@ -1,15 +1,29 @@
 <?php
 
 require_once 'controller/controller.php';
+
 // Ruta para obtener todos los títulos y sus capítulos, secciones, artículos y párrafos asociados.
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    header("Content-Type: application/json");
+if (isset($_GET['resource'])) {
 
-    if (isset($_GET['resource']) && $_GET['resource'] === 'titles') {
+    if ($_GET['resource'] === 'titles') {
+
+        header("Content-Type: application/json");
         $titles = ControllerApi::titles(null,null);
-    } elseif (isset($_GET['resource']) && $_GET['resource'] === 'title' && isset($_GET['reglament'])) {
+
+    } elseif ($_GET['resource'] === 'title' && isset($_GET['reglament'])) {
+
+        header("Content-Type: application/json");
         $titles = ControllerApi::titles('Reglamento',$_GET['reglament']);
+
+    } else {
+
+        require 'inexistente.html';
+
     }
-    
+
+} else {
+
+    require 'base.html';
+
 }

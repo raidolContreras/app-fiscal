@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentación de API</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 20px;
+    }
+    .api-card {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .api-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    .api-card h5 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #007BFF;
+    }
+    .api-card p {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center py-4" style="color: #007BFF; font-size: 36px; font-weight: bold;">Documentación de API</h1>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="api-card">
+          <h5 class="fw-bold">Recurso: Vista de todos los reglamentos</h5>
+          <p><strong style="color: #007BFF;">URL:</strong> ?resource=titles</p>
+          <p><strong style="color: #007BFF;">Descripción:</strong> Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="api-card">
+          <h5 class="fw-bold">Recurso: Vista de un solo reglamento</h5>
+          <p><strong style="color: #007BFF;">URL:</strong> ?resource=title&amp;reglament={idReglament}</p>
+          <p><strong style="color: #007BFF;">Descripción:</strong> Este recurso permite acceder a la vista de un solo reglamento identificado por su ID. Puedes utilizar esta opción para obtener detalles específicos de un reglamento en particular.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Agrega más elementos según sea necesario -->
+  </div>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
