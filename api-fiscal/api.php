@@ -1,5 +1,5 @@
 <?php
-require_once 'controller/controller.php'
+require_once 'controller/controller.php';
 // Ruta para obtener todos los títulos y sus capítulos, secciones, artículos y párrafos asociados.
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['resource']) && $_GET['resource'] === 'titles') {
     // Consulta para seleccionar todos los títulos con sus capítulos, secciones, artículos y párrafos asociados.
