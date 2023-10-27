@@ -41,9 +41,9 @@ class ControllerApi{
 	                }
 	            }
 	        }
-	        echo json_encode($datos);
+            echo json_encode($datos, JSON_PRETTY_PRINT);
 	    } else {
-	        echo json_encode(array('mensaje' => 'No se encontraron registros de titulos.'));
+            echo json_encode(array('mensaje' => 'No se encontraron registros de títulos.'), JSON_PRETTY_PRINT);
 	    }
 	}
 	

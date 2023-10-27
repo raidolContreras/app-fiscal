@@ -21,7 +21,7 @@ class ModelsApi{
 
         $stmt->execute();
 
-        return $stmt->fetchAll();  // Devuelve los resultados como un array asociativo
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);  // Devuelve los resultados como un array asociativo
 
         $stmt->close();
         $stmt = null;
