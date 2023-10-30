@@ -8,10 +8,10 @@ class ControllerApi{
 		$resultados = ModelsApi::titles($item, $value);
 	    if (!empty($resultados)) {
 	        $datos = array();  // Cambio 'Titulos' a 'Títulos' con acento y uso de array asociativo
-
+			
+			$tituloId = 0;
 	        if ($item != null && $value != null) {
 		        foreach ($resultados as $fila) {
-		            $tituloId = $fila['name_title'];
 		            $capituloId = $fila['idChapters'];
 		            $seccionId = $fila['idSections'];
 		            $articuloId = $fila['idArticles'];
@@ -47,11 +47,11 @@ class ControllerApi{
 		                'idCover' => $fila['idCover'],
 		                'cover_name' => $fila['cover_name']
 		            );
+					$tituloId++;
 		        }
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
 		        foreach ($resultados as $fila) {
-	            $tituloId = $fila['name_title'];
 	            $datos[$tituloId]['idTitles'] = $fila['idTitles'];
 	            $datos[$tituloId]['name_title'] = $fila['name_title'];
 
@@ -60,6 +60,7 @@ class ControllerApi{
 		                'idCover' => $fila['idCover'],
 		                'cover_name' => $fila['cover_name']
 		            );
+					$tituloId++;
 		        }
 		        
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
