@@ -52,6 +52,7 @@ class ControllerApi{
 		    } else{
 		        foreach ($resultados as $fila) {
 	            $tituloId = $fila['idTitles'];
+	            $datos[$tituloId]['idTitles'] = $fila['idTitles'];
 	            $datos[$tituloId]['name_title'] = $fila['name_title'];
 
 			        // Agrega la información de la portada.
