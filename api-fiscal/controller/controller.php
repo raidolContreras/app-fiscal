@@ -47,7 +47,6 @@ class ControllerApi{
 		                'idCover' => $fila['idCover'],
 		                'cover_name' => $fila['cover_name']
 		            );
-					$tituloId++;
 		        }
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
