@@ -11,7 +11,7 @@ class ControllerApi{
 
 	        if ($item != null && $value != null) {
 		        foreach ($resultados as $fila) {
-		            $tituloId = $fila['idTitles'];
+		            $tituloId = $fila['name_title'];
 		            $capituloId = $fila['idChapters'];
 		            $seccionId = $fila['idSections'];
 		            $articuloId = $fila['idArticles'];
@@ -51,7 +51,7 @@ class ControllerApi{
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
 		        foreach ($resultados as $fila) {
-	            $tituloId = $fila['idTitles'];
+	            $tituloId = $fila['name_title'];
 	            $datos[$tituloId]['idTitles'] = $fila['idTitles'];
 	            $datos[$tituloId]['name_title'] = $fila['name_title'];
 
