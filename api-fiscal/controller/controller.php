@@ -18,6 +18,7 @@ class ControllerApi{
 		            $parrafoId = $fila['idParagraph'];
 
 		            // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
+		            $datos[$tituloId]['idTitles'] = $fila['idTitles'];
 		            $datos[$tituloId]['name_title'] = $fila['name_title'];
 		            $datos[$tituloId]['status_title'] = $fila['status_title'];
 		            $datos[$tituloId]['type_title'] = $fila['type_title'];
