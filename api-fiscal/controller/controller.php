@@ -50,17 +50,17 @@ class ControllerApi{
 		        }
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
-				$tituloId = 0;
 		        foreach ($resultados as $fila) {
 
+					$tituloId++;
 			        // Agrega la información de la portada.
-		            $datos[$tituloId][$tituloId] = array(
+					$datos[$tituloId]['page'] = array($tituloId);
+		            $datos[$tituloId]['result'] = array(
 						'idTitles' => intval($fila['idTitles']),
 						'name_title' => $fila['name_title'],
 		                'idCover' => intval($fila['idCover']),
 		                'cover_name' => $fila['cover_name']
 		            );
-					$tituloId++;
 		        }
 		        
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
