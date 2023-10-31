@@ -50,8 +50,8 @@ class ControllerApi{
 		                'cover_name' => $fila['cover_name']
 		            );
 					
-					$datos['results'][] = $resultado;
 		        }
+					$datos['results'][] = $resultado;
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
 				
