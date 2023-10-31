@@ -54,8 +54,8 @@ class ControllerApi{
 
 					$tituloId++;
 			        // Agrega la información de la portada.
-					$datos[$tituloId]['page'] = array($tituloId);
-		            $datos[$tituloId]['result'] = array(
+					$datos['page'] = array($tituloId);
+		            $datos[$tituloId]['results'] = array(
 						'idTitles' => intval($fila['idTitles']),
 						'name_title' => $fila['name_title'],
 		                'idCover' => intval($fila['idCover']),
