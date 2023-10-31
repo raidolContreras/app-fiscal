@@ -50,18 +50,25 @@ class ControllerApi{
 		        }
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
-					$datos['page'] = 1;
-		        foreach ($resultados as $fila) {
-			        // Agrega la información de la portada.
-		            $datos['results'] = array(
-						'idTitles' => intval($fila['idTitles']),
-						'name_title' => $fila['name_title'],
-		                'idCover' => intval($fila['idCover']),
-		                'cover_name' => $fila['cover_name']
-		            );
-		        }
-		        
-	            echo json_encode($datos, JSON_PRETTY_PRINT);
+				$datos = array(
+					"page" => 1,
+					"results" => array()
+				);
+				
+				foreach ($resultados as $fila) {
+					// Agrega la información de la portada a la lista de resultados.
+					$resultado = array(
+						"idTitles" => intval($fila['idTitles']),
+						"name_title" => $fila['name_title'],
+						"idCover" => intval($fila['idCover']),
+						"cover_name" => $fila['cover_name']
+					);
+				
+					$datos['results'][] = $resultado;
+				}
+				
+				echo json_encode($datos, JSON_PRETTY_PRINT);
+				
 		    }
 		} else {
             echo json_encode(array('mensaje' => 'No se encontraron registros de títulos.'), JSON_PRETTY_PRINT);
