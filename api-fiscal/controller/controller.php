@@ -20,23 +20,23 @@ class ControllerApi{
 		            $parrafoId = intval($fila['idParagraph']);
 
 		            // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
-		            $datos['idTitles'] = intval($fila['idTitles']);
-		            $datos['name_title'] = $fila['name_title'];
-		            $datos['status_title'] = $fila['status_title'];
-		            $datos['type_title'] = $fila['type_title'];
-		            $datos['Admin_idAdmin'] = $fila['Admin_idAdmin'];
+		            $resultado['idTitles'] = intval($fila['idTitles']);
+		            $resultado['name_title'] = $fila['name_title'];
+		            $resultado['status_title'] = $fila['status_title'];
+		            $resultado['type_title'] = $fila['type_title'];
+		            $resultado['Admin_idAdmin'] = $fila['Admin_idAdmin'];
 
 		            if ($capituloId) {
-		                $datos['capitulos'][$capituloId]['name_Chapter'] = $fila['name_Chapter'];
+		                $resultado['capitulos'][$capituloId]['name_Chapter'] = $fila['name_Chapter'];
 
 		                if ($seccionId) {
-		                    $datos['capitulos'][$capituloId]['secciones'][$seccionId]['name_section'] = $fila['name_section'];
+		                    $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['name_section'] = $fila['name_section'];
 
 		                    if ($articuloId) {
-		                        $datos['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
+		                        $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
 
 		                        if ($parrafoId) {
-		                            $datos['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['parrafos'][$parrafoId] = array(
+		                            $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['parrafos'][$parrafoId] = array(
 		                                'paragraph' => $fila['paragraph'],
 		                                'position' => $fila['position']
 		                            );
@@ -45,10 +45,12 @@ class ControllerApi{
 		                }
 			            }
 			        // Agrega la información de la portada.
-		            $datos['cover'] = array(
+		            $resultado['cover'] = array(
 		                'idCover' => intval($fila['idCover']),
 		                'cover_name' => $fila['cover_name']
 		            );
+					
+					$datos['results'][] = $resultado;
 		        }
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
