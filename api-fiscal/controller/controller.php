@@ -8,7 +8,7 @@ class ControllerApi{
 		$resultados = ModelsApi::titles($item, $value);
 	    if (!empty($resultados)) {
 	        $datos = array();  // Cambio 'Titulos' a 'Títulos' con acento y uso de array asociativo
-			$resultados = array();
+			
 			$tituloId = 0;
 	        if ($item != null && $value != null) {
 		        foreach ($resultados as $fila) {
@@ -54,7 +54,7 @@ class ControllerApi{
 		        foreach ($resultados as $fila) {
 
 			        // Agrega la información de la portada.
-		            $datos['result'][$tituloId] = array(
+		            $datos[$tituloId]['result'] = array(
 						'idTitles' => intval($fila['idTitles']),
 						'name_title' => $fila['name_title'],
 		                'idCover' => intval($fila['idCover']),
