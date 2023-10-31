@@ -50,6 +50,7 @@ class ControllerApi{
 		        }
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
+				$tituloId = 0;
 		        foreach ($resultados as $fila) {
 
 			        // Agrega la información de la portada.
