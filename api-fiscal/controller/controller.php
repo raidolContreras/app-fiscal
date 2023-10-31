@@ -54,7 +54,7 @@ class ControllerApi{
 		        foreach ($resultados as $fila) {
 
 			        // Agrega la información de la portada.
-		            $datos['result'] = array(
+		            $datos['result'][$tituloId] = array(
 						'idTitles' => intval($fila['idTitles']),
 						'name_title' => $fila['name_title'],
 		                'idCover' => intval($fila['idCover']),
