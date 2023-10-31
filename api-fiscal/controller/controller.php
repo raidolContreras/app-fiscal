@@ -51,7 +51,6 @@ class ControllerApi{
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
 				$datos = array(
-					"page" => 1,
 					"results" => array()
 				);
 				
