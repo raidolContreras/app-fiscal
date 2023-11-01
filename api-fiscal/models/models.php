@@ -44,4 +44,17 @@ class ModelsApi{
         $stmt->close();
         $stmt = null;
     }
+
+    static public function createUser($name,$email,$password){
+        $sql = "INSERT INTO app_user(name, email, password) VALUES (:name, :email, :password)";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        if($stmt->execute()){
+            return 'Usuario creado con éxito';
+        }else{
+            return 'Error: Correo ya existente';
+        }
+    }
 }

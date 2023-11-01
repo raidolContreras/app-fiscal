@@ -22,7 +22,25 @@ if (isset($_GET['resource'])) {
 
     }
 
-} else {
+}elseif(isset($_GET['register'])){
+
+    $name = $_GET['name'] ?? null;
+    $email = $_GET['email'] ?? null;
+    $password = $_GET['password'] ?? null;
+
+    if (empty($name)) {
+        return json_encode(['error' => 'Nombre vacío']);
+    }
+    if (empty($email)) {
+        return json_encode(['error' => 'Email vacío']);
+    }
+    if (empty($password)) {
+        return json_encode(['error' => 'Contraseña vacía']);
+    }
+    $registrar = ControllerApi::createUser($name, $email, $password);
+    return $registrar;
+
+}else {
 
     require 'base.html';
 

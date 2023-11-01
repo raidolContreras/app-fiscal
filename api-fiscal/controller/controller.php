@@ -74,5 +74,40 @@ class ControllerApi{
             echo json_encode(array('mensaje' => 'No se encontraron registros de títulos.'), JSON_PRETTY_PRINT);
 	    }
 	}
+	static public function createUser($name, $email, $password) {
+
+        if (!isValidName($name)) {
+            return json_encode(['error' => 'El nombre no es válido']);
+        } elseif (!isValidEmail($email)) {
+            return json_encode(['error' => 'El correo electrónico no es válido']);
+        } elseif (!isValidPassword($password)) {
+            return json_encode(['error' => 'La contraseña no cumple con los requisitos']);
+        } else {
+            // Contraseña válida, encripta la contraseña con crypt
+            $salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
+            $hashedPassword = crypt($password, $salt);
+
+            $registro = ModelsApi::createUser($name, $email, $hashedPassword);
+
+            // Devuelve una respuesta JSON
+            return json_encode(['message' => $registro]);
+        }
+    }
 	
+}
+
+
+// Función para verificar si el nombre es válido
+function isValidName($name) {
+	return preg_match('/^[A-Za-z\s]+$/', $name);
+}
+
+// Función para verificar si el correo es válido
+function isValidEmail($email) {
+	return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+// Función para verificar si el password cumple con los requisitos
+function isValidPassword($password) {
+	return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/', $password);
 }
