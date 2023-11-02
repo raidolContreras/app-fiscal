@@ -96,16 +96,10 @@ class ControllerApi{
 
     static public function loginUser($email, $password){
 
-		if (!isValidEmail($email)) {
-            return json_encode(['message' => 'El correo electrónico no es válido']);
-        } elseif (!isValidPassword($password)) {
-            return json_encode(['message' => 'La contraseña no cumple con los requisitos']);
-        } else {
-			// Contraseña válida, encripta la contraseña con crypt
-			$salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
-			$hashedPassword = crypt($password, $salt);
-			echo json_encode(['message' => $hashedPassword]);
-		}
+		// Contraseña válida, encripta la contraseña con crypt
+		$salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
+		$hashedPassword = crypt($password, $salt);
+		echo json_encode(['message' => $hashedPassword]);
 
 	}
 	
