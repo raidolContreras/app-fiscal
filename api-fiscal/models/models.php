@@ -67,7 +67,7 @@ class ModelsApi{
         }
     }
 
-    static public function getUserByEmail($email, $password){
+    static public function getUserByEmail($email){
         try {
             $sql = "SELECT * FROM app_user WHERE email = :email";
             $stmt = Conexion::conectar()->prepare($sql);
