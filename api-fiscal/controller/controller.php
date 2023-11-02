@@ -100,7 +100,7 @@ class ControllerApi{
 		$salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
 		$hashedPassword = crypt($password, $salt);
 		$registro = ModelsApi::loginUser($email, $hashedPassword);
-		echo json_encode($registro);
+		echo json_encode([$registro]);
 
 	}
 	
