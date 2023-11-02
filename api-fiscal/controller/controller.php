@@ -94,15 +94,33 @@ class ControllerApi{
         }
     }
 
-    static public function loginUser($email, $password){
-
-		// Contraseña válida, encripta la contraseña con crypt
-		$salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
-		$hashedPassword = crypt($password, $salt);
-		$registro = ModelsApi::loginUser($email, $hashedPassword);
-		echo json_encode([$registro]);
-
-	}
+	static public function loginUser($email, $password){
+		$datos = array(
+			"results" => array()
+		);
+	
+		// Verificar si el usuario con el correo electrónico existe en la base de datos
+		$usuario = ModelsApi::getUserByEmail($email);
+	
+		if ($usuario) {
+			// Verificar si la contraseña proporcionada coincide con la almacenada en la base de datos
+			$salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
+			$hashedPassword = crypt($password, $salt);
+			
+			if ($usuario['password'] === $hashedPassword) {
+				// Contraseña válida, el usuario está autenticado
+				$datos["results"] = $usuario;
+			} else {
+				// Contraseña incorrecta
+				$datos["error"] = "Contraseña incorrecta";
+			}
+		} else {
+			// Usuario no encontrado
+			$datos["error"] = "Usuario no encontrado";
+		}
+	
+		return json_encode($datos);
+	}	
 	
 }
 
