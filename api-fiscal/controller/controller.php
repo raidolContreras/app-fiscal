@@ -94,10 +94,8 @@ class ControllerApi{
         }
     }
 
-	static public function loginUser($email, $password){
-		$datos = array(
-			"results" => array()
-		);
+	static public function loginUser($email, $password) {
+		$datos = array();
 	
 		// Verificar si el usuario con el correo electrónico existe en la base de datos
 		$usuario = ModelsApi::getUserByEmail($email);
@@ -109,7 +107,12 @@ class ControllerApi{
 			
 			if ($usuario['password'] === $hashedPassword) {
 				// Contraseña válida, el usuario está autenticado
-				$datos["results"] = $usuario;
+				$datos = array(
+					"idUsers" => $usuario['idUsers'],
+					"name" => $usuario['name'],
+					"email" => $usuario['email']
+					// Agrega otros campos relevantes aquí
+				);
 			} else {
 				// Contraseña incorrecta
 				$datos["error"] = "Contraseña incorrecta";
