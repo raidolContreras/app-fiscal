@@ -53,7 +53,7 @@ if (isset($_GET['resource'])) {
     if (empty($password)) {
         echo json_encode(['error' => 'Contraseña vacía']);
     }
-    $registrar = ControllerApi::createUser($email, $password);
+    $registrar = ControllerApi::loginUser($email, $password);
     echo $registrar;
 
 }else {
