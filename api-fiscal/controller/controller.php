@@ -111,7 +111,7 @@ class ControllerApi{
 						// Contraseña válida, el usuario está autenticado
 						$datos = array(
 							"idUser" => intval($usuario['idUsers']),
-							"name" => $usuario['name'],
+							"firstname" => $usuario['name'],
 							"lastname" => $usuario['lastname'] ?? '',
 							"birthday" => $usuario['birthday'] ?? '',
 							"email" => $usuario['email'],
