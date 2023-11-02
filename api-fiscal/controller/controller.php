@@ -99,7 +99,8 @@ class ControllerApi{
 		// Contraseña válida, encripta la contraseña con crypt
 		$salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
 		$hashedPassword = crypt($password, $salt);
-		echo json_encode(['message' => $hashedPassword]);
+		$registro = ModelsApi::loginUser($email, $hashedPassword);
+		echo json_encode([$registro]);
 
 	}
 	
