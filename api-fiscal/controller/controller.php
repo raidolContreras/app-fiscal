@@ -116,7 +116,7 @@ class ControllerApi{
 							"birthday" => $usuario['birthday'] ?? '',
 							"email" => $usuario['email'],
 							"phone" => $usuario['phone'] ?? '',
-							"creation_date" => $usuario['creation_date']
+							"creationDate" => $usuario['creation_date']
 						);
 					} else {
 						$datos["error"] = "Cuenta suspendida";
