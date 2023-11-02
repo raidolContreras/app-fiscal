@@ -66,5 +66,20 @@ class ModelsApi{
             }
         }
     }
+
+    static public function loginUser($email, $password){
+        try {
+            $sql = "SELECT * FROM app_user WHERE email = :email, password = :password";
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return $stmt->fetch();
+
+        } catch (PDOException $e){
+
+        }
+    }
     
 }

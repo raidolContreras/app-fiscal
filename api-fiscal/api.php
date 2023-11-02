@@ -41,6 +41,21 @@ if (isset($_GET['resource'])) {
     $registrar = ControllerApi::createUser($name, $email, $password);
     echo $registrar;
 
+}elseif(isset($_GET['login'])){
+
+    header("Content-Type: application/json");
+    $email = $_GET['email'] ?? null;
+    $password = $_GET['password'] ?? null;
+
+    if (empty($email)) {
+        echo json_encode(['error' => 'Email vacío']);
+    }
+    if (empty($password)) {
+        echo json_encode(['error' => 'Contraseña vacía']);
+    }
+    $registrar = ControllerApi::createUser($email, $password);
+    echo $registrar;
+
 }else {
 
     require 'base.html';
