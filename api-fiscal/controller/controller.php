@@ -112,7 +112,7 @@ class ControllerApi{
 						$datos = array(
 							"idUsers" => intval($usuario['idUsers']),
 							"name" => $usuario['name'],
-							"lastname" => $usuario['lastname'],
+							"lastname" => $usuario['lastname'] ?? '',
 							"birthday" => $usuario['birthday'],
 							"email" => $usuario['email'],
 							"phone" => $usuario['phone'],
