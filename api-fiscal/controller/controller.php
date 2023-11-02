@@ -106,7 +106,7 @@ class ControllerApi{
 			$hashedPassword = crypt($password, $salt);
 			
 			if ($usuario['password'] === $hashedPassword) {
-				if ($usuario['status_user'] === 1){
+				if ($usuario['status_user'] == 1){
 					if ($usuario['attempts'] < 3) {
 						// Contraseña válida, el usuario está autenticado
 						$datos = array(
