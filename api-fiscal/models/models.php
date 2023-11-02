@@ -67,12 +67,11 @@ class ModelsApi{
         }
     }
 
-    static public function loginUser($email, $password){
+    static public function getUserByEmail($email, $password){
         try {
-            $sql = "SELECT * FROM app_user WHERE email = :email AND password = :password";
+            $sql = "SELECT * FROM app_user WHERE email = :email";
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
             $stmt->execute();
 
             return $stmt->fetch();
