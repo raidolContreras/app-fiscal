@@ -113,9 +113,9 @@ class ControllerApi{
 							"idUsers" => intval($usuario['idUsers']),
 							"name" => $usuario['name'],
 							"lastname" => $usuario['lastname'] ?? '',
-							"birthday" => $usuario['birthday'],
+							"birthday" => $usuario['birthday'] ?? '',
 							"email" => $usuario['email'],
-							"phone" => $usuario['phone'],
+							"phone" => $usuario['phone'] ?? '',
 							"creation_date" => $usuario['creation_date']
 						);
 					} else {
