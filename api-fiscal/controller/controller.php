@@ -106,13 +106,24 @@ class ControllerApi{
 			$hashedPassword = crypt($password, $salt);
 			
 			if ($usuario['password'] === $hashedPassword) {
-				// Contraseña válida, el usuario está autenticado
-				$datos = array(
-					"idUsers" => $usuario['idUsers'],
-					"name" => $usuario['name'],
-					"email" => $usuario['email']
-					// Agrega otros campos relevantes aquí
-				);
+				if ($usuario['status_user'] === 1){
+					if ($usuario['attempts'] < 3) {
+						// Contraseña válida, el usuario está autenticado
+						$datos = array(
+							"idUsers" => $usuario['idUsers'],
+							"name" => $usuario['name'],
+							"lastname" => $usuario['lastname'],
+							"birthday" => $usuario['birthday'],
+							"email" => $usuario['email'],
+							"phone" => $usuario['phone'],
+							"creation_date" => $usuario['creation_date']
+						);
+					} else {
+						$datos["error"] = "Cuenta suspendida";
+					}
+				} else {
+					$datos["error"] = "Cuenta eliminada";
+				}
 			} else {
 				// Contraseña incorrecta
 				$datos["error"] = "Contraseña incorrecta";
