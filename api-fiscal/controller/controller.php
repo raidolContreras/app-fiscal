@@ -109,7 +109,7 @@ class ControllerApi{
 				if ($usuario['status_user'] == 1){
 					if ($usuario['attempts'] < 3) {
 						// Contraseña válida, el usuario está autenticado
-						$datos = array(
+						$datos['result'] = array(
 							"idUser" => intval($usuario['idUsers']),
 							"firstname" => $usuario['name'],
 							"lastname" => $usuario['lastname'] ?? '',
@@ -119,18 +119,18 @@ class ControllerApi{
 							"creationDate" => $usuario['creation_date']
 						);
 					} else {
-						$datos["error"] = "Cuenta suspendida";
+						$datos["result"] = "Cuenta suspendida";
 					}
 				} else {
-					$datos["error"] = "Cuenta eliminada";
+					$datos["result"] = "Cuenta eliminada";
 				}
 			} else {
 				// Contraseña incorrecta
-				$datos["error"] = "Contraseña incorrecta";
+				$datos["result"] = "Contraseña incorrecta";
 			}
 		} else {
 			// Usuario no encontrado
-			$datos["error"] = "Usuario no encontrado";
+			$datos["result"] = "Usuario no encontrado";
 		}
 	
 		return json_encode($datos);
