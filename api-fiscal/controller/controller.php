@@ -117,7 +117,7 @@ class ControllerApi{
 							"email" => $usuario['email'],
 							"phone" => $usuario['phone'] ?? '',
 							"creationDate" => $usuario['creation_date'],
-							"error" => null
+							"message" => "Inicio exitoso"
 						];
 					} else {
 						$datos["result"] = array(
@@ -128,7 +128,7 @@ class ControllerApi{
 							"email" => null,
 							"phone" => null,
 							"creationDate" => null,
-							"error" => "Cuenta suspendida");
+							"message" => "Cuenta suspendida");
 					}
 				} else {
 					$datos["result"] = array(
@@ -139,7 +139,7 @@ class ControllerApi{
 						"email" => null,
 						"phone" => null,
 						"creationDate" => null,
-						"error" => "Cuenta eliminada");
+						"message" => "Cuenta eliminada");
 				}
 			} else {
 				// Contraseña incorrecta
@@ -151,7 +151,7 @@ class ControllerApi{
 					"email" => null,
 					"phone" => null,
 					"creationDate" => null,
-					"error" => "Contraseña incorrecta");
+					"message" => "Contraseña incorrecta");
 			}
 		} else {
 			// Usuario no encontrado
@@ -163,7 +163,7 @@ class ControllerApi{
 				"email" => null,
 				"phone" => null,
 				"creationDate" => null,
-				"error" => "Usuario no encontrado");
+				"message" => "Usuario no encontrado");
 		}
 	
 		return json_encode($datos);
