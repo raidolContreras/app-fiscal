@@ -109,7 +109,7 @@ class ControllerApi{
 				if ($usuario['status_user'] == 1){
 					if ($usuario['attempts'] < 3) {
 						// Contraseña válida, el usuario está autenticado
-						$datos['result'] = [
+						$datos = [
 							"idUser" => intval($usuario['idUsers']),
 							"firstname" => $usuario['name'],
 							"lastname" => $usuario['lastname'] ?? '',
@@ -120,8 +120,8 @@ class ControllerApi{
 							"message" => "Inicio exitoso"
 						];
 					} else {
-						$datos["result"] = array(
-							"idUser" => 0,
+						$datos= array(
+							"idUser" => intval(0),
 							"firstname" => '',
 							"lastname" => '',
 							"birthday" => '',
@@ -131,8 +131,8 @@ class ControllerApi{
 							"message" => "Cuenta suspendida");
 					}
 				} else {
-					$datos["result"] = array(
-						"idUser" => 0,
+					$datos = array(
+						"idUser" => intval(0),
 						"firstname" => '',
 						"lastname" => '',
 						"birthday" => '',
@@ -143,8 +143,8 @@ class ControllerApi{
 				}
 			} else {
 				// Contraseña incorrecta
-				$datos["result"] = array(
-					"idUser" => 0,
+				$datos = array(
+					"idUser" => intval(0),
 					"firstname" => '',
 					"lastname" => '',
 					"birthday" => '',
@@ -155,8 +155,8 @@ class ControllerApi{
 			}
 		} else {
 			// Usuario no encontrado
-			$datos["result"] = array(
-				"idUser" => 0,
+			$datos = array(
+				"idUser" => intval(0),
 				"firstname" => '',
 				"lastname" => '',
 				"birthday" => '',
