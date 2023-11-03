@@ -121,48 +121,48 @@ class ControllerApi{
 						];
 					} else {
 						$datos["result"] = array(
-							"idUser" => null,
-							"firstname" => null,
-							"lastname" => null,
-							"birthday" => null,
-							"email" => null,
-							"phone" => null,
-							"creationDate" => null,
+							"idUser" => 0,
+							"firstname" => '',
+							"lastname" => '',
+							"birthday" => '',
+							"email" => '',
+							"phone" => '',
+							"creationDate" => '',
 							"message" => "Cuenta suspendida");
 					}
 				} else {
 					$datos["result"] = array(
-						"idUser" => null,
-						"firstname" => null,
-						"lastname" => null,
-						"birthday" => null,
-						"email" => null,
-						"phone" => null,
-						"creationDate" => null,
+						"idUser" => 0,
+						"firstname" => '',
+						"lastname" => '',
+						"birthday" => '',
+						"email" => '',
+						"phone" => '',
+						"creationDate" => '',
 						"message" => "Cuenta eliminada");
 				}
 			} else {
 				// Contraseña incorrecta
 				$datos["result"] = array(
-					"idUser" => null,
-					"firstname" => null,
-					"lastname" => null,
-					"birthday" => null,
-					"email" => null,
-					"phone" => null,
-					"creationDate" => null,
+					"idUser" => 0,
+					"firstname" => '',
+					"lastname" => '',
+					"birthday" => '',
+					"email" => '',
+					"phone" => '',
+					"creationDate" => '',
 					"message" => "Contraseña incorrecta");
 			}
 		} else {
 			// Usuario no encontrado
 			$datos["result"] = array(
-				"idUser" => null,
-				"firstname" => null,
-				"lastname" => null,
-				"birthday" => null,
-				"email" => null,
-				"phone" => null,
-				"creationDate" => null,
+				"idUser" => 0,
+				"firstname" => '',
+				"lastname" => '',
+				"birthday" => '',
+				"email" => '',
+				"phone" => '',
+				"creationDate" => '',
 				"message" => "Usuario no encontrado");
 		}
 	
