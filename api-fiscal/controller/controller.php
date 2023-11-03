@@ -109,7 +109,7 @@ class ControllerApi{
 				if ($usuario['status_user'] == 1){
 					if ($usuario['attempts'] < 3) {
 						// Contraseña válida, el usuario está autenticado
-						$datos['result'] = array(
+						$datos['result'][] = [
 							"idUser" => intval($usuario['idUsers']),
 							"firstname" => $usuario['name'],
 							"lastname" => $usuario['lastname'] ?? '',
@@ -118,7 +118,7 @@ class ControllerApi{
 							"phone" => $usuario['phone'] ?? '',
 							"creationDate" => $usuario['creation_date'],
 							"error" => null
-						);
+						];
 					} else {
 						$datos["result"] = array(
 							"idUser" => null,
