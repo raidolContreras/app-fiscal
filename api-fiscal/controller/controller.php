@@ -116,21 +116,54 @@ class ControllerApi{
 							"birthday" => $usuario['birthday'] ?? '',
 							"email" => $usuario['email'],
 							"phone" => $usuario['phone'] ?? '',
-							"creationDate" => $usuario['creation_date']
+							"creationDate" => $usuario['creation_date'],
+							"error" => null
 						);
 					} else {
-						$datos["result"] = "Cuenta suspendida";
+						$datos["result"] = array(
+							"idUser" => null,
+							"firstname" => null,
+							"lastname" => null,
+							"birthday" => null,
+							"email" => null,
+							"phone" => null,
+							"creationDate" => null,
+							"error" => "Cuenta suspendida");
 					}
 				} else {
-					$datos["result"] = "Cuenta eliminada";
+					$datos["result"] = array(
+						"idUser" => null,
+						"firstname" => null,
+						"lastname" => null,
+						"birthday" => null,
+						"email" => null,
+						"phone" => null,
+						"creationDate" => null,
+						"error" => "Cuenta eliminada");
 				}
 			} else {
 				// Contraseña incorrecta
-				$datos["result"] = "Contraseña incorrecta";
+				$datos["result"] = array(
+					"idUser" => null,
+					"firstname" => null,
+					"lastname" => null,
+					"birthday" => null,
+					"email" => null,
+					"phone" => null,
+					"creationDate" => null,
+					"error" => "Contraseña incorrecta");
 			}
 		} else {
 			// Usuario no encontrado
-			$datos["result"] = "Usuario no encontrado";
+			$datos["result"] = array(
+				"idUser" => null,
+				"firstname" => null,
+				"lastname" => null,
+				"birthday" => null,
+				"email" => null,
+				"phone" => null,
+				"creationDate" => null,
+				"error" => "Usuario no encontrado");
 		}
 	
 		return json_encode($datos);
