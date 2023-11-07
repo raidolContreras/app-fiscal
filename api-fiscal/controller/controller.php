@@ -167,8 +167,64 @@ class ControllerApi{
 		}
 	
 		return json_encode($datos);
-	}	
+	}
+
+	static public function loadData($email) {
+		$datos = array();
 	
+		// Verificar si el usuario con el correo electrónico existe en la base de datos
+		$usuario = ModelsApi::getUserByEmail($email);
+	
+		if ($usuario) {
+				if ($usuario['status_user'] == 1){
+					if ($usuario['attempts'] < 3) {
+						// Contraseña válida, el usuario está autenticado
+						$datos = [
+							"idUser" => intval($usuario['idUsers']),
+							"firstname" => $usuario['name'],
+							"lastname" => $usuario['lastname'] ?? '',
+							"birthday" => $usuario['birthday'] ?? '',
+							"email" => $usuario['email'],
+							"phone" => $usuario['phone'] ?? '',
+							"creationDate" => $usuario['creation_date'],
+							"message" => "Inicio exitoso"
+						];
+					} else {
+						$datos= array(
+							"idUser" => intval(0),
+							"firstname" => '',
+							"lastname" => '',
+							"birthday" => '',
+							"email" => '',
+							"phone" => '',
+							"creationDate" => '',
+							"message" => "Cuenta suspendida");
+					}
+				} else {
+					$datos = array(
+						"idUser" => intval(0),
+						"firstname" => '',
+						"lastname" => '',
+						"birthday" => '',
+						"email" => '',
+						"phone" => '',
+						"creationDate" => '',
+						"message" => "Cuenta eliminada");
+				}
+		} else {
+			// Usuario no encontrado
+			$datos = array(
+				"idUser" => intval(0),
+				"firstname" => '',
+				"lastname" => '',
+				"birthday" => '',
+				"email" => '',
+				"phone" => '',
+				"creationDate" => '',
+				"message" => "Usuario no encontrado");
+		}
+		return json_encode($datos);
+	}
 }
 
 
