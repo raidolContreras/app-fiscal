@@ -17,7 +17,7 @@ if (isset($_GET['resource'])) {
 
     }
 
-} elseif ($_GET['resource'] === 'title' && isset($_GET['reglament'])) {
+} elseif (isset($_GET['reglament'])) {
 
     header("Content-Type: application/json");
     $titles = ControllerApi::titles('Reglamento',$_GET['reglament']);
