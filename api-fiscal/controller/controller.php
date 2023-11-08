@@ -25,11 +25,11 @@ class ControllerApi{
 		            $resultado['Admin_idAdmin'] = intval($fila['Admin_idAdmin']);
 	                $resultado['idCover'] = intval($fila['idCover']);
 	                $resultado['cover_name'] = $fila['cover_name'];
-	                $resultado['chapters'] = [];
 
 		            if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
 		                $resultado['chapters'][$capituloId]['name_Chapter'] = $fila['name_Chapter'];
 
+		                
 			        }
 					
 		        }
