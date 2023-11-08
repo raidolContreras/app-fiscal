@@ -8,9 +8,7 @@ class ControllerApi{
 		$resultados = ModelsApi::titles($item, $value);
 	    if (!empty($resultados)) {
 	        
-			$datos = array(
-				"results" => array()
-			);
+			$datos = array();
 			
 	        if ($item != null && $value != null) {
 		        foreach ($resultados as $fila) {
@@ -61,7 +59,7 @@ class ControllerApi{
 		            );
 					
 		        }
-					$datos['results'][] = $resultado;
+					$datos[] = $resultado;
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
 				
