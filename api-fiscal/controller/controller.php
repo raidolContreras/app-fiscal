@@ -32,7 +32,14 @@ class ControllerApi{
 		                if ($seccionId && $fila['section_chapter'] == $fila['idChapters']) {
 		                    $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['name_section'] = $fila['name_section'];
 
-		                    if ($articuloId && $fila['articles_section'] == $fila['idSections']) {
+		                    if ($articuloId && 
+		                    	($fila['articles_section'] == $fila['idSections'] || 
+		                    		(
+		                    			$fila['articles_chapter'] == $fila['idChapters'] && 
+		                    			$fila['section_chapter'] == 0
+		                    		)
+		                    	)
+		                    ) {
 		                        $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
 
 		                        if ($parrafoId && $fila['paragraph_articles'] == $fila['idArticles']) {
