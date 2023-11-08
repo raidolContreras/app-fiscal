@@ -25,12 +25,7 @@ class ControllerApi{
 		            $resultado['status_title'] = $fila['status_title'];
 		            $resultado['type_title'] = $fila['type_title'];
 		            $resultado['Admin_idAdmin'] = $fila['Admin_idAdmin'];
-
-			        // Agrega la información de la portada.
-		            $resultado['cover'] = array(
-		                'idCover' => intval($fila['idCover']),
-		                'cover_name' => $fila['cover_name']
-		            );
+		            $resultado['idCover'] = 'cover_name' => $fila['cover_name'];
 					
 		        }
 					$datos['reglament'][] = $resultado;
