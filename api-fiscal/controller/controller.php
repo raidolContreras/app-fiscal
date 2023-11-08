@@ -41,11 +41,11 @@ class ControllerApi{
 		                        }
 		                    }
 		                }
-		                if ($articuloId && ($fila['articles_chapter'] == $fila['idChapters'] && $fila['articles_section'] == 0 && $fila['articles_section'] != $fila['idSections'])){
-		                	$resultado['capitulos'][$seccionId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
+		                if ($articuloId && ($fila['articles_chapter'] == $fila['idChapters'] && $fila['articles_section'] == 0 )){
+		                	$resultado['capitulos'][$capituloId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
 
 	                        if ($parrafoId && $fila['paragraph_articles'] == $fila['idArticles']) {
-	                            $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['parrafos'][$parrafoId] = array(
+	                            $resultado['capitulos'][$capituloId]['secciones']['articulos'][$articuloId]['parrafos'][$parrafoId] = array(
 	                                'paragraph' => $fila['paragraph'],
 	                                'position' => $fila['position']
 	                            );
