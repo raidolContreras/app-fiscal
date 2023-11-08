@@ -9,7 +9,6 @@ class ControllerApi{
 	    if (!empty($resultados)) {
 	        
 			$datos = array(
-				"results" => array()
 			);
 			
 	        if ($item != null && $value != null) {
@@ -33,10 +32,13 @@ class ControllerApi{
 		            );
 					
 		        }
-					$datos['results'][] = $resultado;
+					$datos[] = $resultado;
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
 				
+				$datos = array(
+					"results" => array()
+				);
 				foreach ($resultados as $fila) {
 					// Agrega la información de la portada a la lista de resultados.
 					$resultado = array(
@@ -45,7 +47,8 @@ class ControllerApi{
 						"idCover" => intval($fila['idCover']),
 						"cover_name" => $fila['cover_name']
 					);
-				
+
+					
 					$datos['results'][] = $resultado;
 				}
 				
