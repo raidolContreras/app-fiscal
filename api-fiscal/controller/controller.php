@@ -12,20 +12,18 @@ class ControllerApi{
 			);
 			
 	        if ($item != null && $value != null) {
-	        	// Inicializa una variable para mantener un seguimiento del índice actual del resultado
-				$indiceResultado = -1;
+	        	$indiceResultado = -1; // Inicializamos el índice del resultado
 
-				// Itera a través de los resultados y organiza los datos en la estructura deseada
 				foreach ($resultados as $fila) {
 				    $capituloId = intval($fila['idChapters']);
 				    $seccionId = intval($fila['idSections']);
 				    $articuloId = intval($fila['idArticles']);
 				    $parrafoId = intval($fila['idParagraph']);
 
-				    // Si es un nuevo resultado, crea un nuevo elemento en "results"
+				    // Comprobamos si es un nuevo resultado y creamos un nuevo elemento si es necesario
 				    if ($capituloId == 1 && $seccionId == 1 && $articuloId == 1 && $parrafoId == 1) {
-				        $indiceResultado++; // Incrementa el índice de resultados
-				        $datos[$indiceResultado] = array(
+				        $indiceResultado++; // Incrementamos el índice del resultado
+				        $resultado = array(
 				            "idTitles" => intval($fila['idTitles']),
 				            "name_title" => $fila['name_title'],
 				            "status_title" => $fila['status_title'],
@@ -35,12 +33,27 @@ class ControllerApi{
 				            "cover_name" => $fila['cover_name'],
 				            "capitulos" => array()
 				        );
+				        $datos["results"][] = $resultado;
 				    }
 
-				    // Añade capítulos, secciones, artículos y párrafos al resultado actual
-				    $capitulo = &$datos[$indiceResultado]['capitulos'][intval($fila['idChapters'])];
-				    $seccion = &$capitulo['secciones'][intval($fila['idSections'])];
-				    $articulo = &$seccion['articulos'][intval($fila['idArticles'])];
+				    // Creamos las estructuras para capítulos, secciones, artículos y párrafos
+				    $capitulo = array(
+				        "idChapter" => $capituloId,
+				        "name_Chapter" => $fila['name_Chapter'],
+				        "secciones" => array()
+				    );
+
+				    $seccion = array(
+				        "idSection" => $seccionId,
+				        "name_section" => $fila['name_section'],
+				        "articulos" => array()
+				    );
+
+				    $articulo = array(
+				        "idArticle" => $articuloId,
+				        "name_article" => $fila['name_article'],
+				        "parrafos" => array()
+				    );
 
 				    $parrafo = array(
 				        "idParrafo" => $parrafoId,
@@ -48,9 +61,13 @@ class ControllerApi{
 				        "position" => $fila['position']
 				    );
 
-				    $articulo['idArticle'] = $articuloId;
-				    $articulo['name_article'] = $fila['name_article'];
-				    $articulo['parrafos'][] = $parrafo;
+				    // Agregamos los párrafos a los artículos, los artículos a las secciones y las secciones a los capítulos
+				    $articulo["parrafos"][] = $parrafo;
+				    $seccion["articulos"][] = $articulo;
+				    $capitulo["secciones"][] = $seccion;
+
+				    // Agregamos el capítulo al resultado actual
+				    $resultado["capitulos"][] = $capitulo;
 				}
 
 				// Convierte el arreglo asociativo en JSON y muestra el resultado con formato.
