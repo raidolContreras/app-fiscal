@@ -23,6 +23,8 @@ class ControllerApi{
 		            $resultado['status_title'] = $fila['status_title'];
 		            $resultado['type_title'] = $fila['type_title'];
 		            $resultado['Admin_idAdmin'] = $fila['Admin_idAdmin'];
+	                $resultado['idCover'] = intval($fila['idCover']),
+	                $resultado['cover_name'] = $fila['cover_name']
 
 		            if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
 		                $resultado['capitulos'][$capituloId]['name_Chapter'] = $fila['name_Chapter'];
@@ -52,11 +54,6 @@ class ControllerApi{
 	                        }
 		                }
 			        }
-			        // Agrega la información de la portada.
-		            $resultado['cover'] = array(
-		                'idCover' => intval($fila['idCover']),
-		                'cover_name' => $fila['cover_name']
-		            );
 					
 		        }
 					$datos[] = $resultado;
