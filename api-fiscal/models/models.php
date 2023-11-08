@@ -32,7 +32,6 @@ class ModelsApi{
                     LEFT JOIN app_articles a ON (a.Title_idTitles = t.idTitles OR a.Chapter_idChapters = c.idChapters) AND (a.Section_idSections = s.idSections OR a.Section_idSections = 0)
                     LEFT JOIN app_paragraph p ON a.idArticles = p.articles_idArticles
                     LEFT JOIN app_covers cv ON t.idTitles = cv.Title_idTitles
-                    WHERE t.idTitles = 1;
                     WHERE t.type_title = :type_title AND t.idTitles = :idTitles";
 
             $stmt = Conexion::conectar()->prepare($sql);
