@@ -41,7 +41,7 @@ class ControllerApi{
 		                        }
 		                    }
 		                }
-		                if ($articuloId && ($fila['articles_chapter'] == $fila['idChapters'] && $fila['articles_section'] == 0)){
+		                if ($articuloId && ($fila['articles_chapter'] == $fila['idChapters'] && $fila['articles_section'] == 0 && $fila['articles_section'] != $fila['idSections'])){
 		                	$resultado['capitulos'][$seccionId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
 
 	                        if ($parrafoId && $fila['paragraph_articles'] == $fila['idArticles']) {
