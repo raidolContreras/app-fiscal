@@ -9,7 +9,10 @@ class ControllerApi{
 	    if (!empty($resultados)) {
 	        
 			$datos = array(
-				"results" => array()
+				"results" => array(
+					"capitulos" => array(
+					)
+				)
 			);
 			
 	        if ($item != null && $value != null) {
