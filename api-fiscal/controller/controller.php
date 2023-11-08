@@ -25,7 +25,7 @@ class ControllerApi{
 		            $resultado['status_title'] = $fila['status_title'];
 		            $resultado['type_title'] = $fila['type_title'];
 		            $resultado['Admin_idAdmin'] = $fila['Admin_idAdmin'];
-		            $resultado['idCover'] = 'cover_name' => $fila['cover_name'];
+		            $resultado['cover_name'] = $fila['cover_name'];
 					
 		        }
 					$datos['reglament'][] = $resultado;
