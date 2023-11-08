@@ -33,7 +33,7 @@ class ControllerApi{
 		            );
 					
 		        }
-					$datos[] = $resultado;
+					$datos['reglament'][] = $resultado;
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
 				
