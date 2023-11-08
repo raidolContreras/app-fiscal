@@ -11,18 +11,18 @@ if (isset($_GET['resource'])) {
         header("Content-Type: application/json");
         $titles = ControllerApi::titles(null,null);
 
-    } elseif ($_GET['resource'] === 'title' && isset($_GET['reglament'])) {
-
-        header("Content-Type: application/json");
-        $titles = ControllerApi::titles('Reglamento',$_GET['reglament']);
-
-    } else {
+    }else {
 
         require 'inexistente.html';
 
     }
 
-}elseif(isset($_GET['register'])){
+} elseif ($_GET['resource'] === 'title' && isset($_GET['reglament'])) {
+
+    header("Content-Type: application/json");
+    $titles = ControllerApi::titles('Reglamento',$_GET['reglament']);
+
+} elseif(isset($_GET['register'])){
 
     header("Content-Type: application/json");
     $name = $_GET['name'] ?? null;
