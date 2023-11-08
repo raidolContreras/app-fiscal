@@ -25,7 +25,7 @@ class ControllerApi{
 				    // Si es un nuevo resultado, crea un nuevo elemento en "results"
 				    if ($capituloId == 1 && $seccionId == 1 && $articuloId == 1 && $parrafoId == 1) {
 				        $indiceResultado++; // Incrementa el índice de resultados
-				        $datos['results'][$indiceResultado] = array(
+				        $datos[$indiceResultado] = array(
 				            "idTitles" => intval($fila['idTitles']),
 				            "name_title" => $fila['name_title'],
 				            "status_title" => $fila['status_title'],
@@ -38,7 +38,7 @@ class ControllerApi{
 				    }
 
 				    // Añade capítulos, secciones, artículos y párrafos al resultado actual
-				    $capitulo = &$datos['results'][$indiceResultado]['capitulos'][intval($fila['idChapters'])];
+				    $capitulo = &$datos[$indiceResultado]['capitulos'][intval($fila['idChapters'])];
 				    $seccion = &$capitulo['secciones'][intval($fila['idSections'])];
 				    $articulo = &$seccion['articulos'][intval($fila['idArticles'])];
 
@@ -57,6 +57,9 @@ class ControllerApi{
 				echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
 				
+			$datos = array(
+				"results" => array()
+			);
 				foreach ($resultados as $fila) {
 					// Agrega la información de la portada a la lista de resultados.
 					$resultado = array(
@@ -66,7 +69,7 @@ class ControllerApi{
 						"cover_name" => $fila['cover_name']
 					);
 				
-					$datos[] = $resultado;
+					$datos['results'][] = $resultado;
 				}
 				
 				echo json_encode($datos, JSON_PRETTY_PRINT);
