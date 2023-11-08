@@ -25,16 +25,16 @@ class ControllerApi{
 		            $resultado['Admin_idAdmin'] = $fila['Admin_idAdmin'];
 
 		            if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
-		                $resultado['capitulos']['name_Chapter'] = $fila['name_Chapter'];
+		                $resultado['capitulos'][$capituloId]['name_Chapter'] = $fila['name_Chapter'];
 
 		                if ($seccionId && $fila['section_chapter'] == $fila['idChapters']) {
-		                    $resultado['capitulos']['secciones']['name_section'] = $fila['name_section'];
+		                    $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['name_section'] = $fila['name_section'];
 
 		                    if ($articuloId && $fila['articles_section'] == $fila['idSections']) {
-		                        $resultado['capitulos']['secciones']['articulos']['name_article'] = $fila['name_article'];
+		                        $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
 
 		                        if ($parrafoId && $fila['paragraph_articles'] == $fila['idArticles']) {
-		                            $resultado['capitulos']['secciones']['articulos']['parrafos'] = array(
+		                            $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['parrafos'][$parrafoId] = array(
 		                                'paragraph' => $fila['paragraph'],
 		                                'position' => $fila['position']
 		                            );
@@ -42,7 +42,7 @@ class ControllerApi{
 		                    }
 		                }
 		                if ($articuloId && $fila['articles_chapter'] == $fila['idChapters'] && $fila['articles_section'] == 0){
-		                	$resultado['capitulos']['articulos'][$articuloId]['name_article'] = $fila['name_article'];
+		                	$resultado['capitulos'][$seccionId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
 
 	                        if ($parrafoId && $fila['paragraph_articles'] == $fila['idArticles']) {
 	                            $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['parrafos'][$parrafoId] = array(
