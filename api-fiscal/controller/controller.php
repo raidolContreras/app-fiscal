@@ -43,7 +43,7 @@ class ControllerApi{
 		                        }
 		                    }
 		                }
-		                if ($articuloId && $fila['articles_chapter'] == $fila['idChapters']){
+		                if ($articuloId && $fila['articles_chapter'] == $fila['idChapters'] && $fila['articles_section'] == 0){
 		                	$resultado['capitulos'][$seccionId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
 
 	                        if ($parrafoId && $fila['paragraph_articles'] == $fila['idArticles']) {
