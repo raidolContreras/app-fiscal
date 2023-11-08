@@ -18,7 +18,9 @@ class ModelsApi{
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            $sql = "SELECT t.idTitles, t.name_title, t.status_title, t.type_title, t.Admin_idAdmin,
+            $sql = "SELECT t.idTitles, t.name_title, t.status_title, t.type_title, t.Admin_idAdmin, c.Title_idTitles AS chapter_title, 
+                           s.Chapter_idChapters AS section_chapter, a.Section_idSections AS articles_section, 
+                           a.Chapter_idChapters AS articles_chapter, p.articles_idArticles AS paragraph_articles,
                            c.idChapters, c.name_Chapter,
                            s.idSections, s.name_section,
                            a.idArticles, a.name_article,
@@ -30,6 +32,7 @@ class ModelsApi{
                     LEFT JOIN app_articles a ON (a.Title_idTitles = t.idTitles OR a.Chapter_idChapters = c.idChapters) AND (a.Section_idSections = s.idSections OR a.Section_idSections = 0)
                     LEFT JOIN app_paragraph p ON a.idArticles = p.articles_idArticles
                     LEFT JOIN app_covers cv ON t.idTitles = cv.Title_idTitles
+                    WHERE t.idTitles = 1;
                     WHERE t.type_title = :type_title AND t.idTitles = :idTitles";
 
             $stmt = Conexion::conectar()->prepare($sql);

@@ -26,7 +26,7 @@ class ControllerApi{
 		            $resultado['type_title'] = $fila['type_title'];
 		            $resultado['Admin_idAdmin'] = $fila['Admin_idAdmin'];
 
-		            if ($capituloId) {
+		            if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
 		                $resultado['capitulos'][$capituloId]['name_Chapter'] = $fila['name_Chapter'];
 
 		                if ($seccionId) {
