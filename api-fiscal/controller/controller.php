@@ -13,123 +13,46 @@ class ControllerApi{
 			);
 			
 	        if ($item != null && $value != null) {
-// Definimos una variable para llevar un seguimiento de los resultados ya procesados
-$titulosProcesados = array();
+		        foreach ($resultados as $fila) {
+		            $capituloId = intval($fila['idChapters']);
+		            $seccionId = intval($fila['idSections']);
+		            $articuloId = intval($fila['idArticles']);
+		            $parrafoId = intval($fila['idParagraph']);
 
-// Itera a través de los resultados y organiza los datos en la estructura deseada
-foreach ($resultados as $fila) {
-    $idTitulo = intval($fila['idTitles']);
+		            // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
+		            $resultado['idTitles'] = intval($fila['idTitles']);
+		            $resultado['name_title'] = $fila['name_title'];
+		            $resultado['status_title'] = $fila['status_title'];
+		            $resultado['type_title'] = $fila['type_title'];
+		            $resultado['Admin_idAdmin'] = $fila['Admin_idAdmin'];
 
-    // Si el título ya ha sido procesado, agrega capítulos, secciones y artículos
-    if (in_array($idTitulo, $titulosProcesados)) {
-        $capituloId = intval($fila['idChapters']);
-        $seccionId = intval($fila['idSections']);
-        $articuloId = intval($fila['idArticles']);
-        $parrafoId = intval($fila['idParagraph']);
+		            if ($capituloId) {
+		                $resultado['capitulos'][$capituloId]['name_Chapter'] = $fila['name_Chapter'];
 
-        if ($capituloId) {
-            $capitulo = array(
-                "idChapter" => $capituloId,
-                "name_Chapter" => $fila['name_Chapter'],
-                "secciones" => array()
-            );
+		                if ($seccionId) {
+		                    $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['name_section'] = $fila['name_section'];
 
-            if ($seccionId) {
-                $seccion = array(
-                    "idSection" => $seccionId,
-                    "name_section" => $fila['name_section'],
-                    "articulos" => array()
-                );
+		                    if ($articuloId) {
+		                        $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
 
-                if ($articuloId) {
-                    $articulo = array(
-                        "idArticle" => $articuloId,
-                        "name_article" => $fila['name_article'],
-                        "parrafos" => array()
-                    );
-
-                    if ($parrafoId) {
-                        $parrafo = array(
-                            "idParrafo" => $parrafoId,
-                            "paragraph" => $fila['paragraph'],
-                            "position" => $fila['position']
-                        );
-                        $articulo["parrafos"][] = $parrafo;
-                    }
-
-                    $seccion["articulos"][] = $articulo;
-                }
-
-                $capitulo["secciones"][] = $seccion;
-            }
-
-            $titulosProcesados[] = $idTitulo;
-        }
-
-    } else {
-        // Si el título no ha sido procesado, crea una nueva estructura de título
-        $resultado = array(
-            "idTitles" => $idTitulo,
-            "name_title" => $fila['name_title'],
-            "status_title" => $fila['status_title'],
-            "type_title" => $fila['type_title'],
-            "Admin_idAdmin" => $fila['Admin_idAdmin'],
-            "idCover" => intval($fila['idCover']),
-            "cover_name" => $fila['cover_name'],
-            "capitulos" => array()
-        );
-
-        $capituloId = intval($fila['idChapters']);
-        $seccionId = intval($fila['idSections']);
-        $articuloId = intval($fila['idArticles']);
-        $parrafoId = intval($fila['idParagraph']);
-
-        if ($capituloId) {
-            $capitulo = array(
-                "idChapter" => $capituloId,
-                "name_Chapter" => $fila['name_Chapter'],
-                "secciones" => array()
-            );
-
-            if ($seccionId) {
-                $seccion = array(
-                    "idSection" => $seccionId,
-                    "name_section" => $fila['name_section'],
-                    "articulos" => array()
-                );
-
-                if ($articuloId) {
-                    $articulo = array(
-                        "idArticle" => $articuloId,
-                        "name_article" => $fila['name_article'],
-                        "parrafos" => array()
-                    );
-
-                    if ($parrafoId) {
-                        $parrafo = array(
-                            "idParrafo" => $parrafoId,
-                            "paragraph" => $fila['paragraph'],
-                            "position" => $fila['position']
-                        );
-                        $articulo["parrafos"][] = $parrafo;
-                    }
-
-                    $seccion["articulos"][] = $articulo;
-                }
-
-                $capitulo["secciones"][] = $seccion;
-            }
-
-            $resultado["capitulos"][$capituloId] = $capitulo;
-        }
-
-        $titulosProcesados[] = $idTitulo;
-        $datos['results'][] = $resultado;
-    }
-}
-
-// Convierte el arreglo asociativo en JSON y muestra el resultado con formato.
-echo json_encode($datos, JSON_PRETTY_PRINT);
+		                        if ($parrafoId) {
+		                            $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['parrafos'][$parrafoId] = array(
+		                                'paragraph' => $fila['paragraph'],
+		                                'position' => $fila['position']
+		                            );
+		                        }
+		                    }
+		                }
+			            }
+			        // Agrega la información de la portada.
+		            $resultado['cover'] = array(
+		                'idCover' => intval($fila['idCover']),
+		                'cover_name' => $fila['cover_name']
+		            );
+					
+		        }
+					$datos['results'][] = $resultado;
+	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
 				
 				foreach ($resultados as $fila) {
