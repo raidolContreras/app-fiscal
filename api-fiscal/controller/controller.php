@@ -19,15 +19,15 @@ class ControllerApi{
 
 		            // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
 		            $resultado['idTitles'] = intval($fila['idTitles']);
-		            $resultado['name_title'] = $fila['name_title'];
-		            $resultado['status_title'] = intval($fila['status_title']);
-		            $resultado['type_title'] = $fila['type_title'];
-		            $resultado['Admin_idAdmin'] = intval($fila['Admin_idAdmin']);
+		            $resultado['nameTitle'] = $fila['name_title'];
+		            $resultado['statusTitle'] = intval($fila['status_title']);
+		            $resultado['typeTitle'] = $fila['type_title'];
+		            $resultado['idAdmin'] = intval($fila['Admin_idAdmin']);
 	                $resultado['idCover'] = intval($fila['idCover']);
-	                $resultado['cover_name'] = $fila['cover_name'];
+	                $resultado['coverName'] = $fila['cover_name'];
 
 		            if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
-		                $resultado['chapters'][$capituloId]['name_Chapter'] = $fila['name_Chapter'];
+		                $resultado['chapters'][] = "nameChapter" = $fila['name_Chapter'];
 
 		                
 			        }
