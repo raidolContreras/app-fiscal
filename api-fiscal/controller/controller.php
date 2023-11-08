@@ -7,11 +7,12 @@ class ControllerApi{
 	static public function titles($item, $value){
 		$resultados = ModelsApi::titles($item, $value);
 	    if (!empty($resultados)) {
-	        
-			$datos = array(
-			);
 			
 	        if ($item != null && $value != null) {
+
+			$datos = array(
+				"reglament" => array()
+			);
 		        foreach ($resultados as $fila) {
 		            $capituloId = intval($fila['idChapters']);
 		            $seccionId = intval($fila['idSections']);
