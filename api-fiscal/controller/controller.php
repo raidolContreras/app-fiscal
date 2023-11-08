@@ -26,24 +26,6 @@ class ControllerApi{
 		            $resultado['type_title'] = $fila['type_title'];
 		            $resultado['Admin_idAdmin'] = $fila['Admin_idAdmin'];
 
-		            if ($capituloId) {
-		                $resultado['capitulos'][$capituloId]['name_Chapter'] = $fila['name_Chapter'];
-
-		                if ($seccionId) {
-		                    $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['name_section'] = $fila['name_section'];
-
-		                    if ($articuloId) {
-		                        $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['name_article'] = $fila['name_article'];
-
-		                        if ($parrafoId) {
-		                            $resultado['capitulos'][$capituloId]['secciones'][$seccionId]['articulos'][$articuloId]['parrafos'][$parrafoId] = array(
-		                                'paragraph' => $fila['paragraph'],
-		                                'position' => $fila['position']
-		                            );
-		                        }
-		                    }
-		                }
-			            }
 			        // Agrega la información de la portada.
 		            $resultado['cover'] = array(
 		                'idCover' => intval($fila['idCover']),
