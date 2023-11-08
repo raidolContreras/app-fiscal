@@ -6,80 +6,57 @@ class ControllerApi{
 
 	static public function titles($item, $value){
 		$resultados = ModelsApi::titles($item, $value);
-		if (!empty($resultados)) {
-			
+	    if (!empty($resultados)) {
+	        
 			$datos = array(
 				"results" => array()
 			);
 			
-			if ($item != null && $value != null) {
+	        if ($item != null && $value != null) {
+	        	// Inicializa una variable para mantener un seguimiento del índice actual del resultado
+				$indiceResultado = -1;
+
+				// Itera a través de los resultados y organiza los datos en la estructura deseada
 				foreach ($resultados as $fila) {
-					$capituloId = intval($fila['idChapters']);
-					$seccionId = intval($fila['idSections']);
-					$articuloId = intval($fila['idArticles']);
-					$parrafoId = intval($fila['idParagraph']);
+				    $capituloId = intval($fila['idChapters']);
+				    $seccionId = intval($fila['idSections']);
+				    $articuloId = intval($fila['idArticles']);
+				    $parrafoId = intval($fila['idParagraph']);
 
-					// Agrupa los datos por título, capítulo, sección, artículo y párrafo.
-					$resultado = array(
-						"idTitles" => intval($fila['idTitles']),
-						"name_title" => $fila['name_title'],
-						"status_title" => $fila['status_title'],
-						"type_title" => $fila['type_title'],
-						"Admin_idAdmin" => $fila['Admin_idAdmin'],
-						"capitulos" => array()
-					);
+				    // Si es un nuevo resultado, crea un nuevo elemento en "results"
+				    if ($capituloId == 1 && $seccionId == 1 && $articuloId == 1 && $parrafoId == 1) {
+				        $indiceResultado++; // Incrementa el índice de resultados
+				        $datos['results'][$indiceResultado] = array(
+				            "idTitles" => intval($fila['idTitles']),
+				            "name_title" => $fila['name_title'],
+				            "status_title" => $fila['status_title'],
+				            "type_title" => $fila['type_title'],
+				            "Admin_idAdmin" => $fila['Admin_idAdmin'],
+				            "idCover" => intval($fila['idCover']),
+				            "cover_name" => $fila['cover_name'],
+				            "capitulos" => array()
+				        );
+				    }
 
-					if ($capituloId) {
-						$capitulo = array(
-							"idChapter" => $capituloId,
-							"name_Chapter" => $fila['name_Chapter'],
-							"secciones" => array()
-						);
+				    // Añade capítulos, secciones, artículos y párrafos al resultado actual
+				    $capitulo = &$datos['results'][$indiceResultado]['capitulos'][intval($fila['idChapters'])];
+				    $seccion = &$capitulo['secciones'][intval($fila['idSections'])];
+				    $articulo = &$seccion['articulos'][intval($fila['idArticles'])];
 
-						if ($seccionId) {
-							$seccion = array(
-								"idSection" => $seccionId,
-								"name_section" => $fila['name_section'],
-								"articulos" => array()
-							);
+				    $parrafo = array(
+				        "idParrafo" => $parrafoId,
+				        "paragraph" => $fila['paragraph'],
+				        "position" => $fila['position']
+				    );
 
-							if ($articuloId) {
-								$articulo = array(
-									"idArticle" => $articuloId,
-									"name_article" => $fila['name_article'],
-									"parrafos" => array()
-								);
-
-								if ($parrafoId) {
-									$parrafo = array(
-										"idParrafo" => $parrafoId,
-										"paragraph" => $fila['paragraph'],
-										"position" => $fila['position']
-									);
-									$articulo["parrafos"][] = $parrafo;
-								}
-
-								$seccion["articulos"][] = $articulo;
-							}
-
-							$capitulo["secciones"][] = $seccion;
-						}
-
-						$resultado["capitulos"][$capituloId] = $capitulo;
-					}
-
-					// Agrega la información de la portada.
-					$resultado['cover'] = array(
-						'idCover' => intval($fila['idCover']),
-						'cover_name' => $fila['cover_name']
-					);
-
-					$datos['results'][] = $resultado;
+				    $articulo['idArticle'] = $articuloId;
+				    $articulo['name_article'] = $fila['name_article'];
+				    $articulo['parrafos'][] = $parrafo;
 				}
 
 				// Convierte el arreglo asociativo en JSON y muestra el resultado con formato.
 				echo json_encode($datos, JSON_PRETTY_PRINT);
-			} else{
+		    } else{
 				
 				foreach ($resultados as $fila) {
 					// Agrega la información de la portada a la lista de resultados.
@@ -95,30 +72,30 @@ class ControllerApi{
 				
 				echo json_encode($datos, JSON_PRETTY_PRINT);
 				
-			}
+		    }
 		} else {
-			echo json_encode(array('mensaje' => 'No se encontraron registros de títulos.'), JSON_PRETTY_PRINT);
-		}
+            echo json_encode(array('mensaje' => 'No se encontraron registros de títulos.'), JSON_PRETTY_PRINT);
+	    }
 	}
 	static public function createUser($name, $email, $password) {
 
-		if (!isValidName($name)) {
-			return json_encode(['message' => 'El nombre no es válido']);
-		} elseif (!isValidEmail($email)) {
-			return json_encode(['message' => 'El correo electrónico no es válido']);
-		} elseif (!isValidPassword($password)) {
-			return json_encode(['message' => 'La contraseña no cumple con los requisitos']);
-		} else {
-			// Contraseña válida, encripta la contraseña con crypt
-			$salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
-			$hashedPassword = crypt($password, $salt);
+        if (!isValidName($name)) {
+            return json_encode(['message' => 'El nombre no es válido']);
+        } elseif (!isValidEmail($email)) {
+            return json_encode(['message' => 'El correo electrónico no es válido']);
+        } elseif (!isValidPassword($password)) {
+            return json_encode(['message' => 'La contraseña no cumple con los requisitos']);
+        } else {
+            // Contraseña válida, encripta la contraseña con crypt
+            $salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
+            $hashedPassword = crypt($password, $salt);
 
-			$registro = ModelsApi::createUser($name, $email, $hashedPassword);
+            $registro = ModelsApi::createUser($name, $email, $hashedPassword);
 
-			// Devuelve una respuesta JSON
-			return json_encode(['message' => $registro]);
-		}
-	}
+            // Devuelve una respuesta JSON
+            return json_encode(['message' => $registro]);
+        }
+    }
 
 	static public function loginUser($email, $password) {
 		$datos = array();
