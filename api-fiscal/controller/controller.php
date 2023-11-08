@@ -9,7 +9,6 @@ class ControllerApi{
 	    if (!empty($resultados)) {
 	        
 			$datos = array(
-				"results" => array()
 			);
 			
 	        if ($item != null && $value != null) {
@@ -67,7 +66,7 @@ class ControllerApi{
 						"cover_name" => $fila['cover_name']
 					);
 				
-					$datos['results'][] = $resultado;
+					$datos[] = $resultado;
 				}
 				
 				echo json_encode($datos, JSON_PRETTY_PRINT);
