@@ -12,35 +12,51 @@ class ControllerApi{
 			
 	        if ($item != null && $value != null) {
 		        foreach ($resultados as $fila) {
-				    $capituloId = intval($fila['idChapters']);
-				    $seccionId = intval($fila['idSections']);
-				    $articuloId = intval($fila['idArticles']);
-				    $parrafoId = intval($fila['idParagraph']);
+		            $capituloId = intval($fila['idChapters']);
+		            $seccionId = intval($fila['idSections']);
+		            $articuloId = intval($fila['idArticles']);
+		            $parrafoId = intval($fila['idParagraph']);
 
-				    // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
-				    $resultado['idTitles'] = intval($fila['idTitles']);
-				    $resultado['nameTitle'] = $fila['name_title'];
-				    $resultado['statusTitle'] = intval($fila['status_title']);
-				    $resultado['typeTitle'] = $fila['type_title'];
-				    $resultado['idAdmin'] = intval($fila['Admin_idAdmin']);
-				    $resultado['idCover'] = intval($fila['idCover']);
-				    $resultado['coverName'] = $fila['cover_name'];
+		            // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
+		            $resultado['idTitles'] = intval($fila['idTitles']);
+		            $resultado['name_title'] = $fila['name_title'];
+		            $resultado['status_title'] = intval($fila['status_title']);
+		            $resultado['type_title'] = $fila['type_title'];
+		            $resultado['Admin_idAdmin'] = intval($fila['Admin_idAdmin']);
+	                $resultado['idCover'] = intval($fila['idCover']);
+	                $resultado['cover_name'] = $fila['cover_name'];
+	                $resultado['chapters']
 
-				    if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
-				        $chapterData = array(
-				            "idChapter" => $capituloId,
-				            "nameChapter" => $fila['name_Chapter'],
-				            "sections" => []
-				        );
+		            if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
+		                $resultado['chapters'][$capituloId]['name_Chapter'] = $fila['name_Chapter'];
 
-				        if ($seccionId && $fila['section_chapter'] == $fila['idChapters']) {
-				            $chapterData['sections'][][$fila['name_section']] = $fila['name_section'];
-				        }
+		                if ($seccionId && $fila['section_chapter'] == $fila['idChapters']) {
+		                    $resultado['chapters'][$capituloId]['sections'][$seccionId]['name_section'] = $fila['name_section'];
 
-				        $resultado['chapters'][$fila['name_Chapter']] = $chapterData;
-				    }
-				}
+		                    if ($articuloId && $fila['articles_section'] == $fila['idSections']) {
+		                        $resultado['chapters'][$capituloId]['sections'][$seccionId]['articles'][$articuloId]['name_article'] = $fila['name_article'];
 
+		                        if ($parrafoId && $fila['paragraph_articles'] == $fila['idArticles']) {
+		                            $resultado['chapters'][$capituloId]['sections'][$seccionId]['articles'][$articuloId]['paragraph'][$parrafoId] = array(
+		                                'paragraph' => $fila['paragraph'],
+		                                'position' => $fila['position']
+		                            );
+		                        }
+		                    }
+		                }
+		                if ($articuloId && ($fila['articles_chapter'] == $fila['idChapters'] && $fila['articles_section'] == 0 )){
+		                	$resultado['chapters'][$capituloId]['articles'][$articuloId]['name_article'] = $fila['name_article'];
+
+	                        if ($parrafoId && $fila['paragraph_articles'] == $fila['idArticles']) {
+	                            $resultado['chapters'][$capituloId]['sections']['articles'][$articuloId]['paragraph'][$parrafoId] = array(
+	                                'paragraph' => $fila['paragraph'],
+	                                'position' => $fila['position']
+	                            );
+	                        }
+		                }
+			        }
+					
+		        }
 					$datos[] = $resultado;
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
