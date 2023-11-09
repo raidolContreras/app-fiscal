@@ -48,7 +48,7 @@ class ControllerApi{
 				                foreach ($paragraphs as $paragraph) {
 				                    $articleData['paragraphs'][] = array(
 				                        "idParagraph" => $paragraph['idParagraph'],
-				                        "content" => $paragraph['content']
+				                        "paragraph" => $paragraph['paragraph']
 				                    );
 				                }
 
