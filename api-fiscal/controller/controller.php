@@ -59,8 +59,6 @@ class ControllerApi{
 				            $chapterData['sections'][] = $sectionData;
 				        }
 
-				        $resultado['chapters'][] = $chapterData;
-
 				            $articlesChapter = ModelsApi::articlesChapters($capituloId);
 				            foreach ($articlesChapter as $article) {
 				                $articleData = array(
@@ -78,9 +76,9 @@ class ControllerApi{
 				                    );
 				                    $chapterData['articlesChapter'][] = $articleData;
 				                }
-
-				                $sectionData['articles'][] = $articleData;
 				            }
+				            
+				        $resultado['chapters'][] = $chapterData;
 				    }
 				}
 
