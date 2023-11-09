@@ -10,33 +10,35 @@ class ControllerApi{
 	        
 	        if ($item != null && $value != null) {
 		        foreach ($resultados as $fila) {
-		            $capituloId = intval($fila['idChapter']);
+				    $capituloId = intval($fila['idChapter']);
 
-		            // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
-		            $resultado['idTitles'] = intval($fila['idTitles']);
-		            $resultado['nameTitle'] = $fila['name_title'];
-		            $resultado['statusTitle'] = intval($fila['status_title']);
-		            $resultado['typeTitle'] = $fila['type_title'];
-	                $resultado['idCover'] = intval($fila['idCover']);
-	                $resultado['coverName'] = $fila['cover_name'];
+				    // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
+				    $resultado['idTitles'] = intval($fila['idTitles']);
+				    $resultado['nameTitle'] = $fila['name_title'];
+				    $resultado['statusTitle'] = intval($fila['status_title']);
+				    $resultado['typeTitle'] = $fila['type_title'];
+				    $resultado['idCover'] = intval($fila['idCover']);
+				    $resultado['coverName'] = $fila['cover_name'];
 
-		            if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
-		                $resultado['chapters'][] = array(
-		                	"idChapter" => $capituloId, 
-		                	"nameChapter" =>$fila['name_Chapter'],
-		                	"sections" => []
-		                );
-		                $sections = ModelsApi::sections($capituloId);
-		                foreach ($sections as $section) {
-		                	$chapterData['sections'][] = array(
-		                		"idSection" => $section['idSection'],
-		                		"nameSection" => $section['name_section']
-		                	);
-		                }
-		                $resultado['chapters'][] = $chapterData;
-			        }
-					
-		        }
+				    if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
+				        $chapterData = array(
+				            "idChapter" => $capituloId,
+				            "nameChapter" => $fila['name_Chapter'],
+				            "sections" => []
+				        );
+
+				        $sections = ModelsApi::sections($capituloId);
+				        foreach ($sections as $section) {
+				            $chapterData['sections'][] = array(
+				                "idSection" => $section['idSection'],
+				                "nameSection" => $section['name_section']
+				            );
+				        }
+
+				        $resultado['chapters'][] = $chapterData;
+				    }
+				}
+
 					$datos= $resultado;
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
