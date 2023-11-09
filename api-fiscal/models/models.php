@@ -18,7 +18,7 @@ class ModelsApi{
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            $sql = "SELECT t.idTitles, t.name_title, t.status_title, t.type_title, c.idChapters As idChapter , c.name_Chapter, co.idCover, co.name_cover
+            $sql = "SELECT t.idTitles, t.name_title, t.status_title, t.type_title, c.idChapters As idChapter , c.name_Chapter, co.idCover, co.name_cover As cover_name, c.Title_idTitles As chapter_title
                     FROM app_titles t
                     LEFT JOIN app_chapter c ON t.idTitles = c.Title_idTitles
                     LEFT JOIN app_covers co ON co.Title_idTitles = t.idTitles
