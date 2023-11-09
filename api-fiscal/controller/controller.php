@@ -8,29 +8,40 @@ class ControllerApi{
 		$resultados = ModelsApi::titles($item, $value);
 	    if (!empty($resultados)) {
 	        
-			$datos = array();
-			
 	        if ($item != null && $value != null) {
 		        foreach ($resultados as $fila) {
 		            $capituloId = intval($fila['idChapter']);
 
 		            // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
 		            $resultado['idTitles'] = intval($fila['idTitles']);
-		            $resultado['name_title'] = $fila['name_title'];
-		            $resultado['status_title'] = intval($fila['status_title']);
-		            $resultado['type_title'] = $fila['type_title'];
+		            $resultado['nameTitle'] = $fila['name_title'];
+		            $resultado['statusTitle'] = intval($fila['status_title']);
+		            $resultado['typeTitle'] = $fila['type_title'];
 	                $resultado['idCover'] = intval($fila['idCover']);
-	                $resultado['cover_name'] = $fila['cover_name'];
+	                $resultado['coverName'] = $fila['cover_name'];
 
 		            if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
-		                $resultado['chapters'][] = array("idChapter" => $capituloId, "nameChapter" =>$fila['name_Chapter']);
+		                $resultado['chapters'][] = array(
+		                	"idChapter" => $capituloId, 
+		                	"nameChapter" =>$fila['name_Chapter'],
+		                	"sections" => []
+		                );
+		                $sections = ModelsApi::sections($capituloId);
+		                foreach ($sections as $section) {
+		                	$chapterData['sections'][] = array(
+		                		"idSection" => $section['idSection'],
+		                		"nameSection" => $section['name_section']
+		                	);
+		                }
+		                $resultado['chapters'][] = $chapterData;
 			        }
 					
 		        }
-					$datos[] = $resultado;
+					$datos= $resultado;
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
 		    } else{
 				
+			$datos = array();
 				foreach ($resultados as $fila) {
 					// Agrega la información de la portada a la lista de resultados.
 					$resultado = array(

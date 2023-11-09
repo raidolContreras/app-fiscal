@@ -72,5 +72,22 @@ class ModelsApi{
 
         }
     }
+
+    static public function sections($capituloId){
+        try{
+            $sql = "SELECT s.idSections AS idSection, s.name_section
+                    FROM app_sections s
+                    WHERE s.Chapter_idChapters = ";
+
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':capituloId', $capituloId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e){
+
+        }
+    }
     
 }
