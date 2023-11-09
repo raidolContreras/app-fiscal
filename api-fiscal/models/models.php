@@ -89,5 +89,40 @@ class ModelsApi{
 
         }
     }
+
+    static public function articlesSections($sectionId){
+        try{
+            $sql = "SELECT a.idArticles AS idArticle, a.name_article
+                    FROM app_articles a
+                    WHERE a.Section_idSections = :sectionId";
+
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':sectionId', $sectionId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e){
+
+        }
+    }
+
+    static public function paragraphsArticles($articleId){
+        try{
+            $sql = "SELECT p.idParagraph AS idArticle, p.paragraph
+                    FROM app_paragraph a
+                    WHERE p.articles_idArticles = :articleId
+                    ORDER BY p.position";
+
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':articleId', $articleId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e){
+
+        }
+    }
     
 }

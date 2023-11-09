@@ -29,15 +29,39 @@ class ControllerApi{
 
 				        $sections = ModelsApi::sections($capituloId);
 				        foreach ($sections as $section) {
-				            $chapterData['sections'][] = array(
+				            $sectionData = array(
 				                "idSection" => $section['idSection'],
-				                "nameSection" => $section['name_section']
+				                "nameSection" => $section['name_section'],
+				                "articles" => []
 				            );
+
+				            $articles = ModelsApi::articlesSections($section['idSection']);
+				            foreach ($articles as $article) {
+				                $articleData = array(
+				                    "idArticle" => $article['idArticle'],
+				                    "nameArticle" => $article['name_article'],
+				                    "paragraphs" => []
+				                );
+
+				                // Obtén los párrafos para el artículo
+				                $paragraphs = ModelsApi::paragraphsArticles($article['idArticle']);
+				                foreach ($paragraphs as $paragraph) {
+				                    $articleData['paragraphs'][] = array(
+				                        "idParagraph" => $paragraph['idParagraph'],
+				                        "content" => $paragraph['content']
+				                    );
+				                }
+
+				                $sectionData['articles'][] = $articleData;
+				            }
+
+				            $chapterData['sections'][] = $sectionData;
 				        }
 
 				        $resultado['chapters'][] = $chapterData;
 				    }
 				}
+
 
 					$datos= $resultado;
 	            echo json_encode($datos, JSON_PRETTY_PRINT);
