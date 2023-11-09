@@ -109,8 +109,8 @@ class ModelsApi{
 
     static public function paragraphsArticles($articleId){
         try{
-            $sql = "SELECT p.idParagraph AS idArticle, p.paragraph
-                    FROM app_paragraph a
+            $sql = "SELECT p.idParagraph , p.paragraph
+                    FROM app_paragraph p
                     WHERE p.articles_idArticles = :articleId
                     ORDER BY p.position";
 
