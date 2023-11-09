@@ -13,9 +13,6 @@ class ControllerApi{
 	        if ($item != null && $value != null) {
 		        foreach ($resultados as $fila) {
 		            $capituloId = intval($fila['idChapters']);
-		            $seccionId = intval($fila['idSections']);
-		            $articuloId = intval($fila['idArticles']);
-		            $parrafoId = intval($fila['idParagraph']);
 
 		            // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
 		            $resultado['idTitles'] = intval($fila['idTitles']);

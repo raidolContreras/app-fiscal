@@ -18,20 +18,10 @@ class ModelsApi{
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            $sql = "SELECT t.idTitles, t.name_title, t.status_title, t.type_title, t.Admin_idAdmin, c.Title_idTitles AS chapter_title, 
-                           s.Chapter_idChapters AS section_chapter, a.Section_idSections AS articles_section, 
-                           a.Chapter_idChapters AS articles_chapter, p.articles_idArticles AS paragraph_articles,
-                           c.idChapters, c.name_Chapter,
-                           s.idSections, s.name_section,
-                           a.idArticles, a.name_article,
-                           p.idParagraph, p.paragraph, p.position,
-                           cv.idCover, cv.name_cover AS cover_name
+            $sql = "SELECT t.idTitles, t.name_title, t.status_title, t.type_title, c.idChapters As idChapter , c.name_Chapter, co.idCover, co.name_cover
                     FROM app_titles t
                     LEFT JOIN app_chapter c ON t.idTitles = c.Title_idTitles
-                    LEFT JOIN app_sections s ON c.idChapters = s.Chapter_idChapters
-                    LEFT JOIN app_articles a ON (a.Chapter_idChapters = c.idChapters) AND (a.Section_idSections = s.idSections OR a.Section_idSections = 0)
-                    LEFT JOIN app_paragraph p ON a.idArticles = p.articles_idArticles
-                    LEFT JOIN app_covers cv ON t.idTitles = cv.Title_idTitles
+                    LEFT JOIN app_covers co ON co.Title_idTitles = t.idTitles
                     WHERE t.type_title = :type_title AND t.idTitles = :idTitles";
 
             $stmt = Conexion::conectar()->prepare($sql);
