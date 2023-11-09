@@ -77,7 +77,7 @@ class ModelsApi{
         try{
             $sql = "SELECT s.idSections AS idSection, s.name_section
                     FROM app_sections s
-                    WHERE s.Chapter_idChapters = ";
+                    WHERE s.Chapter_idChapters = :capituloId";
 
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->bindParam(':capituloId', $capituloId, PDO::PARAM_INT);
