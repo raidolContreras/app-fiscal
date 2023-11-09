@@ -31,7 +31,7 @@ class ControllerApi{
 				        $sections = ModelsApi::sections($capituloId);
 				        foreach ($sections as $section) {
 				            $sectionData = array(
-				                "idSection" => $section['idSection'],
+				                "idSection" => intval($section['idSection']),
 				                "nameSection" => $section['name_section'],
 				                "articles" => []
 				            );
@@ -39,7 +39,7 @@ class ControllerApi{
 				            $articles = ModelsApi::articlesSections($section['idSection']);
 				            foreach ($articles as $article) {
 				                $articleData = array(
-				                    "idArticle" => $article['idArticle'],
+				                    "idArticle" => intval($article['idArticle']),
 				                    "nameArticle" => $article['name_article'],
 				                    "paragraphs" => []
 				                );
@@ -48,7 +48,7 @@ class ControllerApi{
 				                $paragraphs = ModelsApi::paragraphsArticles($article['idArticle']);
 				                foreach ($paragraphs as $paragraph) {
 				                    $articleData['paragraphs'][] = array(
-				                        "idParagraph" => $paragraph['idParagraph'],
+				                        "idParagraph" => intval($paragraph['idParagraph']),
 				                        "paragraph" => $paragraph['paragraph']
 				                    );
 				                }
@@ -62,7 +62,7 @@ class ControllerApi{
 				            $articlesChapter = ModelsApi::articlesChapters($capituloId);
 				            foreach ($articlesChapter as $article) {
 				                $articleData = array(
-				                    "idArticle" => $article['idArticle'],
+				                    "idArticle" => intval($article['idArticle']),
 				                    "nameArticle" => $article['name_article'],
 				                    "paragraphs" => []
 				                );
@@ -71,13 +71,13 @@ class ControllerApi{
 				                $paragraphs = ModelsApi::paragraphsArticles($article['idArticle']);
 				                foreach ($paragraphs as $paragraph) {
 				                    $articleData['paragraphs'][] = array(
-				                        "idParagraph" => $paragraph['idParagraph'],
+				                        "idParagraph" => intval($paragraph['idParagraph']),
 				                        "paragraph" => $paragraph['paragraph']
 				                    );
 				                }
 				                    $chapterData['articlesChapter'][] = $articleData;
 				            }
-				            
+
 				        $resultado['chapters'][] = $chapterData;
 				    }
 				}
