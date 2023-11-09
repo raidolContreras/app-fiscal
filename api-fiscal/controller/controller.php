@@ -27,7 +27,7 @@ class ControllerApi{
 	                $resultado['coverName'] = $fila['cover_name'];
 
 		            if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
-		                $resultado['chapters'][] = array(
+		                $resultado['chapters'][$fila['name_Chapter']] = array(
 			                "idChapter" => $capituloId,
 			                "nameChapter" => $fila['name_Chapter'],
 			            );
