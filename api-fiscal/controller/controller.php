@@ -24,7 +24,8 @@ class ControllerApi{
 				        $chapterData = array(
 				            "idChapter" => $capituloId,
 				            "nameChapter" => $fila['name_Chapter'],
-				            "sections" => []
+				            "sections" => [],
+				            "articlesChapter" => []
 				        );
 
 				        $sections = ModelsApi::sections($capituloId);
@@ -59,6 +60,27 @@ class ControllerApi{
 				        }
 
 				        $resultado['chapters'][] = $chapterData;
+
+				            $articlesChapter = ModelsApi::articlesChapters($capituloId);
+				            foreach ($articlesChapter as $article) {
+				                $articleData = array(
+				                    "idArticle" => $article['idArticle'],
+				                    "nameArticle" => $article['name_article'],
+				                    "paragraphs" => []
+				                );
+
+				                // Obtén los párrafos para el artículo
+				                $paragraphs = ModelsApi::paragraphsArticles($article['idArticle']);
+				                foreach ($paragraphs as $paragraph) {
+				                    $articleData['paragraphs'][] = array(
+				                        "idParagraph" => $paragraph['idParagraph'],
+				                        "paragraph" => $paragraph['paragraph']
+				                    );
+				                    $chapterData['articlesChapter'][] = $articleData;
+				                }
+
+				                $sectionData['articles'][] = $articleData;
+				            }
 				    }
 				}
 

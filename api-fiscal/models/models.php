@@ -107,6 +107,24 @@ class ModelsApi{
         }
     }
 
+
+    static public function articlesChapters($capituloId){
+        try{
+            $sql = "SELECT a.idArticles AS idArticle, a.name_article
+                    FROM app_articles a
+                    WHERE a.Chapter_idChapters = :capituloId AND a.Section_idSections = 0";
+
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':capituloId', $capituloId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e){
+
+        }
+    }
+
     static public function paragraphsArticles($articleId){
         try{
             $sql = "SELECT p.idParagraph , p.paragraph
