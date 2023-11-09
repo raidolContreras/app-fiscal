@@ -30,6 +30,7 @@ class ControllerApi{
 		                $resultado['chapters'][$fila['name_Chapter']] = array(
 			                "idChapter" => $capituloId,
 			                "nameChapter" => $fila['name_Chapter'],
+			                "sections" => []
 			            );
 			        }
 					
