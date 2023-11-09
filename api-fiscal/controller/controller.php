@@ -34,7 +34,7 @@ class ControllerApi{
 				        );
 
 				        if ($seccionId && $fila['section_chapter'] == $fila['idChapters']) {
-				            $chapterData['sections'][] = $fila['name_section'];
+				            $chapterData['sections'][] = [$fila['name_section']];
 				        }
 
 				        $resultado['chapters'][$fila['name_Chapter']] = $chapterData;
