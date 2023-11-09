@@ -74,8 +74,8 @@ class ControllerApi{
 				                        "idParagraph" => $paragraph['idParagraph'],
 				                        "paragraph" => $paragraph['paragraph']
 				                    );
-				                    $chapterData['articlesChapter'][] = $articleData;
 				                }
+				                    $chapterData['articlesChapter'][] = $articleData;
 				            }
 				            
 				        $resultado['chapters'][] = $chapterData;
