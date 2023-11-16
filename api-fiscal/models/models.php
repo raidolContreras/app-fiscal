@@ -142,5 +142,33 @@ class ModelsApi{
 
         }
     }
+
+    static public function updateUser($idUser, $firstname, $lastname, $birthday, $phone){
+        try{
+            $sql = "UPDATE app_user
+                    SET name = :firstname, lastname = :lastname, birthday = :birthday, phone = :phone 
+                    WHERE idUsers = :idUser";
+
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':idUser', $idUser, PDO::PARAM_INT);
+            $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR);
+            $stmt->bindParam(':lastname', $lastname, PDO::PARAM_STR);
+            $stmt->bindParam(':birthday', $birthday, PDO::PARAM_STR);
+            $stmt->bindParam(':phone', $phone, PDO::PARAM_STR);
+
+            if ($stmt->execute()) {
+                return 'Datos actualizados con éxito';
+            } else {
+                return 'Error inesperado al actualizar los datos';
+            }
+
+        } catch (PDOException $e){
+            if ($e->errorInfo[1] === 1062) {
+                return 'El usuario no existe';
+            } else {
+                return 'Error inesperado: ' . $e->getMessage();
+            }
+        }
+    }
     
 }

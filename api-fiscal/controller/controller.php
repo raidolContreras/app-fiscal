@@ -258,6 +258,11 @@ class ControllerApi{
 		}
 		return json_encode($datos);
 	}
+
+	static public function updateUser($idUser, $firstname, $lastname, $birthday, $phone){
+		$resultado = ModelsApi::updateUser($idUser, $firstname, $lastname, $birthday, $phone);
+        return json_encode(['message' => $resultado]);
+	}
 }
 
 

@@ -67,6 +67,21 @@ if (isset($_GET['resource'])) {
     $registrar = ControllerApi::loadData($email);
     echo $registrar;
 
+}elseif(isset($_GET['updateData'])){
+
+    header("Content-Type: application/json");
+    $updateData = $_GET['updateData'] ?? '';
+    $firstname = $_GET['firstname'] ?? '';
+    $lastname = $_GET['lastname'] ?? '';
+    $birthday = $_GET['birthday'] ?? '';
+    $phone = $_GET['phone'] ?? '';
+
+    if (empty($updateData)) {
+        echo json_encode(['message' => 'Id usuario requerido']);
+    }
+    $updateUser = ControllerApi::updateUser($updateData, $firstname, $lastname, $birthday, $phone);
+    echo $updateUser;
+
 }else {
 
     require 'base.html';
