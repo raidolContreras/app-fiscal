@@ -70,11 +70,11 @@ if (isset($_GET['resource'])) {
 }elseif(isset($_GET['updateData'])){
 
     header("Content-Type: application/json");
-    $updateData = $_GET['updateData'] ?? '';
-    $firstname = $_GET['firstname'] ?? '';
-    $lastname = $_GET['lastname'] ?? '';
-    $birthday = $_GET['birthday'] ?? '';
-    $phone = $_GET['phone'] ?? '';
+    $updateData = $_GET['updateData'];
+    $firstname = $_GET['firstname'];
+    $lastname = $_GET['lastname'];
+    $birthday = $_GET['birthday'];
+    $phone = $_GET['phone'];
 
     if (empty($updateData)) {
         echo json_encode(['message' => 'Id usuario requerido']);
