@@ -78,9 +78,10 @@ if (isset($_GET['resource'])) {
 
     if (empty($updateData)) {
         echo json_encode(['message' => 'Id usuario requerido']);
+    }else{
+        $updateUser = ControllerApi::updateUser($updateData, $firstname, $lastname, $birthday, $phone);
+        echo $updateUser;
     }
-    $updateUser = ControllerApi::updateUser($updateData, $firstname, $lastname, $birthday, $phone);
-    echo $updateUser;
 
 }else {
 
