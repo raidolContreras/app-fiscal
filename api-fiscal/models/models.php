@@ -177,7 +177,7 @@ class ModelsApi{
                     FROM app_titles t
                     LEFT JOIN app_articles a ON a.Title_idTitles = t.idTitles
                     JOIN app_paragraph p ON p.articles_idArticles = a.idArticles
-                    WHERE p.paragraph LIKE :search;"
+                    WHERE p.paragraph LIKE :search";
 
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->bindParam(':search', '%'.$search.'%', PDO::PARAM_STR);
