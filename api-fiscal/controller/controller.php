@@ -266,7 +266,7 @@ class ControllerApi{
 
 	static public function search($search){
 		$busqueda = ModelsApi::search($search);
-		return $busqueda;
+		return json_encode($busqueda);
 	}
 }
 
