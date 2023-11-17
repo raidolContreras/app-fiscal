@@ -6,86 +6,86 @@ class ControllerApi{
 
 	static public function titles($item, $value){
 		$resultados = ModelsApi::titles($item, $value);
-	    if (!empty($resultados)) {
-	        
-	        if ($item != null && $value != null) {
-		        foreach ($resultados as $fila) {
-				    $capituloId = intval($fila['idChapter']);
+		if (!empty($resultados)) {
+			
+			if ($item != null && $value != null) {
+				foreach ($resultados as $fila) {
+					$capituloId = intval($fila['idChapter']);
 
-				    // Agrupa los datos por título, capítulo, sección, artículo y párrafo.
-				    $resultado['idTitles'] = intval($fila['idTitles']);
-				    $resultado['nameTitle'] = $fila['name_title'];
-				    $resultado['statusTitle'] = intval($fila['status_title']);
-				    $resultado['typeTitle'] = $fila['type_title'];
-				    $resultado['idCover'] = intval($fila['idCover']);
-				    $resultado['coverName'] = $fila['cover_name'];
+					// Agrupa los datos por título, capítulo, sección, artículo y párrafo.
+					$resultado['idTitles'] = intval($fila['idTitles']);
+					$resultado['nameTitle'] = $fila['name_title'];
+					$resultado['statusTitle'] = intval($fila['status_title']);
+					$resultado['typeTitle'] = $fila['type_title'];
+					$resultado['idCover'] = intval($fila['idCover']);
+					$resultado['coverName'] = $fila['cover_name'];
 
-				    if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
-				        $chapterData = array(
-				            "idChapter" => $capituloId,
-				            "nameChapter" => $fila['name_Chapter'],
-				            "sections" => [],
-				            "articlesChapter" => []
-				        );
+					if ($capituloId && $fila['chapter_title'] == $fila['idTitles']) {
+						$chapterData = array(
+							"idChapter" => $capituloId,
+							"nameChapter" => $fila['name_Chapter'],
+							"sections" => [],
+							"articlesChapter" => []
+						);
 
-				        $sections = ModelsApi::sections($capituloId);
-				        foreach ($sections as $section) {
-				            $sectionData = array(
-				                "idSection" => intval($section['idSection']),
-				                "nameSection" => $section['name_section'],
-				                "articles" => []
-				            );
+						$sections = ModelsApi::sections($capituloId);
+						foreach ($sections as $section) {
+							$sectionData = array(
+								"idSection" => intval($section['idSection']),
+								"nameSection" => $section['name_section'],
+								"articles" => []
+							);
 
-				            $articles = ModelsApi::articlesSections($section['idSection']);
-				            foreach ($articles as $article) {
-				                $articleData = array(
-				                    "idArticle" => intval($article['idArticle']),
-				                    "nameArticle" => $article['name_article'],
-				                    "paragraphs" => []
-				                );
+							$articles = ModelsApi::articlesSections($section['idSection']);
+							foreach ($articles as $article) {
+								$articleData = array(
+									"idArticle" => intval($article['idArticle']),
+									"nameArticle" => $article['name_article'],
+									"paragraphs" => []
+								);
 
-				                // Obtén los párrafos para el artículo
-				                $paragraphs = ModelsApi::paragraphsArticles($article['idArticle']);
-				                foreach ($paragraphs as $paragraph) {
-				                    $articleData['paragraphs'][] = array(
-				                        "idParagraph" => intval($paragraph['idParagraph']),
-				                        "paragraph" => $paragraph['paragraph']
-				                    );
-				                }
+								// Obtén los párrafos para el artículo
+								$paragraphs = ModelsApi::paragraphsArticles($article['idArticle']);
+								foreach ($paragraphs as $paragraph) {
+									$articleData['paragraphs'][] = array(
+										"idParagraph" => intval($paragraph['idParagraph']),
+										"paragraph" => $paragraph['paragraph']
+									);
+								}
 
-				                $sectionData['articles'][] = $articleData;
-				            }
+								$sectionData['articles'][] = $articleData;
+							}
 
-				            $chapterData['sections'][] = $sectionData;
-				        }
+							$chapterData['sections'][] = $sectionData;
+						}
 
-				            $articlesChapter = ModelsApi::articlesChapters($capituloId);
-				            foreach ($articlesChapter as $article) {
-				                $articleData = array(
-				                    "idArticle" => intval($article['idArticle']),
-				                    "nameArticle" => $article['name_article'],
-				                    "paragraphs" => []
-				                );
+							$articlesChapter = ModelsApi::articlesChapters($capituloId);
+							foreach ($articlesChapter as $article) {
+								$articleData = array(
+									"idArticle" => intval($article['idArticle']),
+									"nameArticle" => $article['name_article'],
+									"paragraphs" => []
+								);
 
-				                // Obtén los párrafos para el artículo
-				                $paragraphs = ModelsApi::paragraphsArticles($article['idArticle']);
-				                foreach ($paragraphs as $paragraph) {
-				                    $articleData['paragraphs'][] = array(
-				                        "idParagraph" => intval($paragraph['idParagraph']),
-				                        "paragraph" => $paragraph['paragraph']
-				                    );
-				                }
-				                    $chapterData['articlesChapter'][] = $articleData;
-				            }
+								// Obtén los párrafos para el artículo
+								$paragraphs = ModelsApi::paragraphsArticles($article['idArticle']);
+								foreach ($paragraphs as $paragraph) {
+									$articleData['paragraphs'][] = array(
+										"idParagraph" => intval($paragraph['idParagraph']),
+										"paragraph" => $paragraph['paragraph']
+									);
+								}
+									$chapterData['articlesChapter'][] = $articleData;
+							}
 
-				        $resultado['chapters'][] = $chapterData;
-				    }
+						$resultado['chapters'][] = $chapterData;
+					}
 				}
 
 
 					$datos= $resultado;
-	            echo json_encode($datos, JSON_PRETTY_PRINT);
-		    } else{
+				echo json_encode($datos, JSON_PRETTY_PRINT);
+			} else{
 				
 			$datos = array();
 				foreach ($resultados as $fila) {
@@ -102,30 +102,30 @@ class ControllerApi{
 				
 				echo json_encode($datos, JSON_PRETTY_PRINT);
 				
-		    }
+			}
 		} else {
-            echo json_encode(array('mensaje' => 'No se encontraron registros de títulos.'), JSON_PRETTY_PRINT);
-	    }
+			echo json_encode(array('mensaje' => 'No se encontraron registros de títulos.'), JSON_PRETTY_PRINT);
+		}
 	}
 	static public function createUser($name, $email, $password) {
 
-        if (!isValidName($name)) {
-            return json_encode(['message' => 'El nombre no es válido']);
-        } elseif (!isValidEmail($email)) {
-            return json_encode(['message' => 'El correo electrónico no es válido']);
-        } elseif (!isValidPassword($password)) {
-            return json_encode(['message' => 'La contraseña no cumple con los requisitos']);
-        } else {
-            // Contraseña válida, encripta la contraseña con crypt
-            $salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
-            $hashedPassword = crypt($password, $salt);
+		if (!isValidName($name)) {
+			return json_encode(['message' => 'El nombre no es válido']);
+		} elseif (!isValidEmail($email)) {
+			return json_encode(['message' => 'El correo electrónico no es válido']);
+		} elseif (!isValidPassword($password)) {
+			return json_encode(['message' => 'La contraseña no cumple con los requisitos']);
+		} else {
+			// Contraseña válida, encripta la contraseña con crypt
+			$salt = '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$';
+			$hashedPassword = crypt($password, $salt);
 
-            $registro = ModelsApi::createUser($name, $email, $hashedPassword);
+			$registro = ModelsApi::createUser($name, $email, $hashedPassword);
 
-            // Devuelve una respuesta JSON
-            return json_encode(['message' => $registro]);
-        }
-    }
+			// Devuelve una respuesta JSON
+			return json_encode(['message' => $registro]);
+		}
+	}
 
 	static public function loginUser($email, $password) {
 		$datos = array();
@@ -261,46 +261,42 @@ class ControllerApi{
 
 	static public function updateUser($idUser, $firstname, $lastname, $birthday, $phone){
 		$resultado = ModelsApi::updateUser($idUser, $firstname, $lastname, $birthday, $phone);
-        return json_encode(['message' => $resultado]);
+		return json_encode(['message' => $resultado]);
 	}
 
-static public function search($search){
-    $results = ModelsApi::search($search);
-    $pageSize = 20;
+	static public function search($search){
+		$results = ModelsApi::search($search);
+		$pageSize = 20;
 
-    // Dividir los resultados en páginas
-    $pages = array_chunk($results, $pageSize);
+		// Dividir los resultados en páginas
+		$pages = array_chunk($results, $pageSize);
 
-    // Crear un array para almacenar todas las páginas
-    $allPages = array();
+		// Crear un array para almacenar todas las páginas
+		$allPages = array();
 
-    // Iterar sobre las páginas y agregarlas al array
-    foreach ($pages as $index => $pageResults) {
-        $pageNumber = $index + 1;
-        $allPages[] = [
-            'page' => $pageNumber,
-            'searchs' => array_map(function ($result) {
-                return [
-                    'idTitle' => intval($result['idTitles']),
-                    'name_title' => $result['name_title'],
-                    'idArticle' => intval($result['idArticles']),
-                    'nameArticle' => $result['name_article'],
-                    'paragraph' => $result['paragraph'],
-                    'cover' => $result['name_cover'],
-                ];
-            }, $pageResults),
-        ];
-    }
+		// Iterar sobre las páginas y agregarlas al array
+		foreach ($pages as $index => $pageResults) {
+			$pageNumber = $index + 1;
+			$allPages[] = [
+				'page' => $pageNumber,
+				'searchs' => array_map(function ($result) {
+					return [
+						'idTitle' => intval($result['idTitles']),
+						'name_title' => $result['name_title'],
+						'idArticle' => intval($result['idArticles']),
+						'nameArticle' => $result['name_article'],
+						'paragraph' => $result['paragraph'],
+						'cover' => $result['name_cover'],
+					];
+				}, $pageResults),
+			];
+		}
 
-    // Devolver el array completo
-    return json_encode($allPages);
-}
-
-
-
+		// Devolver el array completo
+		return json_encode($allPages);
+	}
 
 }
-
 
 // Función para verificar si el nombre es válido
 function isValidName($name) {
