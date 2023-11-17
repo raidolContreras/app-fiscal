@@ -266,7 +266,7 @@ class ControllerApi{
 
 	static public function search($search){
 	    $results = ModelsApi::search($search);
-	    $pageSize = 20;
+	    $pageSize = 5;
 	    $page = 1;
 	    $data = array();
 
