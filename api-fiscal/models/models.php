@@ -172,6 +172,8 @@ class ModelsApi{
     }
 
     static public function search($search){
+        $searchTerm = "%{$search}%";
+
         $sql = "SELECT t.idTitles, t.name_title, a.idArticles, a.name_article, p.idParagraph, p.paragraph
                 FROM app_titles t
                 LEFT JOIN app_articles a ON a.Title_idTitles = t.idTitles
@@ -179,8 +181,9 @@ class ModelsApi{
                 WHERE p.paragraph LIKE :search";
 
         $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(':search', $search, PDO::PARAM_STR);
-        return $stmt->fetchAll();
+        $stmt->bindParam(':search', $searchTerm, PDO::PARAM_STR);
+        $stmt->execute(); // Ejecuta la consulta
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Devuelve los resultados como un arreglo asociativo
     }
-    
+
 }
