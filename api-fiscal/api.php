@@ -89,7 +89,7 @@ if (isset($_GET['resource'])) {
     $search = $_GET['search'];
     if ($search != ''){
         $searchArticles = ControllerApi::search($search);
-        echo $searchArticles;
+        print_r($searchArticles);
     }
 
 }else {
