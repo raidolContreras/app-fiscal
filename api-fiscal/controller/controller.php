@@ -267,12 +267,10 @@ class ControllerApi{
 static public function search($search){
     $results = ModelsApi::search($search);
 
-    $data = array(
-    	'searchs' => array()
-    );
+    $data = array();
 
     foreach ($results as  $result) {
-        $data['searchs'][] = array(
+        $data[] = array(
                             'idTitle' => intval($result['idTitles']),
                             'name_title' => $result['name_title'],
                             'idArticle' => intval($result['idArticles']),
