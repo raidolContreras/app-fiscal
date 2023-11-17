@@ -270,7 +270,7 @@ static public function search($search){
 
     // Verificar si hay resultados
     if (empty($results)) {
-        return json_encode([]);
+        return json_encode(['page' => 1, 'searchs' => []]);
     }
 
     // Dividir los resultados en páginas
@@ -300,6 +300,7 @@ static public function search($search){
     // Devolver el array completo
     return json_encode($allPages);
 }
+
 
 
 }
