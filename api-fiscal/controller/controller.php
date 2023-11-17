@@ -264,32 +264,38 @@ class ControllerApi{
         return json_encode(['message' => $resultado]);
 	}
 
-	static public function search($search){
-	    $results = ModelsApi::search($search);
-	    $pageSize = 5;
-	    $page = 1;
-	    $data = array();
+static public function search($search){
+    $results = ModelsApi::search($search);
+    $pageSize = 5;
+    $data = array();
 
-	    // Dividir los resultados en páginas
-	    $pages = array_chunk($results, $pageSize);
+    // Dividir los resultados en páginas
+    $pages = array_chunk($results, $pageSize);
 
-	    if (!empty($pages[$page - 1])) {
-	        $data['page'] = $page;
-	        $data['results'] = array_map(function ($result) {
-	            return [
-	                'idArticle' => $result['idArticles'],
-	                'nameArticle' => $result['name_article'],
-	                'paragraph' => $result['paragraph'],
-	            ];
-	        }, $pages[$page - 1]);
-	    } else {
-	        // Página no encontrada
-	        $data['page'] = $page;
-	        $data['results'] = [];
-	    }
+    // Crear un array para almacenar todas las páginas
+    $allPages = array();
 
-	    return json_encode($data);
-	}
+    // Iterar sobre las páginas y agregarlas al array
+    foreach ($pages as $index => $pageResults) {
+        $pageNumber = $index + 1;
+        $allPages[] = [
+            'page' => $pageNumber,
+            'results' => array_map(function ($result) {
+                return [
+                    'idArticle' => $result['idArticles'],
+                    'nameArticle' => $result['name_article'],
+                    'paragraph' => $result['paragraph'],
+                ];
+            }, $pageResults),
+        ];
+    }
+
+    // Agregar el array completo al resultado
+    $data['pages'] = $allPages;
+
+    return json_encode($data);
+}
+
 
 
 }
