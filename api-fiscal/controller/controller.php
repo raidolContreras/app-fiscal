@@ -264,83 +264,33 @@ class ControllerApi{
         return json_encode(['message' => $resultado]);
 	}
 
-	// Método en tu controlador
 	static public function search($search){
-	    // Ejecutar la consulta SQL
-	    $results = ModelsApi::search($search);
+    $results = ModelsApi::search($search);
+    $pageSize = 20;
+    $page = 1;
+    $data = array();
 
-	    // Estructura para almacenar los resultados
-	    $data = array(
-	        "results" => array()
-	    );
+    // Dividir los resultados en páginas
+    $pages = array_chunk($results, $pageSize);
 
-	    // Iterar sobre los resultados y estructurar el JSON
-	    foreach ($results as $row) {
-	        $idTitle = intval($row['idTitles']);
-	        $idArticle = intval($row['idArticles']);
-	        $idParagraph = intval($row['idParagraph']);
+    if (!empty($pages[$page - 1])) {
+        $data['page'] = $page;
+        $data['results'] = array_map(function ($result) {
+            return [
+                'idArticle' => $result['idArticles'],
+                'nameArticle' => $result['name_article'],
+                'paragraph' => $result['paragraph'],
+            ];
+        }, $pages[$page - 1]);
+    } else {
+        // Página no encontrada
+        $data['page'] = $page;
+        $data['results'] = [];
+    }
 
-	        // Si ya existe la entrada para el título, agregar artículo y párrafo
-	        if (isset($data['results'][$idTitle])) {
-	            $article = array(
-	                "idArticle" => $idArticle,
-	                "name_article" => $row['name_article'],
-	                "parrafos" => array(
-	                    array(
-	                        "idParrafo" => $idParagraph,
-	                        "paragraph" => $row['paragraph']
-	                    )
-	                )
-	            );
+    return $data;
+}
 
-	            $data['results'][$idTitle]['capitulos'][1]['secciones'][1]['articulos'][$idArticle] = $article;
-	        } else {
-	            // Si no existe la entrada para el título, crear una nueva estructura
-	            $title = array(
-	                "idTitles" => $idTitle,
-	                "name_title" => $row['name_title'],
-	                "status_title" => "0", // Puedes modificar estos valores según tus necesidades
-	                "type_title" => "Reglamento",
-	                "Admin_idAdmin" => "1",
-	                "cover" => array(
-	                    "idCover" => 8, // Ajusta esto según tus datos reales
-	                    "cover_name" => "Ley Federal del trabajo.jpg" // Ajusta esto según tus datos reales
-	                ),
-	                "capitulos" => array(
-	                    1 => array(
-	                        "idChapter" => 1,
-	                        "name_Chapter" => "Capitulo I",
-	                        "secciones" => array(
-	                            1 => array(
-	                                "idSection" => 1,
-	                                "name_section" => "Sección 1",
-	                                "articulos" => array()
-	                            )
-	                        )
-	                    )
-	                )
-	            );
-
-	            $article = array(
-	                "idArticle" => $idArticle,
-	                "name_article" => $row['name_article'],
-	                "parrafos" => array(
-	                    array(
-	                        "idParrafo" => $idParagraph,
-	                        "paragraph" => $row['paragraph']
-	                    )
-	                )
-	            );
-
-	            $title['capitulos'][1]['secciones'][1]['articulos'][$idArticle] = $article;
-
-	            $data['results'][$idTitle] = $title;
-	        }
-	    }
-
-	    // Convertir el arreglo asociativo a JSON y devolverlo
-	    return json_encode($data, JSON_PRETTY_PRINT);
-	}
 
 }
 
