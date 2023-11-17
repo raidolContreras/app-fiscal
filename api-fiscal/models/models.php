@@ -181,6 +181,7 @@ class ModelsApi{
 
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->bindParam(':search', '%'.$search.'%', PDO::PARAM_STR);
+            return $stmt->fetchAll();
 
         } catch (PDOException $e){
 
