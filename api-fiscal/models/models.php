@@ -174,9 +174,10 @@ class ModelsApi{
     static public function search($search){
         $searchTerm = "%{$search}%";
 
-        $sql = "SELECT t.idTitles, t.name_title, a.idArticles, a.name_article, p.idParagraph, p.paragraph
+        $sql = "SELECT t.idTitles, t.name_title, a.idArticles, a.name_article, p.idParagraph, p.paragraph, c.name_cover
                 FROM app_titles t
                 LEFT JOIN app_articles a ON a.Title_idTitles = t.idTitles
+                LEFT JOIN app_covers c ON c.Title_idTitles = t.idTitles
                 JOIN app_paragraph p ON p.articles_idArticles = a.idArticles
                 WHERE p.paragraph LIKE :search";
 

@@ -267,7 +267,6 @@ class ControllerApi{
 static public function search($search){
     $results = ModelsApi::search($search);
     $pageSize = 5;
-    $data = array();
 
     // Dividir los resultados en páginas
     $pages = array_chunk($results, $pageSize);
@@ -282,6 +281,8 @@ static public function search($search){
             'page' => $pageNumber,
             'results' => array_map(function ($result) {
                 return [
+                    'idTitle' => $result['idTitles'],
+                    'name_title' => $result['name_title'],
                     'idArticle' => $result['idArticles'],
                     'nameArticle' => $result['name_article'],
                     'paragraph' => $result['paragraph'],
