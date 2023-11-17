@@ -281,11 +281,12 @@ static public function search($search){
             'page' => $pageNumber,
             'results' => array_map(function ($result) {
                 return [
-                    'idTitle' => $result['idTitles'],
+                    'idTitle' => intval($result['idTitles']),
                     'name_title' => $result['name_title'],
-                    'idArticle' => $result['idArticles'],
+                    'idArticle' => intval($result['idArticles']),
                     'nameArticle' => $result['name_article'],
                     'paragraph' => $result['paragraph'],
+                    'cover' => $result['name_cover'],
                 ];
             }, $pageResults),
         ];
