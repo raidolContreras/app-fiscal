@@ -266,24 +266,12 @@ class ControllerApi{
 
 static public function search($search){
     $results = ModelsApi::search($search);
-    $pageSize = 20;
+    
+    $data = array();
 
-    // Verificar si hay resultados
-    if (empty($results)) {
-        return json_encode(['page' => 1, 'searchs' => []]);
-    }
-
-    // Dividir los resultados en páginas
-    $pages = array_chunk($results, $pageSize);
-
-    // Crear un array para almacenar todas las páginas
-    $allPages = array();
-
-    // Iterar sobre las páginas y agregarlas al array
-    foreach ($pages as $index => $pageResults) {
+    foreach ($results as  $result) {
         $pageNumber = $index + 1;
-        $allPages[] = [
-            'page' => $pageNumber,
+        $data[] = [
             'searchs' => array_map(function ($result) {
                 return [
                     'idTitle' => intval($result['idTitles']),
@@ -293,12 +281,12 @@ static public function search($search){
                     'paragraph' => $result['paragraph'],
                     'cover' => $result['name_cover'],
                 ];
-            }, $pageResults),
+            },),
         ];
     }
 
     // Devolver el array completo
-    return json_encode($allPages);
+    return json_encode($data);
 }
 
 
