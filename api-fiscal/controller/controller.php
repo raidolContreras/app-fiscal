@@ -290,10 +290,7 @@ static public function search($search){
         ];
     }
 
-    // Agregar el array completo al resultado
-    $data = $allPages;
-
-    return json_encode($data);
+    return json_encode($allPages);
 }
 
 
