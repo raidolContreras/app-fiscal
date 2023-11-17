@@ -264,37 +264,43 @@ class ControllerApi{
 		return json_encode(['message' => $resultado]);
 	}
 
-	static public function search($search){
-		$results = ModelsApi::search($search);
-		$pageSize = 20;
+static public function search($search){
+    $results = ModelsApi::search($search);
+    $pageSize = 20;
 
-		// Dividir los resultados en páginas
-		$pages = array_chunk($results, $pageSize);
+    // Verificar si hay resultados
+    if (empty($results)) {
+        return json_encode([]);
+    }
 
-		// Crear un array para almacenar todas las páginas
-		$allPages = array();
+    // Dividir los resultados en páginas
+    $pages = array_chunk($results, $pageSize);
 
-		// Iterar sobre las páginas y agregarlas al array
-		foreach ($pages as $index => $pageResults) {
-			$pageNumber = $index + 1;
-			$allPages[] = [
-				'page' => $pageNumber,
-				'searchs' => array_map(function ($result) {
-					return [
-						'idTitle' => intval($result['idTitles']),
-						'name_title' => $result['name_title'],
-						'idArticle' => intval($result['idArticles']),
-						'nameArticle' => $result['name_article'],
-						'paragraph' => $result['paragraph'],
-						'cover' => $result['name_cover'],
-					];
-				}, $pageResults),
-			];
-		}
+    // Crear un array para almacenar todas las páginas
+    $allPages = array();
 
-		// Devolver el array completo
-		return json_encode($allPages);
-	}
+    // Iterar sobre las páginas y agregarlas al array
+    foreach ($pages as $index => $pageResults) {
+        $pageNumber = $index + 1;
+        $allPages[] = [
+            'page' => $pageNumber,
+            'searchs' => array_map(function ($result) {
+                return [
+                    'idTitle' => intval($result['idTitles']),
+                    'name_title' => $result['name_title'],
+                    'idArticle' => intval($result['idArticles']),
+                    'nameArticle' => $result['name_article'],
+                    'paragraph' => $result['paragraph'],
+                    'cover' => $result['name_cover'],
+                ];
+            }, $pageResults),
+        ];
+    }
+
+    // Devolver el array completo
+    return json_encode($allPages);
+}
+
 
 }
 
