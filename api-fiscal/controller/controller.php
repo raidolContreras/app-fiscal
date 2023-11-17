@@ -278,7 +278,7 @@ static public function search($search){
                             'nameArticle' => $result['name_article'],
                             'paragraph' => $result['paragraph'],
                             'cover' => $result['name_cover'],
-                        )
+                        );
     }
 
     // Devolver el array completo
