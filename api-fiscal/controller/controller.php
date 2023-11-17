@@ -279,7 +279,7 @@ static public function search($search){
         $pageNumber = $index + 1;
         $allPages[] = [
             'page' => $pageNumber,
-            'results' => array_map(function ($result) {
+            'searchs' => array_map(function ($result) {
                 return [
                     'idTitle' => intval($result['idTitles']),
                     'name_title' => $result['name_title'],
