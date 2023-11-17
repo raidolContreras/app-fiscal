@@ -83,6 +83,15 @@ if (isset($_GET['resource'])) {
         echo $updateUser;
     }
 
+}elseif(isset($_GET['search'])){
+    header("Content-Type: application/json");
+
+    $search = $_GET['search'];
+    if ($search != ''){
+        $searchArticles = ControllerApi::search($search);
+        echo $searchArticles;
+    }
+
 }else {
 
     require 'base.html';

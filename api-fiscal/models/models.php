@@ -170,5 +170,21 @@ class ModelsApi{
             }
         }
     }
+
+    static public function search($search){
+        try {
+            $sql = "SELECT t.idTitles, t.name_title, a.idArticles, a.name_article, p.idParagraph, p.paragraph
+                    FROM app_titles t
+                    LEFT JOIN app_articles a ON a.Title_idTitles = t.idTitles
+                    JOIN app_paragraph p ON p.articles_idArticles = a.idArticles
+                    WHERE p.paragraph LIKE :search;
+
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':search', '%'.$search.'%', PDO::PARAM_STR);
+
+        } catch (PDOException $e){
+
+        }
+    }
     
 }

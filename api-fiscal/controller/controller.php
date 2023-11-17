@@ -263,6 +263,11 @@ class ControllerApi{
 		$resultado = ModelsApi::updateUser($idUser, $firstname, $lastname, $birthday, $phone);
         return json_encode(['message' => $resultado]);
 	}
+
+	static public function search($search){
+		$busqueda = ModelsApi::search($search);
+		return $busqueda;
+	}
 }
 
 
