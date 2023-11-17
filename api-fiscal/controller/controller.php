@@ -291,7 +291,7 @@ static public function search($search){
     }
 
     // Agregar el array completo al resultado
-    $data['pages'] = $allPages;
+    $data = $allPages;
 
     return json_encode($data);
 }
