@@ -278,7 +278,7 @@ static public function search($search){
     // Iterar sobre las páginas y agregarlas al array
     foreach ($pages as $index => $pageResults) {
         $pageNumber = $index + 1;
-        $allPages[] = [
+        $allPages[] = (
             'page' => $pageNumber,
             'results' => array_map(function ($result) {
                 return [
@@ -287,7 +287,7 @@ static public function search($search){
                     'paragraph' => $result['paragraph'],
                 ];
             }, $pageResults),
-        ];
+        );
     }
 
     return json_encode($allPages);
