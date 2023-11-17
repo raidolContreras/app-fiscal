@@ -265,31 +265,31 @@ class ControllerApi{
 	}
 
 	static public function search($search){
-    $results = ModelsApi::search($search);
-    $pageSize = 20;
-    $page = 1;
-    $data = array();
+	    $results = ModelsApi::search($search);
+	    $pageSize = 20;
+	    $page = 1;
+	    $data = array();
 
-    // Dividir los resultados en páginas
-    $pages = array_chunk($results, $pageSize);
+	    // Dividir los resultados en páginas
+	    $pages = array_chunk($results, $pageSize);
 
-    if (!empty($pages[$page - 1])) {
-        $data['page'] = $page;
-        $data['results'] = array_map(function ($result) {
-            return [
-                'idArticle' => $result['idArticles'],
-                'nameArticle' => $result['name_article'],
-                'paragraph' => $result['paragraph'],
-            ];
-        }, $pages[$page - 1]);
-    } else {
-        // Página no encontrada
-        $data['page'] = $page;
-        $data['results'] = [];
-    }
+	    if (!empty($pages[$page - 1])) {
+	        $data['page'] = $page;
+	        $data['results'] = array_map(function ($result) {
+	            return [
+	                'idArticle' => $result['idArticles'],
+	                'nameArticle' => $result['name_article'],
+	                'paragraph' => $result['paragraph'],
+	            ];
+	        }, $pages[$page - 1]);
+	    } else {
+	        // Página no encontrada
+	        $data['page'] = $page;
+	        $data['results'] = [];
+	    }
 
-    return $data;
-}
+	    return json_encode($data);
+	}
 
 
 }
