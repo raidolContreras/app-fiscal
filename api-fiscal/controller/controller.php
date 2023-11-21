@@ -267,7 +267,9 @@ class ControllerApi{
 static public function search($search){
     $results = ModelsApi::search($search);
 
-    $data = array();
+    $data = array(
+    	'results' => array(),
+    );
 
     foreach ($results as  $result) {
         $data['results'][] = array(
