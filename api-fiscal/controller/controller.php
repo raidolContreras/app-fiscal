@@ -270,14 +270,14 @@ static public function search($search){
     $data = array();
 
     foreach ($results as  $result) {
-        $data[] = array(
-                            'idTitle' => intval($result['idTitles']),
-                            'name_title' => $result['name_title'],
-                            'idArticle' => intval($result['idArticles']),
-                            'nameArticle' => $result['name_article'],
-                            'paragraph' => $result['paragraph'],
-                            'cover' => $result['name_cover'],
-                        );
+        $data['results'] = array(
+            'idTitle' => intval($result['idTitles']),
+            'name_title' => $result['name_title'],
+            'idArticle' => intval($result['idArticles']),
+            'nameArticle' => $result['name_article'],
+            'paragraph' => $result['paragraph'],
+            'cover' => $result['name_cover'],
+        );
     }
 
     // Devolver el array completo
