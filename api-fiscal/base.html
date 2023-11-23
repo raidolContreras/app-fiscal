@@ -14,46 +14,53 @@
     body {
       background-color: #f8f9fa;
       color: #333;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
     }
     .container {
-      max-width: 960px;
+      max-width: 800px;
       margin: auto;
       padding: 20px;
     }
     .api-card {
-      background-color: #ffffff;
+      background-color: #fff;
       border: 1px solid #ddd;
-      border-radius: 5px;
+      border-radius: 8px;
       margin-bottom: 20px;
       padding: 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .api-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
     }
     .api-card h5 {
-      font-size: 24px;
-      margin-bottom: 10px;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
       color: #007BFF;
     }
     .api-card p {
-      font-size: 18px;
-      margin: 10px 0;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
       color: #555;
     }
     .api-card strong {
       color: #007BFF;
     }
+    h1 {
+      color: #007BFF;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1 class="text-center py-4" style="color: #007BFF; font-size: 36px; font-weight: bold;">Documentación de API</h1>
+    <h1>Documentación de API</h1>
     <div class="row">
-      <!-- Each API Card -->
+      <!-- API Cards -->
       <div class="col-lg-6">
         <div class="api-card">
           <h5 class="fw-bold">Recurso: Vista de todos los reglamentos</h5>
