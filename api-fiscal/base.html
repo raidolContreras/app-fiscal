@@ -85,11 +85,13 @@
     <h1>Documentación de API</h1>
 
     <!-- API Section 1 -->
-    <div class="api-section">
-      <div class="api-title" onclick="toggleVisibility('api1')">Vista de todos los reglamentos</div>
-      <div id="api1" class="api-description">Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</div>
+    <div class="api-section" onclick="toggleVisibility('api1')">
+      <div class="api-title">Vista de todos los reglamentos</div>
+      <div id="api1-description" class="api-description">Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</div>
       <div id="api1-endpoint" class="api-endpoint"><strong>URL:</strong> ?resource=titles</div>
     </div>
+
+  </div>
 
     <!-- API Section 2 -->
     <div class="api-section">
@@ -140,20 +142,20 @@
       <div id="api8-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?article={isArticle}&user={idUser}</div>
     </div>
   </div>
+
   <script>
     function toggleVisibility(id) {
-      var x = document.getElementById(id);
-      var y = document.getElementById(id + '-endpoint');
+      var description = document.getElementById(id + '-description');
+      var endpoint = document.getElementById(id + '-endpoint');
       var section = document.querySelector('.api-section.clicked');
-
-      if (section) {
+            if (section && section !== event.currentTarget) {
         section.classList.remove('clicked');
         section.querySelector('.api-description').style.display = 'none';
         section.querySelector('.api-endpoint').style.display = 'none';
       }
 
-      x.style.display = (x.style.display === "none") ? "block" : "none";
-      y.style.display = (y.style.display === "none") ? "block" : "none";
+      description.style.display = (description.style.display === "none") ? "block" : "none";
+      endpoint.style.display = (endpoint.style.display === "none") ? "block" : "none";
       event.currentTarget.classList.add('clicked');
     }
   </script>
