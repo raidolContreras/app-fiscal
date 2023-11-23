@@ -145,44 +145,54 @@
       <div id="api8-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?article={isArticle}&user={idUser}</div>
     </div>
   </div>
-  <script>
-    function toggleVisibility(id) {
-      var x = document.getElementById(id);
-      var y = document.getElementById(id + '-endpoint');
-      var section = document.querySelector('.api-section.clicked');
+  
+<script>
+  function toggleVisibility(id) {
+    var x = document.getElementById(id);
+    var y = document.getElementById(id + '-endpoint');
+    var section = document.querySelector('.api-section.clicked');
 
-      if (section) {
-        section.classList.remove('clicked');
-        hideSectionContent(section);
-      }
-
-      x.style.display = (x.style.display === "none") ? "block" : "none";
-      y.style.display = (y.style.display === "none") ? "block" : "none";
-      event.currentTarget.classList.toggle('clicked');
-      setTimeout(() => showSectionContent(x), 100);
+    if (section) {
+      section.classList.remove('clicked');
+      hideSectionContent(section);
     }
 
-    function hideSectionContent(section) {
-      var description = section.querySelector('.api-description');
-      var endpoint = section.querySelector('.api-endpoint');
+    x.style.display = (x.style.display === "none") ? "block" : "none";
+    y.style.display = (y.style.display === "none") ? "block" : "none";
+    event.currentTarget.classList.toggle('clicked');
+    setTimeout(() => showSectionContent(x), 100);
+  }
 
+  function hideSectionContent(section) {
+    var description = section.querySelector('.api-description');
+    var endpoint = section.querySelector('.api-endpoint');
+
+    if (description) {
       description.style.maxHeight = '0';
       description.style.opacity = '0';
+    }
 
+    if (endpoint) {
       endpoint.style.maxHeight = '0';
       endpoint.style.opacity = '0';
     }
+  }
 
-    function showSectionContent(section) {
-      var description = section.querySelector('.api-description');
-      var endpoint = section.querySelector('.api-endpoint');
+  function showSectionContent(section) {
+    var description = section.querySelector('.api-description');
+    var endpoint = section.querySelector('.api-endpoint');
 
+    if (description) {
       description.style.maxHeight = '100px'; // Set the desired max height
       description.style.opacity = '1';
+    }
 
+    if (endpoint) {
       endpoint.style.maxHeight = '100px'; // Set the desired max height
       endpoint.style.opacity = '1';
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
