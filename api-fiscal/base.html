@@ -5,16 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="logo.ico" />
   <title>Documentación de API</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #222;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: #007BFF;
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .api-section {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #555;
+      padding-bottom: 10px;
+    }
+
+    .api-title {
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .api-title:hover {
+      color: #00ffcc;
+    }
+
+    .api-description, .api-endpoint {
+      margin-top: 10px;
+      font-size: 16px;
+      display: none;
+    }
+
+    .api-endpoint strong {
+      color: #00ffcc;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1 class="text-center" style="color: #007BFF; font-size: 36px; font-weight: bold;">Documentación de API</h1>
+    <h1>Documentación de API</h1>
 
     <!-- API Section 1 -->
     <div class="api-section">
       <div class="api-title" onclick="toggleVisibility('api1')">Vista de todos los reglamentos</div>
-      <div id="api1" class="api-description" style="display: none;">Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</div>
-      <div id="api1-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?resource=titles</div>
+      <div id="api1" class="api-description">Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</div>
+      <div id="api1-endpoint" class="api-endpoint"><strong>URL:</strong> ?resource=titles</div>
     </div>
 
     <!-- API Section 2 -->
