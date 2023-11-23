@@ -148,6 +148,8 @@
 
       if (section) {
         section.classList.remove('clicked');
+        section.querySelector('.api-description').style.display = 'none';
+        section.querySelector('.api-endpoint').style.display = 'none';
       }
 
       x.style.display = (x.style.display === "none") ? "block" : "none";
