@@ -21,107 +21,88 @@
       margin: auto;
       padding: 20px;
     }
-    .api-card {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
+    .api-section {
+      margin-bottom: 40px;
     }
-    .api-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-    }
-    .api-card h5 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: #007BFF;
-    }
-    .api-card p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      color: #555;
-    }
-    .api-card strong {
-      color: #007BFF;
-    }
-    h1 {
-      color: #007BFF;
+    .api-title {
       font-size: 2rem;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 2rem;
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+    .api-description {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .api-endpoint {
+      font-size: 1rem;
+      color: #007BFF;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Documentación de API</h1>
-    <div class="row">
-      <!-- API Cards -->
-      <div class="col-lg-6">
-        <div class="api-card">
-          <h5 class="fw-bold">Recurso: Vista de todos los reglamentos</h5>
-          <p><strong>URL:</strong> ?resource=titles</p>
-          <p><strong>Descripción:</strong> Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</p>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="api-card">
-          <h5 class="fw-bold">Recurso: Vista de un solo reglamento</h5>
-          <p><strong style="color: #007BFF;">URL:</strong> ?reglament={idReglament}</p>
-          <p><strong style="color: #007BFF;">Descripción:</strong> Este recurso permite acceder a la vista de un solo reglamento identificado por su ID. Puedes utilizar esta opción para obtener detalles específicos de un reglamento en particular.</p>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="api-card">
-          <h5 class="fw-bold">Recurso: Registro de Nuevos Usuarios</h5>
-          <p><strong style="color: #007BFF;">URL:</strong> ?register=1&name={name}&email={email}&password={password}</p>
-          <p><strong style="color: #007BFF;">Descripción:</strong> Este recurso te permite registrar nuevos usuarios en el sistema. Al proporcionar los datos necesarios, como el nombre, el correo electrónico y la contraseña, puedes crear una cuenta de usuario. Una vez registrado, los nuevos usuarios podrán acceder a la aplicación inLibrary.</p>          
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="api-card">
-          <h5 class="fw-bold">Recurso: Iniciar sesión</h5>
-          <p><strong style="color: #007BFF;">URL:</strong> ?login=1&email={email}&password={password}</p>
-          <p><strong style="color: #007BFF;">Descripción:</strong> Este recurso te permite iniciar sesión. Al proporcionar los datos necesarios, como el correo electrónico y la contraseña, los usuarios podrán acceder a la aplicación inLibrary.</p>          
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="api-card">
-          <h5 class="fw-bold">Recurso: Cargar datos de un usuario</h5>
-          <p><strong style="color: #007BFF;">URL:</strong> ?data=1&email={email}</p>
-          <p><strong style="color: #007BFF;">Descripción:</strong> Este recurso te permite Cargar los datos de un usuario. Al proporcionar el Email.</p>          
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="api-card">
-          <h5 class="fw-bold">Recurso: Actualizar datos de un usuario</h5>
-          <p><strong style="color: #007BFF;">URL:</strong> ?update={idUser}&firstname={firstname}&lastname={lastname}&birthday={birthday}&phone={phone}</p>
-          <p><strong style="color: #007BFF;">Descripción:</strong> Este recurso te permite actualizar los datos de un usuario. Al proporcionar el idUser.</p>          
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="api-card">
-          <h5 class="fw-bold">Recurso: Busqueda de datos</h5>
-          <p><strong style="color: #007BFF;">URL:</strong> ?search={busqueda}</p>
-          <p><strong style="color: #007BFF;">Descripción:</strong> Este recurso te permite buscar palabras en los articulos.</p>          
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="api-card">
-          <h5 class="fw-bold">Recurso: Marcar articulos favoritos</h5>
-          <p><strong style="color: #007BFF;">URL:</strong> ?article={isArticle}&user={idUser}</p>
-          <p><strong style="color: #007BFF;">Descripción:</strong> Permite marcar ariculos como favoritos.</p>          
-        </div>
-      </div>
+    <h1 class="text-center" style="color: #007BFF; font-size: 36px; font-weight: bold;">Documentación de API</h1>
+
+    <!-- API Section 1 -->
+    <div class="api-section">
+      <div class="api-title">Recurso: Vista de todos los reglamentos</div>
+      <div class="api-description">Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</div>
+      <div class="api-endpoint"><strong>URL:</strong> ?resource=titles</div>
     </div>
-    <!-- Agrega más elementos según sea necesario -->
+
+    <!-- API Section 2 -->
+    <div class="api-section">
+      <div class="api-title">Recurso: Vista de un solo reglamento</div>
+      <div class="api-description">Este recurso permite acceder a la vista de un solo reglamento identificado por su ID. Puedes utilizar esta opción para obtener detalles específicos de un reglamento en particular.</div>
+      <div class="api-endpoint"><strong>URL:</strong> ?reglament={idReglament}</div>
+    </div>
+
+    <!-- API Section 3 -->
+    <div class="api-section">
+      <div class="api-title">Recurso: Registro de Nuevos Usuarios</div>
+      <div class="api-description">Este recurso te permite registrar nuevos usuarios en el sistema. Al proporcionar los datos necesarios, como el nombre, el correo electrónico y la contraseña, puedes crear una cuenta de usuario. Una vez registrado, los nuevos usuarios podrán acceder a la aplicación inLibrary.</div>
+      <div class="api-endpoint"><strong>URL:</strong> ?register=1&name={name}&email={email}&password={password}</div>
+    </div>
+
+    <!-- API Section 4 -->
+    <div class="api-section">
+      <div class="api-title">Recurso: Iniciar sesión</div>
+      <div class="api-description">Este recurso te permite iniciar sesión. Al proporcionar los datos necesarios, como el correo electrónico y la contraseña, los usuarios podrán acceder a la aplicación inLibrary.</div>
+      <div class="api-endpoint"><strong>URL:</strong> ?login=1&email={email}&password={password}</div>
+    </div>
+
+    <!-- API Section 5 -->
+    <div class="api-section">
+      <div class="api-title">Recurso: Cargar datos de un usuario</div>
+      <div class="api-description">Este recurso te permite cargar los datos de un usuario. Al proporcionar el correo electrónico.</div>
+      <div class="api-endpoint"><strong>URL:</strong> ?data=1&email={email}</div>
+    </div>
+
+    <!-- API Section 6 -->
+    <div class="api-section">
+      <div class="api-title">Recurso: Actualizar datos de un usuario</div>
+      <div class="api-description">Este recurso te permite actualizar los datos de un usuario. Al proporcionar el idUser.</div>
+      <div class="api-endpoint"><strong>URL:</strong> ?update={idUser}&firstname={firstname}&lastname={lastname}&birthday={birthday}&phone={phone}</div>
+    </div>
+
+    <!-- API Section 7 -->
+    <div class="api-section">
+      <div class="api-title">Recurso: Búsqueda de datos</div>
+      <div class="api-description">Este recurso te permite buscar palabras en los artículos.</div>
+      <div class="api-endpoint"><strong>URL:</strong> ?search={busqueda}</div>
+    </div>
+
+    <!-- API Section 8 -->
+    <div class="api-section">
+      <div class="api-title">Recurso: Marcar artículos favoritos</div>
+      <div class="api-description">Permite marcar artículos como favoritos.</div>
+      <div class="api-endpoint"><strong>URL:</strong> ?article={isArticle}&user={idUser}</div>
+    </div>
+
   </div>
 
-  <!-- Optional JavaScript; choose one of the two! -->
+  <!-- Bootstrap JS (optional) -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
