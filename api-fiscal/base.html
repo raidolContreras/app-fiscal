@@ -163,35 +163,36 @@
     setTimeout(() => showSectionContent(x), 100);
   }
 
-  function hideSectionContent(section) {
-    var description = section.querySelector('.api-description');
-    var endpoint = section.querySelector('.api-endpoint');
+function hideSectionContent(section) {
+  var description = section.querySelector('.api-description');
+  var endpoint = section.querySelector('.api-endpoint');
 
-    if (description) {
-      description.style.maxHeight = '0';
-      description.style.opacity = '0';
-    }
-
-    if (endpoint) {
-      endpoint.style.maxHeight = '0';
-      endpoint.style.opacity = '0';
-    }
+  if (description) {
+    description.style.maxHeight = '0';
+    description.style.opacity = '0';
   }
 
-  function showSectionContent(section) {
-    var description = section.querySelector('.api-description');
-    var endpoint = section.querySelector('.api-endpoint');
-
-    if (description) {
-      description.style.maxHeight = '100px'; // Set the desired max height
-      description.style.opacity = '1';
-    }
-
-    if (endpoint) {
-      endpoint.style.maxHeight = '100px'; // Set the desired max height
-      endpoint.style.opacity = '1';
-    }
+  if (endpoint) {
+    endpoint.style.maxHeight = '0';
+    endpoint.style.opacity = '0';
   }
+}
+
+function showSectionContent(section) {
+  var description = section.querySelector('.api-description');
+  var endpoint = section.querySelector('.api-endpoint');
+
+  if (description) {
+    description.style.maxHeight = description.scrollHeight + 'px'; // Auto-adjust to content height
+    description.style.opacity = '1';
+  }
+
+  if (endpoint) {
+    endpoint.style.maxHeight = endpoint.scrollHeight + 'px'; // Auto-adjust to content height
+    endpoint.style.opacity = '1';
+  }
+}
+
 </script>
 
 </body>
