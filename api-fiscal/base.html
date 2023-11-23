@@ -72,6 +72,18 @@
     .api-endpoint strong {
       color: #4ecdc4;
     }
+
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #4ecdc4;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -80,6 +92,7 @@
 
     <!-- API Section 1 -->
     <div class="api-section" onclick="toggleVisibility('api1')">
+      <button class="copy-button" onclick="copyToClipboard('#api1-endpoint')">Copy Endpoint</button>
       <div class="api-title">Vista de todos los reglamentos</div>
       <div id="api1-description" class="api-description">Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</div>
       <div id="api1-endpoint" class="api-endpoint"><strong>URL:</strong> ?resource=titles</div>
@@ -87,6 +100,7 @@
 
     <!-- API Section 2 -->
     <div class="api-section" onclick="toggleVisibility('api2')">
+      <button class="copy-button" onclick="copyToClipboard('#api2-endpoint')">Copy Endpoint</button>
       <div class="api-title">Vista de un solo reglamento</div>
       <div id="api2-description" class="api-description" style="display: none;">Este recurso permite acceder a la vista de un solo reglamento identificado por su ID. Puedes utilizar esta opción para obtener detalles específicos de un reglamento en particular.</div>
       <div id="api2-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?reglament={idReglament}</div>
@@ -94,6 +108,7 @@
 
     <!-- API Section 3 -->
     <div class="api-section" onclick="toggleVisibility('api3')">
+      <button class="copy-button" onclick="copyToClipboard('#api3-endpoint')">Copy Endpoint</button>
       <div class="api-title">Registro de Nuevos Usuarios</div>
       <div id="api3-description" class="api-description" style="display: none;">Este recurso te permite registrar nuevos usuarios en el sistema. Al proporcionar los datos necesarios, como el nombre, el correo electrónico y la contraseña, puedes crear una cuenta de usuario. Una vez registrado, los nuevos usuarios podrán acceder a la aplicación inLibrary.</div>
       <div id="api3-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?register=1&name={name}&email={email}&password={password}</div>
@@ -101,6 +116,7 @@
 
     <!-- API Section 4 -->
     <div class="api-section" onclick="toggleVisibility('api4')">
+      <button class="copy-button" onclick="copyToClipboard('#api4-endpoint')">Copy Endpoint</button>
       <div class="api-title">Iniciar sesión</div>
       <div id="api4-description" class="api-description" style="display: none;">Este recurso te permite iniciar sesión. Al proporcionar los datos necesarios, como el correo electrónico y la contraseña, los usuarios podrán acceder a la aplicación inLibrary.</div>
       <div id="api4-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?login=1&email={email}&password={password}</div>
@@ -108,6 +124,7 @@
 
     <!-- API Section 5 -->
     <div class="api-section" onclick="toggleVisibility('api5')">
+      <button class="copy-button" onclick="copyToClipboard('#api5-endpoint')">Copy Endpoint</button>
       <div class="api-title">Cargar datos de un usuario</div>
       <div id="api5-description" class="api-description" style="display: none;">Este recurso te permite cargar los datos de un usuario. Al proporcionar el correo electrónico.</div>
       <div id="api5-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?data=1&email={email}</div>
@@ -115,6 +132,7 @@
 
     <!-- API Section 6 -->
     <div class="api-section" onclick="toggleVisibility('api6')">
+      <button class="copy-button" onclick="copyToClipboard('#api6-endpoint')">Copy Endpoint</button>
       <div class="api-title">Actualizar datos de un usuario</div>
       <div id="api6-description" class="api-description" style="display: none;">Este recurso te permite actualizar los datos de un usuario. Al proporcionar el idUser.</div>
       <div id="api6-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?update={idUser}&firstname={firstname}&lastname={lastname}&birthday={birthday}&phone={phone}</div>
@@ -122,6 +140,7 @@
 
     <!-- API Section 7 -->
     <div class="api-section" onclick="toggleVisibility('api7')">
+      <button class="copy-button" onclick="copyToClipboard('#api7-endpoint')">Copy Endpoint</button>
       <div class="api-title">Búsqueda de datos</div>
       <div id="api7-description" class="api-description" style="display: none;">Este recurso te permite buscar palabras en los artículos.</div>
       <div id="api7-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?search={busqueda}</div>
@@ -129,11 +148,11 @@
 
     <!-- API Section 8 -->
     <div class="api-section" onclick="toggleVisibility('api8')">
+      <button class="copy-button" onclick="copyToClipboard('#api8-endpoint')">Copy Endpoint</button>
       <div class="api-title">Marcar artículos favoritos</div>
       <div id="api8-description" class="api-description" style="display: none;">Permite marcar artículos como favoritos.</div>
       <div id="api8-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?article={isArticle}&user={idUser}</div>
     </div>
-  </div>
 
   </div>
 
@@ -151,6 +170,16 @@
       description.style.display = (description.style.display === "none") ? "block" : "none";
       endpoint.style.display = (endpoint.style.display === "none") ? "block" : "none";
       event.currentTarget.classList.add('clicked');
+    }
+
+    function copyToClipboard(elementId) {
+      var copyText = document.querySelector(elementId);
+      var textArea = document.createElement('textarea');
+      textArea.value = copyText.innerText;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
     }
   </script>
 </body>
