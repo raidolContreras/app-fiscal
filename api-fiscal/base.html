@@ -7,8 +7,8 @@
   <title>Documentación de API</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #1e1e1e;
+      font-family: 'Poppins', sans-serif;
+      background: #1a1a1a;
       color: #fff;
       margin: 0;
       padding: 0;
@@ -21,14 +21,14 @@
     .container {
       width: 80%;
       max-width: 800px;
-      padding: 20px;
-      background: rgba(40, 40, 40, 0.8);
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.8);
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
 
     h1 {
-      color: #3498db;
+      color: #4ecdc4;
       font-size: 36px;
       font-weight: bold;
       text-align: center;
@@ -37,12 +37,13 @@
 
     .api-section {
       margin-bottom: 20px;
-      padding: 15px;
+      padding: 20px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       transition: background 0.3s ease, transform 0.3s ease;
       cursor: pointer;
+      overflow: hidden;
+      position: relative;
     }
 
     .api-section:hover {
@@ -58,26 +59,18 @@
       font-size: 24px;
       font-weight: bold;
       color: #fff;
-      transition: color 0.3s ease;
-    }
-
-    .api-section.clicked {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .api-title:hover {
-      color: #ff7675;
+      margin-bottom: 10px;
+      text-align: center;
     }
 
     .api-description, .api-endpoint {
-      margin-top: 10px;
       font-size: 16px;
-      display: none;
       color: #ddd;
+      display: none;
     }
 
     .api-endpoint strong {
-      color: #e17055;
+      color: #4ecdc4;
     }
   </style>
 </head>
