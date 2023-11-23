@@ -43,7 +43,6 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       transition: background 0.3s ease, transform 0.3s ease;
       cursor: pointer;
-      overflow: hidden;
     }
 
     .api-section:hover {
@@ -70,14 +69,10 @@
       color: #00ffcc;
     }
 
-    .api-description,
-    .api-endpoint {
+    .api-description, .api-endpoint {
       margin-top: 10px;
       font-size: 16px;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, opacity 0.3s ease;
+      display: none;
     }
 
     .api-endpoint strong {
@@ -89,7 +84,7 @@
   <div class="container">
     <h1>Documentación de API</h1>
 
-    <!-- API Sections -->
+    <!-- API Section 1 -->
     <div class="api-section">
       <div class="api-title" onclick="toggleVisibility('api1')">Vista de todos los reglamentos</div>
       <div id="api1" class="api-description">Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</div>
@@ -145,55 +140,22 @@
       <div id="api8-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?article={isArticle}&user={idUser}</div>
     </div>
   </div>
-  
-<script>
-  function toggleVisibility(id) {
-    var x = document.getElementById(id);
-    var y = document.getElementById(id + '-endpoint');
-    var section = document.querySelector('.api-section.clicked');
+  <script>
+    function toggleVisibility(id) {
+      var x = document.getElementById(id);
+      var y = document.getElementById(id + '-endpoint');
+      var section = document.querySelector('.api-section.clicked');
 
-    if (section) {
-      section.classList.remove('clicked');
-      hideSectionContent(section);
+      if (section) {
+        section.classList.remove('clicked');
+        section.querySelector('.api-description').style.display = 'none';
+        section.querySelector('.api-endpoint').style.display = 'none';
+      }
+
+      x.style.display = (x.style.display === "none") ? "block" : "none";
+      y.style.display = (y.style.display === "none") ? "block" : "none";
+      event.currentTarget.classList.add('clicked');
     }
-
-    x.style.display = (x.style.display === "none") ? "block" : "none";
-    y.style.display = (y.style.display === "none") ? "block" : "none";
-    event.currentTarget.classList.toggle('clicked');
-    setTimeout(() => showSectionContent(x), 100);
-  }
-
-function hideSectionContent(section) {
-  var description = section.querySelector('.api-description');
-  var endpoint = section.querySelector('.api-endpoint');
-
-  if (description) {
-    description.style.maxHeight = '0';
-    description.style.opacity = '0';
-  }
-
-  if (endpoint) {
-    endpoint.style.maxHeight = '0';
-    endpoint.style.opacity = '0';
-  }
-}
-
-function showSectionContent(section) {
-  var description = section.querySelector('.api-description');
-  var endpoint = section.querySelector('.api-endpoint');
-
-  if (description) {
-    description.style.maxHeight = description.scrollHeight + 'px'; // Auto-adjust to content height
-    description.style.opacity = '1';
-  }
-
-  if (endpoint) {
-    endpoint.style.maxHeight = endpoint.scrollHeight + 'px'; // Auto-adjust to content height
-    endpoint.style.opacity = '1';
-  }
-}
-
-</script>
-
+  </script>
 </body>
 </html>
