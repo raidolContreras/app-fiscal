@@ -44,17 +44,21 @@
       margin: 10px 0;
       color: #555;
     }
+    .api-card strong {
+      color: #007BFF;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1 class="text-center py-4" style="color: #007BFF; font-size: 36px; font-weight: bold;">Documentación de API</h1>
     <div class="row">
+      <!-- Each API Card -->
       <div class="col-lg-6">
         <div class="api-card">
           <h5 class="fw-bold">Recurso: Vista de todos los reglamentos</h5>
-          <p><strong style="color: #007BFF;">URL:</strong> ?resource=titles</p>
-          <p><strong style="color: #007BFF;">Descripción:</strong> Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</p>
+          <p><strong>URL:</strong> ?resource=titles</p>
+          <p><strong>Descripción:</strong> Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</p>
         </div>
       </div>
       <div class="col-lg-6">
@@ -97,6 +101,13 @@
           <h5 class="fw-bold">Recurso: Busqueda de datos</h5>
           <p><strong style="color: #007BFF;">URL:</strong> ?search={busqueda}</p>
           <p><strong style="color: #007BFF;">Descripción:</strong> Este recurso te permite buscar palabras en los articulos.</p>          
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="api-card">
+          <h5 class="fw-bold">Recurso: Marcar articulos favoritos</h5>
+          <p><strong style="color: #007BFF;">URL:</strong> ?article={isArticle}&user={idUser}</p>
+          <p><strong style="color: #007BFF;">Descripción:</strong> Permite marcar ariculos como favoritos.</p>          
         </div>
       </div>
     </div>
