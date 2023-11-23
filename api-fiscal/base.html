@@ -48,7 +48,7 @@
 <div class="api-section">
   <div class="api-title" onclick="toggleVisibility('api1')">Recurso: Vista de todos los reglamentos</div>
   <div id="api1" class="api-description" style="display: none;">Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</div>
-  <div class="api-endpoint" style="display: none;"><strong>URL:</strong> ?resource=titles</div>
+  <div id="api1-endpoint" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?resource=titles</div>
 </div>
 
 <!-- API Section 2 -->
@@ -97,16 +97,19 @@
 <div class="api-section">
   <div class="api-title" onclick="toggleVisibility('api8')">Recurso: Marcar artículos favoritos</div>
   <div id="api8" class="api-description" style="display: none;">Permite marcar artículos como favoritos.</div>
-  <div id="api8" class="api-endpoint" style="display: none;"><strong>URL:</strong> ?article={isArticle}&user={idUser}</div>
+  <div class="api-endpoint" style="display: none;"><strong>URL:</strong> ?article={isArticle}&user={idUser}</div>
 </div>
 
 <script>
 function toggleVisibility(id) {
   var x = document.getElementById(id);
+  var y = document.getElementById(id + '-endpoint');
   if (x.style.display === "none") {
     x.style.display = "block";
+    y.style.display = "block";
   } else {
     x.style.display = "none";
+    y.style.display = "none";
   }
 }
 </script>
