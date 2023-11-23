@@ -85,6 +85,11 @@
       border-radius: 5px;
       cursor: pointer;
       z-index: 1;
+      transition: background 0.3s ease;
+    }
+
+    .copy-button:hover {
+      background: #45b8a8;
     }
   </style>
 </head>
@@ -158,6 +163,8 @@
 
   </div>
 
+  </div>
+
   <script>
     function toggleVisibility(id) {
       var description = document.getElementById(id + '-description');
@@ -182,6 +189,12 @@
       textArea.select();
       document.execCommand('copy');
       document.body.removeChild(textArea);
+
+      var button = event.currentTarget;
+      button.style.backgroundColor = "#45b8a8";
+      setTimeout(function () {
+        button.style.backgroundColor = "#4ecdc4";
+      }, 500);
     }
   </script>
 </body>
