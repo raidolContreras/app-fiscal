@@ -41,19 +41,28 @@
       background: rgba(255, 255, 255, 0.2);
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
     }
 
     .api-section:hover {
       background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.02);
+    }
+
+    .api-section:active {
+      transform: scale(0.98);
     }
 
     .api-title {
       font-size: 24px;
       font-weight: bold;
-      cursor: pointer;
       color: #fff;
       transition: color 0.3s ease;
+    }
+
+    .api-section.clicked {
+      background: rgba(255, 255, 255, 0.4);
     }
 
     .api-title:hover {
@@ -135,13 +144,15 @@
     function toggleVisibility(id) {
       var x = document.getElementById(id);
       var y = document.getElementById(id + '-endpoint');
-      if (x.style.display === "none") {
-        x.style.display = "block";
-        y.style.display = "block";
-      } else {
-        x.style.display = "none";
-        y.style.display = "none";
+      var section = document.querySelector('.api-section.clicked');
+
+      if (section) {
+        section.classList.remove('clicked');
       }
+
+      x.style.display = (x.style.display === "none") ? "block" : "none";
+      y.style.display = (y.style.display === "none") ? "block" : "none";
+      event.currentTarget.classList.add('clicked');
     }
   </script>
 </body>
