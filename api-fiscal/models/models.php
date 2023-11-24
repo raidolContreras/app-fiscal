@@ -197,7 +197,7 @@ class ModelsApi{
         return $stmt->fetch();
     }
 
-    static public function deleteFavoriteArticle($article, $user) {
+    static public function createFavoriteArticle($article, $user) {
         try {
             $sql = "INSERT INTO app_favorites_articles(Article_idArticle, User_idUsers) VALUES (:article, :user)";
             $stmt = Conexion::conectar()->prepare($sql);
