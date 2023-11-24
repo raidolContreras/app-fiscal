@@ -287,7 +287,7 @@ class ControllerApi{
 	}
 
 	static public function toggleFavoritesArticles($article, $user){
-		return $user;
+		return json_encode($user);
 	}
 
 
