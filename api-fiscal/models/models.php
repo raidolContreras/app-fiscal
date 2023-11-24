@@ -187,4 +187,14 @@ class ModelsApi{
         return $stmt->fetchAll(PDO::FETCH_ASSOC); // Devuelve los resultados como un arreglo asociativo
     }
 
+    static public function searchArticles($article, $user){
+        $sql = "SELECT * FROM app_favorites_articles WHERE Article_idArticle = :article AND User_idUsers = :user";
+
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':article', $article, PDO::PARAM_INT);
+        $stmt->bindParam(':user', $user, PDO::PARAM_INT);
+        $stmt->execute(); // Ejecuta la consulta
+        return $stmt->fetch();
+    }
+
 }

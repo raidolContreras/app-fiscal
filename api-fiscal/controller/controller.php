@@ -287,10 +287,20 @@ class ControllerApi{
 	}
 
 	static public function toggleFavoritesArticles($article, $user){
-		return json_encode(['Usuario' => $user]);
+		$searchArticle = ControllerApi::searchArticles($article);
+		if (empty($searchArticle)) {
+			//$createFavoriteArticle = ModelsApi::createFavoriteArticle($article, $user);
+			return json_encode(['message' => 'No existe']);
+		} else {
+			//$deleteFavoriteArticle = ModelsApi::deleteFavoriteArticle($article, $user);
+			return json_encode(['message' => 'si existe']);
+		}
 	}
 
-
+	static public function searchArticles($article, $user){
+	    $results = ModelsApi::searchArticles($article, $user);
+	    return json_encode($results);
+	}
 
 }
 
