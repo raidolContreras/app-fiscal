@@ -97,7 +97,7 @@ if (isset($_GET['resource'])) {
 
     $article = $_GET['article'];
     echo $article;
-    }
+
 
 }else {
 
