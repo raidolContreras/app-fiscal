@@ -304,11 +304,11 @@ class ControllerApi{
             $favorites = ModelsApi::searchArticlesFavorites($user);
             foreach ($favorites as $favorite) {
             	$results['results'][] = array(
-	            	'idTitle' => intval($result['idTitles']),
-		            'name_title' => $result['name_title'],
-		            'idArticle' => intval($result['idArticles']),
-		            'nameArticle' => $result['name_article'],
-		            'paragraph' => $result['paragraph'],
+	            	'idTitle' => intval($favorite['idTitles']),
+		            'name_title' => $favorite['name_title'],
+		            'idArticle' => intval($favorite['idArticles']),
+		            'nameArticle' => $favorite['name_article'],
+		            'paragraph' => $favorite['paragraph'],
             	);
             }
         }
