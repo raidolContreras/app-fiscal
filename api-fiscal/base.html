@@ -17,7 +17,7 @@
       <div class="api-section" onclick="toggleVisibility('api1')">
         <div class="api-title">Vista de todos los reglamentos</div>
         <div class="api-description" id="api1-description" style="display: none;">Este recurso proporciona una vista de todos los reglamentos disponibles. Puedes utilizar esta opción para obtener una lista completa de los reglamentos en la API.</div>
-        <div class="api-endpoint" id="api1-endpoint" style="display: none;"><strong>Uso:</strong> ?resource=titles</div>
+        <div class="api-endpoint" id="api1-endpoint" style="display: none;">?resource=titles</div>
       </div>
       <div class="copy-container">
         <div class="copy-button" onclick="copyToClipboard('#api1-endpoint')"><span class="copy-icon material-symbols-outlined">content_copy</span></div>
@@ -29,7 +29,7 @@
       <div class="api-section" onclick="toggleVisibility('api2')">
         <div class="api-title">Vista de un solo reglamento</div>
         <div class="api-description" id="api2-description" style="display: none;">Este recurso permite acceder a la vista de un solo reglamento identificado por su ID. Puedes utilizar esta opción para obtener detalles específicos de un reglamento en particular.</div>
-        <div class="api-endpoint" id="api2-endpoint" style="display: none;"><strong>Uso:</strong> ?reglament={idReglament}</div>
+        <div class="api-endpoint" id="api2-endpoint" style="display: none;">?reglament={idReglament}</div>
       </div>
       <div class="copy-container">
         <div class="copy-button" onclick="copyToClipboard('#api2-endpoint')"><span class="copy-icon material-symbols-outlined">content_copy</span></div>
@@ -41,7 +41,7 @@
       <div class="api-section" onclick="toggleVisibility('api3')">
         <div class="api-title">Registro de Nuevos Usuarios</div>
         <div class="api-description" id="api3-description" style="display: none;">Este recurso te permite registrar nuevos usuarios en el sistema. Al proporcionar los datos necesarios, como el nombre, el correo electrónico y la contraseña, puedes crear una cuenta de usuario. Una vez registrado, los nuevos usuarios podrán acceder a la aplicación inLibrary.</div>
-        <div class="api-endpoint" id="api3-endpoint" style="display: none;"><strong>Uso:</strong> ?register=1&name={name}&email={email}&password={password}</div>
+        <div class="api-endpoint" id="api3-endpoint" style="display: none;">?register=1&name={name}&email={email}&password={password}</div>
       </div>
       <div class="copy-container">
         <div class="copy-button" onclick="copyToClipboard('#api3-endpoint')"><span class="copy-icon material-symbols-outlined">content_copy</span></div>
@@ -53,7 +53,7 @@
       <div class="api-section" onclick="toggleVisibility('api4')">
         <div class="api-title">Iniciar sesión</div>
         <div class="api-description" id="api4-description" style="display: none;">Este recurso te permite iniciar sesión. Al proporcionar los datos necesarios, como el correo electrónico y la contraseña, los usuarios podrán acceder a la aplicación inLibrary.</div>
-        <div class="api-endpoint" id="api4-endpoint" style="display: none;"><strong>Uso:</strong> ?login=1&email={email}&password={password}</div>
+        <div class="api-endpoint" id="api4-endpoint" style="display: none;">?login=1&email={email}&password={password}</div>
       </div>
       <div class="copy-container">
         <div class="copy-button" onclick="copyToClipboard('#api4-endpoint')"><span class="copy-icon material-symbols-outlined">content_copy</span></div>
@@ -65,7 +65,7 @@
       <div class="api-section" onclick="toggleVisibility('api5')">
         <div class="api-title">Cargar datos de un usuario</div>
         <div class="api-description" id="api5-description" style="display: none;">Este recurso te permite cargar los datos de un usuario. Al proporcionar el correo electrónico.</div>
-        <div class="api-endpoint" id="api5-endpoint" style="display: none;"><strong>Uso:</strong> ?data=1&email={email}</div>
+        <div class="api-endpoint" id="api5-endpoint" style="display: none;">?data=1&email={email}</div>
       </div>
       <div class="copy-container">
         <div class="copy-button" onclick="copyToClipboard('#api5-endpoint')"><span class="copy-icon material-symbols-outlined">content_copy</span></div>
@@ -77,7 +77,7 @@
       <div class="api-section" onclick="toggleVisibility('api6')">
         <div class="api-title">Actualizar datos de un usuario</div>
         <div class="api-description" id="api6-description" style="display: none;">Este recurso te permite actualizar los datos de un usuario. Al proporcionar el idUser.</div>
-        <div class="api-endpoint" id="api6-endpoint" style="display: none;"><strong>Uso:</strong> ?update={idUser}&firstname={firstname}&lastname={lastname}&birthday={birthday}&phone={phone}</div>
+        <div class="api-endpoint" id="api6-endpoint" style="display: none;">?update={idUser}&firstname={firstname}&lastname={lastname}&birthday={birthday}&phone={phone}</div>
       </div>
       <div class="copy-container">
         <div class="copy-button" onclick="copyToClipboard('#api6-endpoint')"><span class="copy-icon material-symbols-outlined">content_copy</span></div>
@@ -89,7 +89,7 @@
       <div class="api-section" onclick="toggleVisibility('api7')">
         <div class="api-title">Búsqueda de datos</div>
         <div class="api-description" id="api7-description" style="display: none;">Este recurso te permite buscar palabras en los artículos.</div>
-        <div class="api-endpoint" id="api7-endpoint" style="display: none;"><strong>Uso:</strong> ?search={busqueda}</div>
+        <div class="api-endpoint" id="api7-endpoint" style="display: none;">?search={busqueda}</div>
       </div>
       <div class="copy-container">
         <div class="copy-button" onclick="copyToClipboard('#api7-endpoint')"><span class="copy-icon material-symbols-outlined">content_copy</span></div>
@@ -101,7 +101,7 @@
       <div class="api-section" onclick="toggleVisibility('api8')">
         <div class="api-title">Marcar artículos favoritos</div>
         <div class="api-description" id="api8-description" style="display: none;">Permite marcar artículos como favoritos.</div>
-        <div class="api-endpoint" id="api8-endpoint" style="display: none;"><strong>Uso:</strong> ?article={isArticle}&user={idUser}</div>
+        <div class="api-endpoint" id="api8-endpoint" style="display: none;">?article={isArticle}&user={idUser}</div>
       </div>
       <div class="copy-container">
         <div class="copy-button" onclick="copyToClipboard('#api8-endpoint')"><span class="copy-icon material-symbols-outlined">content_copy</span></div>

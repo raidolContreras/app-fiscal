@@ -60,10 +60,16 @@
       text-align: center;
     }
 
-    .api-description,
-    .api-endpoint {
+    .api-description{
       font-size: 16px;
       color: #ddd;
+      display: none;
+      margin-bottom: 10px;
+    }
+    
+    .api-endpoint {
+      font-size: 16px;
+      color: #4ecdc4;
       display: none;
       margin-bottom: 10px;
     }
