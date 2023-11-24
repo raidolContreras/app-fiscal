@@ -197,4 +197,38 @@ class ModelsApi{
         return $stmt->fetch();
     }
 
+    static public function deleteFavoriteArticle($article, $user) {
+        try {
+            $sql = "INSERT INTO app_favorites_articles(Article_idArticle, User_idUsers) VALUES (:article, :user)";
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':article', $article, PDO::PARAM_INT);
+            $stmt->bindParam(':user', $user, PDO::PARAM_INT);
+    
+            if ($stmt->execute()) {
+                return 'Agregado';
+            } else {
+                return 'Error agregar a favoritos';
+            }
+        } catch (PDOException $e) {
+            return 'Error inesperado: ' . $e->getMessage();
+        }
+    }
+
+    static public function deleteFavoriteArticle($article, $user) {
+        try {
+            $sql = "DELETE FROM app_favorites_articles WHERE Article_idArticle = :article AND User_idUsers = :user";
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':article', $article, PDO::PARAM_INT);
+            $stmt->bindParam(':user', $user, PDO::PARAM_INT);
+    
+            if ($stmt->execute()) {
+                return 'Eliminado';
+            } else {
+                return 'Error eliminar de favoritos';
+            }
+        } catch (PDOException $e) {
+            return 'Error inesperado: ' . $e->getMessage();
+        }
+    }
+
 }

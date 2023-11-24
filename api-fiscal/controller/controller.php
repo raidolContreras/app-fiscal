@@ -289,11 +289,11 @@ class ControllerApi{
 	static public function toggleFavoritesArticles($article, $user) {
         $searchArticle = ControllerApi::searchArticles($article, $user);
         if ($searchArticle != 'false') {
-            //$deleteFavoriteArticle = ModelsApi::deleteFavoriteArticle($article, $user);
-            return json_encode(['message' => 'si existe']);
+            $deleteFavoriteArticle = ModelsApi::deleteFavoriteArticle($article, $user);
+            return json_encode(['message' => $deleteFavoriteArticle]);
         } else {
-            //$createFavoriteArticle = ModelsApi::createFavoriteArticle($article, $user);
-            return json_encode(['message' => 'No existe']);
+            $createFavoriteArticle = ModelsApi::createFavoriteArticle($article, $user);
+            return json_encode(['message' => $createFavoriteArticle]);
         }
     }
 
