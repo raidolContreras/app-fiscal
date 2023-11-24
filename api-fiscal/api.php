@@ -99,6 +99,8 @@ if (isset($_GET['resource'])) {
     $user = intval($_GET['user']);
     $toggleFavoritesArticles = ControllerApi::toggleFavoritesArticles($article, $user);
 
+    echo $toggleFavoritesArticles;
+
 
 }else {
 
