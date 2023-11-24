@@ -202,7 +202,6 @@ class ModelsApi{
                 FROM app_favorites_articles f
                 LEFT JOIN app_articles a ON a.idArticles = f.Article_idArticle
                 LEFT JOIN app_titles t ON t.idTitles = a.Title_idTitles
-                LEFT JOIN app_paragraph p ON p.articles_idArticles = a.idArticles
                 WHERE User_idUsers = :user";
 
         $stmt = Conexion::conectar()->prepare($sql);
