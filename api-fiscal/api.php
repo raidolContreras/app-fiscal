@@ -97,7 +97,7 @@ if (isset($_GET['resource'])) {
 
     $article = intval($_GET['article']);
     $user = intval($_GET['user']);
-    $searchArticles = ControllerApi::search($search);
+    $toggleFavoritesArticles = ControllerApi::toggleFavoritesArticles($article, $user);
 
 
 }else {

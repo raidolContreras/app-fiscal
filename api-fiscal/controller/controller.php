@@ -264,27 +264,31 @@ class ControllerApi{
 		return json_encode(['message' => $resultado]);
 	}
 
-static public function search($search){
-    $results = ModelsApi::search($search);
+	static public function search($search){
+	    $results = ModelsApi::search($search);
 
-    $data = array(
-    	'results' => array(),
-    );
+	    $data = array(
+	    	'results' => array(),
+	    );
 
-    foreach ($results as  $result) {
-        $data['results'][] = array(
-            'idTitle' => intval($result['idTitles']),
-            'name_title' => $result['name_title'],
-            'idArticle' => intval($result['idArticles']),
-            'nameArticle' => $result['name_article'],
-            'paragraph' => $result['paragraph'],
-            'cover' => $result['name_cover'],
-        );
-    }
+	    foreach ($results as  $result) {
+	        $data['results'][] = array(
+	            'idTitle' => intval($result['idTitles']),
+	            'name_title' => $result['name_title'],
+	            'idArticle' => intval($result['idArticles']),
+	            'nameArticle' => $result['name_article'],
+	            'paragraph' => $result['paragraph'],
+	            'cover' => $result['name_cover'],
+	        );
+	    }
 
-    // Devolver el array completo
-    return json_encode($data);
-}
+	    // Devolver el array completo
+	    return json_encode($data);
+	}
+
+	static public function toggleFavoritesArticles($article, $user){
+		return $user;
+	}
 
 
 
