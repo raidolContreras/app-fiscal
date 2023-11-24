@@ -293,7 +293,7 @@ class ControllerApi{
             return json_encode(['message' => 'No existe']);
         } else {
             //$deleteFavoriteArticle = ModelsApi::deleteFavoriteArticle($article, $user);
-            return json_encode(['message' => 'si existe']);
+            return json_encode(['message' => $searchArticle]);
         }
     }
 
