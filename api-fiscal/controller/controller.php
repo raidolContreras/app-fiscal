@@ -286,25 +286,25 @@ class ControllerApi{
 	    return json_encode($data);
 	}
 
-	static public function toggleFavoritesArticles($article, $user){
-		$searchArticle = ControllerApi::searchArticles($article);
-		if (empty($searchArticle)) {
-			//$createFavoriteArticle = ModelsApi::createFavoriteArticle($article, $user);
-			return json_encode(['message' => 'No existe']);
-		} else {
-			//$deleteFavoriteArticle = ModelsApi::deleteFavoriteArticle($article, $user);
-			return json_encode(['message' => 'si existe']);
-		}
-	}
+	static public function toggleFavoritesArticles($article, $user) {
+        $searchArticle = ControllerApi::searchArticles($article, $user);
+        if (empty($searchArticle)) {
+            //$createFavoriteArticle = ModelsApi::createFavoriteArticle($article, $user);
+            return json_encode(['message' => 'No existe']);
+        } else {
+            //$deleteFavoriteArticle = ModelsApi::deleteFavoriteArticle($article, $user);
+            return json_encode(['message' => 'si existe']);
+        }
+    }
 
-	static public function searchArticles($article, $user){
-		if ($user != null) {
-	    	$results = ModelsApi::searchArticle($article, $user);
-		} else {
-			$results = ModelsApi::searchArticles($article);
-		}
-	    return json_encode($results);
-	}
+    static public function searchArticles($article, $user) {
+        if ($user != null) {
+            $results = ModelsApi::searchArticle($article, $user);
+        } else {
+            $results = ModelsApi::searchArticles($article);
+        }
+        return json_encode($results);
+    }
 
 }
 
