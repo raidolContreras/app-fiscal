@@ -92,11 +92,12 @@ if (isset($_GET['resource'])) {
         print_r($searchArticles);
     }
 
-}elseif(isset($_GET['article'])){
+}elseif(isset($_GET['article']) && isset($_GET['user'])){
     header("Content-Type: application/json");
 
-    $article = $_GET['article'];
-    echo $article;
+    $article = intval($_GET['article']);
+    $user = intval($_GET['user']);
+    $searchArticles = ControllerApi::search($search);
 
 
 }else {
