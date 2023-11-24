@@ -288,7 +288,7 @@ class ControllerApi{
 
 	static public function toggleFavoritesArticles($article, $user) {
         $searchArticle = ControllerApi::searchArticles($article, $user);
-        if ($searchArticle) {
+        if ($searchArticle != 'false') {
             //$deleteFavoriteArticle = ModelsApi::deleteFavoriteArticle($article, $user);
             return json_encode(['message' => 'si existe']);
         } else {
