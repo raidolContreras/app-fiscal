@@ -301,7 +301,7 @@ class ControllerApi{
         if ($user != null) {
             $results = ModelsApi::searchArticle($article, $user);
         } else {
-            $results = ModelsApi::searchArticles($user);
+            $results = ModelsApi::searchArticlesFavorites($user);
         }
         return json_encode($results);
     }

@@ -197,7 +197,7 @@ class ModelsApi{
         return $stmt->fetch();
     }
 
-    static public function searchArticles($user) {
+    static public function searchArticlesFavorites($user) {
         $sql = "SELECT * 
                 FROM app_favorites_articles f
                 LEFT JOIN app_articles a ON a.idArticles = f.Article_idArticle
