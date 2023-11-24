@@ -298,7 +298,11 @@ class ControllerApi{
 	}
 
 	static public function searchArticles($article, $user){
-	    $results = ModelsApi::searchArticles($article, $user);
+		if ($user != null) {
+	    	$results = ModelsApi::searchArticle($article, $user);
+		} else {
+			$results = ModelsApi::searchArticles($article);
+		}
 	    return json_encode($results);
 	}
 
