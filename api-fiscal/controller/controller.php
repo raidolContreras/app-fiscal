@@ -303,13 +303,13 @@ class ControllerApi{
         } else {
             $favorites = ModelsApi::searchArticlesFavorites($user);
             foreach ($favorites as $favorite) {
-            	$results['results'][] = {
+            	$results['results'][] = array(
 	            	'idTitle' => intval($result['idTitles']),
 		            'name_title' => $result['name_title'],
 		            'idArticle' => intval($result['idArticles']),
 		            'nameArticle' => $result['name_article'],
 		            'paragraph' => $result['paragraph'],
-            	}
+            	);
             }
         }
         return json_encode($results);
