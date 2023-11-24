@@ -301,7 +301,16 @@ class ControllerApi{
         if ($article != null) {
             $results = ModelsApi::searchArticle($article, $user);
         } else {
-            $results = ModelsApi::searchArticlesFavorites($user);
+            $favorites = ModelsApi::searchArticlesFavorites($user);
+            foreach ($favorites as $favorite) {
+            	$results['results'][] = {
+	            	'idTitle' => intval($result['idTitles']),
+		            'name_title' => $result['name_title'],
+		            'idArticle' => intval($result['idArticles']),
+		            'nameArticle' => $result['name_article'],
+		            'paragraph' => $result['paragraph'],
+            	}
+            }
         }
         return json_encode($results);
     }
