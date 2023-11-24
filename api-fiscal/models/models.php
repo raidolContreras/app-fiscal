@@ -197,6 +197,16 @@ class ModelsApi{
         return $stmt->fetch();
     }
 
+    static public function searchArticles($user) {
+        $sql = "SELECT * FROM app_favorites_articles WHERE User_idUsers = :user";
+
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':article', $article, PDO::PARAM_INT);
+        $stmt->bindParam(':user', $user, PDO::PARAM_INT);
+        $stmt->execute(); // Ejecuta la consulta
+        return $stmt->fetch();
+    }
+
     static public function createFavoriteArticle($article, $user) {
         try {
             $sql = "INSERT INTO app_favorites_articles(Article_idArticle, User_idUsers) VALUES (:article, :user)";
