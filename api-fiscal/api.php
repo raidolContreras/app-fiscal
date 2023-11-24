@@ -102,6 +102,15 @@ if (isset($_GET['resource'])) {
     print_r($toggleFavoritesArticles);
 
 
+}elseif( isset($_GET['listArticle'])){
+    header("Content-Type: application/json");
+
+    $user = intval($_GET['listArticle']);
+    $seeArticlesFavorites = ControllerApi::searchArticles(null, $user);
+
+    print_r($seeArticlesFavorites);
+
+
 }else {
 
     require 'base.html';

@@ -298,7 +298,7 @@ class ControllerApi{
     }
 
     static public function searchArticles($article, $user) {
-        if ($user != null) {
+        if ($article != null) {
             $results = ModelsApi::searchArticle($article, $user);
         } else {
             $results = ModelsApi::searchArticlesFavorites($user);

@@ -209,7 +209,7 @@ class ModelsApi{
         $stmt->bindParam(':article', $article, PDO::PARAM_INT);
         $stmt->bindParam(':user', $user, PDO::PARAM_INT);
         $stmt->execute(); // Ejecuta la consulta
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 
     static public function createFavoriteArticle($article, $user) {
