@@ -206,7 +206,6 @@ class ModelsApi{
                 WHERE User_idUsers = :user";
 
         $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(':article', $article, PDO::PARAM_INT);
         $stmt->bindParam(':user', $user, PDO::PARAM_INT);
         $stmt->execute(); // Ejecuta la consulta
         return $stmt->fetchAll();
