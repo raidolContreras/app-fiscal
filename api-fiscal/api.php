@@ -92,6 +92,13 @@ if (isset($_GET['resource'])) {
         print_r($searchArticles);
     }
 
+}elseif(isset($_GET['article'])){
+    header("Content-Type: application/json");
+
+    $article = $_GET['article'];
+    echo $article;
+    }
+
 }else {
 
     require 'base.html';
