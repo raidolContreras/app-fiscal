@@ -306,8 +306,15 @@ class ControllerApi{
             	$results = $searchArticle;
             } else {
             	$results = array(
-            		'idArticle' => $searchArticle[0]['idArticles']
+            		'idArticle' => $searchArticle[0]['idArticles'],
+            		'nameArticle' => $searchArticle[0]['name_article'],
             	);
+            	foreach($searchArticle as $article){
+            		$results['paragraphs'][] = array(
+            			'idParagraph' => $article['idParagraph'],
+            			'paragraph' => $article['paragraph']
+            		);
+            	}
             }
 
         } else {
