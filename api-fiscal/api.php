@@ -117,14 +117,13 @@ if (isset($_GET['resource'])) {
 
     $article = intval($_GET['searchArticle']);
     $seeArticle = ControllerApi::searchArticles($article, null);
-
-    if (isset($seeArticle[0]['idArticles'])) {
-        // Accede al índice solo si existe
-        $results['article'][] = array(
-            'idArticle' => intval($seeArticle[0]['idArticles']),
-            'name_article' => $seeArticle[0]['name_article']
-        );
+if (is_array($seeArticle)) {
+    foreach ($seeArticle as $currentItem) {
+        // Realiza alguna operación con $currentItem
+        // Ejemplo: Imprime el contenido de cada elemento
+        echo "Elemento: " . json_encode($currentItem['name_article']) . "\n";
     }
+}
 
     print_r($seeArticle);
 
