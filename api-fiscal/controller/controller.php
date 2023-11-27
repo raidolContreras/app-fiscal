@@ -306,7 +306,7 @@ class ControllerApi{
             	$results = $searchArticle;
             } else {
             	$results = array(
-            		'idArticle' = $searchArticle[0]['idArticles']
+            		'idArticle' => $searchArticle[0]['idArticles']
             	);
             }
 
