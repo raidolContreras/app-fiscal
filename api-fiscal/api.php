@@ -117,12 +117,13 @@ if (isset($_GET['resource'])) {
     $article = intval($_GET['searchArticle']);
     $seeArticle = ControllerApi::searchArticles($article, null);
 
+    $results['article'][] = array(
+        'idArticle' => intval($seeArticle[0]['idArticles']),
+        'name_article' => $seeArticle[0]['name_article'],
+        'paragraph' => array();
+    );
+
     foreach ($seeArticle as $result) {
-        $results['results'][] = array(
-            'idArticle' => intval($result['idArticles']),
-            'name_article' => $result['name_article'],
-            
-        );
     }
 
     print_r($results);
