@@ -111,6 +111,15 @@ if (isset($_GET['resource'])) {
     print_r($seeArticlesFavorites);
 
 
+}elseif( isset($_GET['searchArticle'])){
+    header("Content-Type: application/json");
+
+    $article = intval($_GET['searchArticle']);
+    $seeArticle = ControllerApi::searchArticles($article, null);
+
+    print_r($seeArticle);
+
+
 }else {
 
     require 'base.html';

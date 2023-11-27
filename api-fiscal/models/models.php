@@ -188,11 +188,17 @@ class ModelsApi{
     }
 
     static public function searchArticle($article, $user) {
-        $sql = "SELECT * FROM app_favorites_articles WHERE Article_idArticle = :article AND User_idUsers = :user";
+        if ($user != null) {
+            $sql = "SELECT * FROM app_favorites_articles WHERE Article_idArticle = :article AND User_idUsers = :user";
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':article', $article, PDO::PARAM_INT);
+            $stmt->bindParam(':user', $user, PDO::PARAM_INT);
+        } else {
+            $sql = "SELECT * FROM app_articles WHERE Article_idArticle = :article ";
+            $stmt = Conexion::conectar()->prepare($sql);
+            $stmt->bindParam(':article', $article, PDO::PARAM_INT);
+        }
 
-        $stmt = Conexion::conectar()->prepare($sql);
-        $stmt->bindParam(':article', $article, PDO::PARAM_INT);
-        $stmt->bindParam(':user', $user, PDO::PARAM_INT);
         $stmt->execute(); // Ejecuta la consulta
         return $stmt->fetch();
     }
