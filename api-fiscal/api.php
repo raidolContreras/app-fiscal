@@ -120,7 +120,7 @@ if (isset($_GET['resource'])) {
     $results['article'][] = array(
         'idArticle' => intval($seeArticle[0]['idArticles']),
         'name_article' => $seeArticle[0]['name_article'],
-        'paragraph' => array();
+        'paragraph' => array()
     );
 
     foreach ($seeArticle as $result) {
