@@ -306,12 +306,12 @@ class ControllerApi{
             	$results = $searchArticle;
             } else {
             	$results = array(
-            		'idArticle' => $searchArticle[0]['idArticles'],
+            		'idArticle' => intval($searchArticle[0]['idArticles']),
             		'nameArticle' => $searchArticle[0]['name_article'],
             	);
             	foreach($searchArticle as $article){
             		$results['paragraphs'][] = array(
-            			'idParagraph' => $article['idParagraph'],
+            			'idParagraph' => intval($article['idParagraph']),
             			'paragraph' => $article['paragraph']
             		);
             	}
