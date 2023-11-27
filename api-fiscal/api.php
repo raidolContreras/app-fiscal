@@ -126,7 +126,7 @@ if (isset($_GET['resource'])) {
         );
     }
 
-    print_r($seeArticle);
+    print_r($results);
 
 }else {
 
