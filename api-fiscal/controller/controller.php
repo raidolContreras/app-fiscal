@@ -299,7 +299,17 @@ class ControllerApi{
 
     static public function searchArticles($article, $user) {
         if ($article != null) {
-            $results = ModelsApi::searchArticle($article, $user);
+
+            $searchArticle = ModelsApi::searchArticle($article, $user);
+
+            if ($user != null) {
+            	$results = $searchArticle;
+            } else {
+            	$results[] = (
+            		'idArticle' = $searchArticle[0]['idArticles']
+            	);
+            }
+
         } else {
             $favorites = ModelsApi::searchArticlesFavorites($user);
             foreach ($favorites as $favorite) {
