@@ -194,7 +194,7 @@ class ModelsApi{
             $stmt->bindParam(':article', $article, PDO::PARAM_INT);
             $stmt->bindParam(':user', $user, PDO::PARAM_INT);
         } else {
-            $sql = "SELECT * FROM app_articles WHERE Article_idArticle = :article ";
+            $sql = "SELECT * FROM app_articles WHERE idArticles = :article ";
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->bindParam(':article', $article, PDO::PARAM_INT);
         }
