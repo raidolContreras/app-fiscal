@@ -119,10 +119,10 @@ if (isset($_GET['resource'])) {
     $seeArticle = ControllerApi::searchArticles($article, null);
 if (is_array($seeArticle)) {
     foreach ($seeArticle as $currentItem) {
-        // Realiza alguna operación con $currentItem
-        // Ejemplo: Imprime el contenido de cada elemento
         print_r( "Elemento: " . json_encode($currentItem['name_article']));
     }
+} else {
+    print_r($seeArticle);
 }
 
 }else {
