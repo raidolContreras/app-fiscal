@@ -121,7 +121,7 @@ if (is_array($seeArticle)) {
     foreach ($seeArticle as $currentItem) {
         // Realiza alguna operación con $currentItem
         // Ejemplo: Imprime el contenido de cada elemento
-        echo "Elemento: " . json_encode($currentItem['name_article']) . "\n";
+        print_r( "Elemento: " . json_encode($currentItem['name_article']));
     }
 }
 
