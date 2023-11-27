@@ -125,8 +125,6 @@ if (is_array($seeArticle)) {
     }
 }
 
-    print_r($seeArticle);
-
 }else {
 
     require 'base.html';
