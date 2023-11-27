@@ -112,18 +112,14 @@ if (isset($_GET['resource'])) {
 
 
 }elseif( isset($_GET['searchArticle'])){
-
+    
     header("Content-Type: application/json");
 
     $article = intval($_GET['searchArticle']);
     $seeArticle = ControllerApi::searchArticles($article, null);
-if (is_array($seeArticle)) {
-    foreach ($seeArticle as $currentItem) {
-        print_r( "Elemento: " . json_encode($currentItem['name_article']));
-    }
-} else {
+
     print_r($seeArticle);
-}
+
 
 }else {
 
