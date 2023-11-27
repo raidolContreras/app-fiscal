@@ -112,7 +112,7 @@ if (isset($_GET['resource'])) {
 
 
 }elseif( isset($_GET['searchArticle'])){
-    
+
     header("Content-Type: application/json");
 
     $article = intval($_GET['searchArticle']);
@@ -126,11 +126,7 @@ if (isset($_GET['resource'])) {
         );
     }
 
-
-    foreach ($seeArticle as $result) {
-    }
-
-    print_r($results);
+    print_r($seeArticle);
 
 }else {
 
