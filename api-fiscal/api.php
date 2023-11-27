@@ -112,21 +112,25 @@ if (isset($_GET['resource'])) {
 
 
 }elseif( isset($_GET['searchArticle'])){
+    
     header("Content-Type: application/json");
 
     $article = intval($_GET['searchArticle']);
     $seeArticle = ControllerApi::searchArticles($article, null);
 
-    $results['article'][] = array(
-        'idArticle' => intval($seeArticle[0]['idArticles']),
-        'name_article' => $seeArticle[0]['name_article']
-    );
+    if (isset($seeArticle[0]['idArticles'])) {
+        // Accede al índice solo si existe
+        $results['article'][] = array(
+            'idArticle' => intval($seeArticle[0]['idArticles']),
+            'name_article' => $seeArticle[0]['name_article']
+        );
+    }
+
 
     foreach ($seeArticle as $result) {
     }
 
     print_r($results);
-
 
 }else {
 
