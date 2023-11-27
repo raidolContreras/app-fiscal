@@ -305,7 +305,7 @@ class ControllerApi{
             if ($user != null) {
             	$results = $searchArticle;
             } else {
-            	$results[] = array(
+            	$results = array(
             		'idArticle' = $searchArticle[0]['idArticles']
             	);
             }
