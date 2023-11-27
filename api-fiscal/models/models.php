@@ -193,14 +193,20 @@ class ModelsApi{
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->bindParam(':article', $article, PDO::PARAM_INT);
             $stmt->bindParam(':user', $user, PDO::PARAM_INT);
+
+            $stmt->execute(); // Ejecuta la consulta
+            return $stmt->fetch();
         } else {
-            $sql = "SELECT * FROM app_articles WHERE idArticles = :article ";
+            $sql = "SELECT * 
+                    FROM app_articles a 
+                    LEFT JOIN app_paragraph p ON p.articles_idArticles = a.idArticles
+                    WHERE a.idArticles = :article ";
             $stmt = Conexion::conectar()->prepare($sql);
             $stmt->bindParam(':article', $article, PDO::PARAM_INT);
-        }
 
-        $stmt->execute(); // Ejecuta la consulta
-        return $stmt->fetch();
+            $stmt->execute(); // Ejecuta la consulta
+            return $stmt->fetchAll();
+        }
     }
 
     static public function searchArticlesFavorites($user) {
