@@ -324,7 +324,8 @@ class ControllerApi{
 	            	'idTitle' => intval($favorite['idTitles']),
 		            'name_title' => $favorite['name_title'],
 		            'idArticle' => intval($favorite['idArticles']),
-		            'name_article' => $favorite['name_article']
+		            'nameArticle' => $favorite['name_article'],
+		            'name_cover' => $favorite['name_cover']
             	);
             }
         }
