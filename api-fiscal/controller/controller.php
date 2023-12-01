@@ -340,6 +340,7 @@ class ControllerApi{
     		echo $exist;
             return json_encode(['message' => true]);
     	} else {
+    		echo $exist;
             return json_encode(['message' => false]);
     	}
 
