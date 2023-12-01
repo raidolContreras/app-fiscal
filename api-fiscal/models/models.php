@@ -258,4 +258,15 @@ class ModelsApi{
         }
     }
 
+    static public function existFavorite($article, $user) {
+        $sql = "SELECT COUNT(*) > 0 AS existe
+                FROM app_favorites_articles
+                WHERE User_idUsers = :article AND Article_idArticle = :user";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(':article', $user, PDO::PARAM_INT);
+        $stmt->bindParam(':user', $user, PDO::PARAM_INT);
+        $stmt->execute(); // Ejecuta la consulta
+        return $stmt->fetch();
+    }
+
 }

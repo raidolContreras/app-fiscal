@@ -332,6 +332,18 @@ class ControllerApi{
         return json_encode($results);
     }
 
+    static public function existFavorite($article, $user) {
+
+    	$exist = ModelsApi::existFavorite($article, $user);
+
+    	if ($exist == 1) {
+            return json_encode(['message' => true);
+    	} else {
+            return json_encode(['message' => false);
+    	}
+
+    }
+
 }
 
 // Función para verificar si el nombre es válido

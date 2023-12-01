@@ -121,6 +121,17 @@ if (isset($_GET['resource'])) {
     print_r($seeArticle);
 
 
+}elseif( isset($_GET['ArticleAdd']) && isset($_GET['UserAdd']) ){
+    
+    header("Content-Type: application/json");
+
+    $article = intval($_GET['ArticleAdd']);
+    $user = intval($_GET['UserAdd']);
+    $exist = ControllerApi::existFavorite($article, $user);
+
+    print_r($exist);
+
+
 }else {
 
     require 'base.html';
