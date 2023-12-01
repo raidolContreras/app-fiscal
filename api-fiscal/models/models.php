@@ -215,7 +215,8 @@ class ModelsApi{
                 LEFT JOIN app_articles a ON a.idArticles = f.Article_idArticle
                 LEFT JOIN app_titles t ON t.idTitles = a.Title_idTitles
                 LEFT JOIN app_covers c ON c.Title_idTitles = t.idTitles
-                WHERE User_idUsers = :user";
+                WHERE User_idUsers = :user
+                ORDER BY a.idArticles ASC";
 
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(':user', $user, PDO::PARAM_INT);
