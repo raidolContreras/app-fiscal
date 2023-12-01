@@ -336,7 +336,11 @@ class ControllerApi{
 
     	$exist = ModelsApi::existFavorite($article, $user);
 
-        return json_encode(['message' => $exist]);
+    	if ($exist['existe'] == 1) {
+            return json_encode(['message' => true]);
+    	} else {
+            return json_encode(['message' => false);
+    	}
 
     }
 
