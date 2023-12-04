@@ -2,6 +2,21 @@
 
 include_once 'models/models.php';
 
+// Función para verificar si el nombre es válido
+function isValidName($name) {
+	return preg_match('/^[A-Za-z\s]+$/', $name);
+}
+
+// Función para verificar si el correo es válido
+function isValidEmail($email) {
+	return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+// Función para verificar si el password cumple con los requisitos
+function isValidPassword($password) {
+	return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/', $password);
+}
+
 class ControllerApi{
 
 	static public function titles($item, $value){
@@ -337,26 +352,11 @@ class ControllerApi{
     	$exist = ModelsApi::existFavorite($article, $user);
 
     	if ($exist['existe'] == 1) {
-            return json_encode(['message' => true]);
+            return json_encode(['message' => 'true']);
     	} else {
-            return json_encode(['message' => false]);
+            return json_encode(['message' => 'false']);
     	}
 
     }
 
-}
-
-// Función para verificar si el nombre es válido
-function isValidName($name) {
-	return preg_match('/^[A-Za-z\s]+$/', $name);
-}
-
-// Función para verificar si el correo es válido
-function isValidEmail($email) {
-	return filter_var($email, FILTER_VALIDATE_EMAIL);
-}
-
-// Función para verificar si el password cumple con los requisitos
-function isValidPassword($password) {
-	return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/', $password);
 }
